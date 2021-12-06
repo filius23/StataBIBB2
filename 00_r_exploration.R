@@ -30,8 +30,9 @@ xt <- baua2 %>% summarise(across(everything(), ~sum(as.numeric(.x) %in% c(9999))
 
 
 
-
-  
+usethis::use_git_config()
+usethis::use_git()
+usethis::use_github()
 
 unique(baua$zpalter) %>% length(.)
 

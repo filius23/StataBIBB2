@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>1 Überblick zu Stata | Stata Einführung am BIBB</title>
+  <meta name="description" content="This site has been creating using the bookdown R package." />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="1 Überblick zu Stata | Stata Einführung am BIBB" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This site has been creating using the bookdown R package." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="1 Überblick zu Stata | Stata Einführung am BIBB" />
+  
+  <meta name="twitter:description" content="This site has been creating using the bookdown R package." />
+  
+
+<meta name="author" content="Andreas Filser" />
+
+
+<meta name="date" content="2021-12-06" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="stata2.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Stata @ BIBB</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Herzlich Willkommen</a></li>
+<li class="chapter" data-level="1" data-path="stata.html"><a href="stata.html"><i class="fa fa-check"></i><b>1</b> Überblick zu Stata</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="stata.html"><a href="stata.html#taschenrechner"><i class="fa fa-check"></i><b>1.1</b> Taschenrechner</a></li>
+<li class="chapter" data-level="1.2" data-path="stata.html"><a href="stata.html#darstellung-in-diesem-skript"><i class="fa fa-check"></i><b>1.2</b> Darstellung in diesem Skript</a></li>
+<li class="chapter" data-level="1.3" data-path="stata.html"><a href="stata.html#dofile-editor"><i class="fa fa-check"></i><b>1.3</b> DoFile Editor</a></li>
+<li class="chapter" data-level="1.4" data-path="stata.html"><a href="stata.html#datensätze-laden"><i class="fa fa-check"></i><b>1.4</b> Datensätze laden</a></li>
+<li class="chapter" data-level="1.5" data-path="stata.html"><a href="stata.html#daten-codebücher-fragebogen"><i class="fa fa-check"></i><b>1.5</b> Daten, Codebücher, Fragebogen</a></li>
+<li class="chapter" data-level="1.6" data-path="stata.html"><a href="stata.html#überblicksbefehle"><i class="fa fa-check"></i><b>1.6</b> Überblicksbefehle</a>
+<ul>
+<li class="chapter" data-level="1.6.1" data-path="stata.html"><a href="stata.html#describe"><i class="fa fa-check"></i><b>1.6.1</b> <code>describe</code></a></li>
+<li class="chapter" data-level="1.6.2" data-path="stata.html"><a href="stata.html#browse"><i class="fa fa-check"></i><b>1.6.2</b> <code>browse</code></a></li>
+<li class="chapter" data-level="1.6.3" data-path="stata.html"><a href="stata.html#list"><i class="fa fa-check"></i><b>1.6.3</b> <code>list</code></a></li>
+<li class="chapter" data-level="1.6.4" data-path="stata.html"><a href="stata.html#lookfor"><i class="fa fa-check"></i><b>1.6.4</b> <code>lookfor</code></a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="stata.html"><a href="stata.html#U1"><i class="fa fa-check"></i><b>1.7</b> Übungen 1</a></li>
+<li class="chapter" data-level="1.8" data-path="stata.html"><a href="stata.html#profi-übungen-1"><i class="fa fa-check"></i><b>1.8</b> Profi-Übungen 1</a></li>
+<li class="chapter" data-level="1.9" data-path="stata.html"><a href="stata.html#anhang-1"><i class="fa fa-check"></i><b>1.9</b> Anhang 1</a>
+<ul>
+<li class="chapter" data-level="1.9.1" data-path="stata.html"><a href="stata.html#var_types"><i class="fa fa-check"></i><b>1.9.1</b> Variablentypen</a></li>
+<li class="chapter" data-level="1.9.2" data-path="stata.html"><a href="stata.html#otherfmts"><i class="fa fa-check"></i><b>1.9.2</b> import anderer Dateiformate</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="stata2.html"><a href="stata2.html"><i class="fa fa-check"></i><b>2</b> Arbeiten mit Datensätzen in Stata</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="stata2.html"><a href="stata2.html#befehlsstruktur"><i class="fa fa-check"></i><b>2.1</b> Befehlsstruktur</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="stata2.html"><a href="stata2.html#zeilenumbrüche"><i class="fa fa-check"></i><b>2.1.1</b> Zeilenumbrüche</a></li>
+<li class="chapter" data-level="2.1.2" data-path="stata2.html"><a href="stata2.html#kommentare"><i class="fa fa-check"></i><b>2.1.2</b> Kommentare</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="stata2.html"><a href="stata2.html#auszählen-überblick-erhalten"><i class="fa fa-check"></i><b>2.2</b> Auszählen &amp; Überblick erhalten</a></li>
+<li class="chapter" data-level="2.3" data-path="stata2.html"><a href="stata2.html#missv"><i class="fa fa-check"></i><b>2.3</b> Fehlende Werte</a></li>
+<li class="chapter" data-level="2.4" data-path="stata2.html"><a href="stata2.html#zwei-variablen-eine-tabelle-kontingenztabellen"><i class="fa fa-check"></i><b>2.4</b> Zwei Variablen, eine Tabelle: Kontingenztabellen</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="stata2.html"><a href="stata2.html#in-prozent-relative-häufigkeiten"><i class="fa fa-check"></i><b>2.4.1</b> In Prozent: Relative Häufigkeiten</a></li>
+<li class="chapter" data-level="2.4.2" data-path="stata2.html"><a href="stata2.html#pro-gruppe-1-zeilenprozente"><i class="fa fa-check"></i><b>2.4.2</b> pro Gruppe 1: Zeilenprozente</a></li>
+<li class="chapter" data-level="2.4.3" data-path="stata2.html"><a href="stata2.html#pro-gruppe-2-spaltenprozente"><i class="fa fa-check"></i><b>2.4.3</b> pro Gruppe 2: Spaltenprozente</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="stata2.html"><a href="stata2.html#metrische-variablen"><i class="fa fa-check"></i><b>2.5</b> metrische Variablen</a></li>
+<li class="chapter" data-level="2.6" data-path="stata2.html"><a href="stata2.html#skalenn"><i class="fa fa-check"></i><b>2.6</b> Exkurs: Skalenniveau</a></li>
+<li class="chapter" data-level="2.7" data-path="stata2.html"><a href="stata2.html#nochmal-von-vorne-daten-neu-laden"><i class="fa fa-check"></i><b>2.7</b> Nochmal von vorne: Daten neu laden</a></li>
+<li class="chapter" data-level="2.8" data-path="stata2.html"><a href="stata2.html#speichern"><i class="fa fa-check"></i><b>2.8</b> Speichern</a></li>
+<li class="chapter" data-level="2.9" data-path="stata2.html"><a href="stata2.html#übungen-2"><i class="fa fa-check"></i><b>2.9</b> Übungen 2</a>
+<ul>
+<li class="chapter" data-level="2.9.1" data-path="stata2.html"><a href="stata2.html#tab2"><i class="fa fa-check"></i><b>2.9.1</b> Übung 2-1</a></li>
+<li class="chapter" data-level="2.9.2" data-path="stata2.html"><a href="stata2.html#su2"><i class="fa fa-check"></i><b>2.9.2</b> Übung 2-2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="desc1.html"><a href="desc1.html"><i class="fa fa-check"></i><b>3</b> Deskriptive Statistik</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="desc1.html"><a href="desc1.html#metrische-variablen-beschreiben"><i class="fa fa-check"></i><b>3.1</b> Metrische Variablen beschreiben</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="desc1.html"><a href="desc1.html#cut"><i class="fa fa-check"></i><b>3.1.1</b> Exkurs: Klassen bilden</a></li>
+<li class="chapter" data-level="3.1.2" data-path="desc1.html"><a href="desc1.html#lage--und-konzentrationsmaße"><i class="fa fa-check"></i><b>3.1.2</b> Lage- und Konzentrationsmaße</a></li>
+<li class="chapter" data-level="3.1.3" data-path="desc1.html"><a href="desc1.html#tabstat"><i class="fa fa-check"></i><b>3.1.3</b> <code>tabstat</code></a></li>
+<li class="chapter" data-level="3.1.4" data-path="desc1.html"><a href="desc1.html#by_vgl"><i class="fa fa-check"></i><b>3.1.4</b> Kennzahlen vergleichen mit <code>tabstat</code></a></li>
+<li class="chapter" data-level="3.1.5" data-path="desc1.html"><a href="desc1.html#streu"><i class="fa fa-check"></i><b>3.1.5</b> Streuungsmaße: Varianz, Standardabweichung, Variationskoeffizient</a></li>
+<li class="chapter" data-level="3.1.6" data-path="desc1.html"><a href="desc1.html#gini"><i class="fa fa-check"></i><b>3.1.6</b> Gini-Koeffizient</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="desc1.html"><a href="desc1.html#übungen-3"><i class="fa fa-check"></i><b>3.2</b> Übungen 3</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="desc1.html"><a href="desc1.html#met"><i class="fa fa-check"></i><b>3.2.1</b> Übung 3-1</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="desc1.html"><a href="desc1.html#anhang-kap-3"><i class="fa fa-check"></i><b>3.3</b> Anhang Kap 3</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="desc1.html"><a href="desc1.html#mean"><i class="fa fa-check"></i><b>3.3.1</b> Arithmetisches Mittel</a></li>
+<li class="chapter" data-level="3.3.2" data-path="desc1.html"><a href="desc1.html#median"><i class="fa fa-check"></i><b>3.3.2</b> Median</a></li>
+<li class="chapter" data-level="3.3.3" data-path="desc1.html"><a href="desc1.html#perc"><i class="fa fa-check"></i><b>3.3.3</b> Perzentile erklärt</a></li>
+<li class="chapter" data-level="3.3.4" data-path="desc1.html"><a href="desc1.html#variance"><i class="fa fa-check"></i><b>3.3.4</b> Varianz erklärt</a></li>
+<li class="chapter" data-level="3.3.5" data-path="desc1.html"><a href="desc1.html#sk_kur"><i class="fa fa-check"></i><b>3.3.5</b> Schiefe &amp; Wölbung</a></li>
+<li class="chapter" data-level="3.3.6" data-path="desc1.html"><a href="desc1.html#kennzahlvergleich-mit-tabulate-und-der-option-summarize"><i class="fa fa-check"></i><b>3.3.6</b> Kennzahlvergleich mit <code>tabulate</code> und der Option <code>summarize()</code></a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Stata Einführung am BIBB</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="stata" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Überblick zu Stata</h1>
+Hier sehen wir die Startansicht von Stata:
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:screenshot"></span>
+<img src="pics/01_Stata_intro1.png" alt="Startansicht Stata16" width="90%" />
+<p class="caption">
+Figure 1.1: Startansicht Stata16
+</p>
+</div>
+<p>Die Standardansicht von Stata besteht aus mehreren Fenstern:</p>
+<ol style="list-style-type: decimal">
+<li>Kommandos/Befehle</li>
+<li>Ergebnisse</li>
+<li>Variablenübersicht</li>
+<li>Übersicht zu den geladenen Daten</li>
+<li>Befehlshistorie</li>
+</ol>
+<div id="taschenrechner" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> Taschenrechner</h2>
+<p>In das Befehlsfeld (1) können wir Kommandos eingeben, z.B. eine Berechnung durchführen. Dazu geben wir zunächst den Befehl <code>display</code> und dann die gewünschte Rechnung ein und drücken dann Enter. Der Befehl wird dann im Ergebnisfenster gespiegelt und darunter das Ergebnis ausgegeben:</p>
+<p><img src="pics/01_Stata3_calc.png" width="90%" style="display: block; margin: auto;" /></p>
+<p>Wir können <code>display</code> auch mit <code>dis</code> abkürzen.</p>
+</div>
+<div id="darstellung-in-diesem-skript" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> Darstellung in diesem Skript</h2>
+<p>Eingaben und Ergebnisse werden im weiteren Skript so dargestellt:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb1-1"><a href="stata.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">display</span> 3 + 12</span></code></pre></div>
+<pre><code>15</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb3-1"><a href="stata.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">display</span> <span class="fu">sqrt</span>(9)</span></code></pre></div>
+<pre><code>3</code></pre>
+</div>
+<div id="dofile-editor" class="section level2" number="1.3">
+<h2><span class="header-section-number">1.3</span> DoFile Editor</h2>
+<p>Zwar funktioniert die direkte Eingabe in das Befehlsfeld, allerdings werden für Auswertungen sehr viel längere und komplexere Befehle und längere Befehlsfolgen verwendet. Für solche Anwendungen werden in Stata sog. DoFiles angelegt. Darin können Befehle entworfen und für eine spätere Verwendung abgespeichert werden. Um ein DoFile zu öffnen geben wir entweder <code>doedit</code> in das Befehlsfeld ein oder klicken auf das Feld “New Do-file-Editor” rechts oben:</p>
+<p><img src="pics/01_Stata_open_DOedit.png" width="60%" style="display: block; margin: auto;" />
+Es öffnet sich ein neues Fenster:
+<img src="pics/01_Stata5_dofile_editor.png" width="90%" style="display: block; margin: auto;" />
+In diesem sog. Do-File-Editor können wir Befehle entwerfen. Wenn wir diese dann durchführen möchten, markieren wir die entsprechenden Zeilen und drücken <strong>STRG + D</strong>. Die ausgeführten Befehle werden wieder im Ergebnisfenster gespiegelt und jeweils darunter die Ergebnisse angezeigt:
+<img src="pics/01_Stata7_dofile_routine.png" width="90%" style="display: block; margin: auto;" /></p>
+<p>Das DoFile können wir speichern, um es später wieder aufzurufen. Wichtig ist dabei, der gespeicherten Datei die Endung “<code>.do</code>” zu geben, also zum Beispiel “01_Einstieg.do.” Diese DoFiles können dann einfach ausgetauscht werden, um später daran weiter zu arbeiten oder Analysen für Dritte nachvollziehbar zu machen.
+<img src="pics/01_Stata7_dofile_save.png" width="60%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="datensätze-laden" class="section level2" number="1.4">
+<h2><span class="header-section-number">1.4</span> Datensätze laden</h2>
+<p>Das ist aber alles soweit sehr unspektulär - es gibt schönere und günstigere Taschenrechner als Stata. Die eigentliche Stärke von Stata ist die Analyse von Datensätzen. Diese müssen zunächst eingelesen werden. Im einfachsten Fall liegen die Daten als Stata-Datensatz (mit der Endung <code>.dta</code>) vor und wir können die Daten wie folgt einlesen:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb5-1"><a href="stata.html#cb5-1" aria-hidden="true" tabindex="-1"></a>cd <span class="st">&quot;C:/Kurse/Stata_BIBB/data/&quot;</span></span>
+<span id="cb5-2"><a href="stata.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="st">&quot;BIBBBAuA_2018_suf1.0.dta&quot;</span></span></code></pre></div>
+<p>Der Einlesevorgang besteht also aus zwei Befehlen: zuerst geben wir <code>cd</code> den Pfad an, unter welchem der einzulesende Datensatz zu finden ist. Natürlich hängt der Dateipfad aber ganz davon ab, wo Sie den Datensatz gespeichert haben, hier ist es “C:/Kurse/Stata_BIBB/data/”:</p>
+<p><img src="pics/01_directory.png" width="80%" height="80%" style="display: block; margin: auto;" />
+Um den Pfad des Ordners herauszufinden, klicken Sie bei Windows in die obere Adresszeile im Explorerfenster:
+<img src="pics/01_Dateipfad_WIN.png" width="65%" height="55%" style="display: block; margin: auto;" /></p>
+<div class="note">
+<p>In iOS (Mac) finden Sie den Pfad, indem Sie einmal mit der rechten Maustaste auf die Datei klicken und dann die ALT-Taste gedrückt halten. Dann sollte die Option “…als Pfadname kopieren” erscheinen. <a href="https://www.youtube.com/watch?v=zcb3D6Xdv4s"><strong>Youtube Anleitung</strong></a></p>
+</div>
+<p>Hat das funktioniert?<br />
+Wir haben zwei Möglichkeiten zu das aktuelle Arbeitsverzeichnis überprüfen: wir sehen das aktuelle Arbeitsverzeichnis im Stata-Fenster links unten oder wir geben <code>pwd</code> ein:
+<img src="pics/01_Stata_directory.png" width="60%" height="60%" style="display: block; margin: auto;" /></p>
+<p>Wir können diese beiden Schritte natürlich auch einfach kombinieren und den gesamten Pfad nach <code>use</code> angeben:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb6-1"><a href="stata.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="st">&quot;C:/Kurse/Stata_BIBB/data/BIBBBAuA_2018_suf1.0.dta&quot;</span></span></code></pre></div>
+<p>Wenn das funktioniert hat, dann sehen wir im Fenster rechts eine Variablenübersicht:
+<img src="pics/01_Stata8_Datensatz.PNG" width="90%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="daten-codebücher-fragebogen" class="section level2" number="1.5">
+<h2><span class="header-section-number">1.5</span> Daten, Codebücher, Fragebogen</h2>
+<p>Die Daten des hier geladenen Datensatzes enthalten die Angaben von 20012 Befragten der BIBB/BAuA-Erwerbstätigenbefragung 2018. Die BIBB/BAuA ist eine repräsentativbefragung von in Deutschland zu Arbeit und Beruf im Wandel und Erwerb und Verwertung beruflicher Qualifikation.</p>
+<p>Das heißt, die hier geladenen Daten beruhen auf standardisierten Interviews. Derartige Datensätze werden in der Regel zusammen mit einem Codebuch, Methodenreport und dem Fragenkatalog veröffentlicht. Im Fragebogen der BIBB/BAuA 2018 finden wir den exakten Wortlaut der Fragen:</p>
+<p><img src="pics/01_Fragebogen.PNG" width="90%" style="display: block; margin: auto;" /></p>
+<p>Hier sind auch die Anweisungen an die Interviewenden vermerkt, z.B. dass die Vorgaben zum Schichtmodell zunächst nicht vorgelesen werden sollen. Außerdem werden im Methodenbericht weitere Variablen vorgestellt, die bereits im Datensatz enthalten sind, beispielsweise das Alter der Befragten, der Wohnort und die berufliche Stellung:</p>
+<p><img src="pics/01_methodenbericht.PNG" width="90%" style="display: block; margin: auto;" /></p>
+<p>Die Antworten der Befragten werden dann im Datensatz gesammelt. Dazu werden den Antworten in der Regel Zahlencodes zugewiesen (siehe die ganz linke Spalte im Fragebogen) und so abgelegt. Stata erlaubt dann in einem zweiten Schritt, dass diese Zahlen wieder mit Wertelabeln versehen werden - dazu kommen wir später. In diesem Datensatz entspricht dann jede Zeile einer befragten Person:
+<img src="pics/01_Codierung_label.PNG" width="100%" style="display: block; margin: auto;" />
+In Fragebogendokumentation finden wir Kürzel links oben, welche die Variablennamen für den Datensatz angeben.</p>
+</div>
+<div id="überblicksbefehle" class="section level2" number="1.6">
+<h2><span class="header-section-number">1.6</span> Überblicksbefehle</h2>
+<p>Für eine erste Annäherung an die Daten helfen uns drei Überblicksbefehle: <code>browse</code>, <code>describe</code> und <code>list</code>. Zur Erinnerung: wir haben den Datensatz geladen:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb7-1"><a href="stata.html#cb7-1" aria-hidden="true" tabindex="-1"></a>cd <span class="st">&quot;C:/Users/Andreas/Dokumente/Statistik/&quot;</span></span>
+<span id="cb7-2"><a href="stata.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="st">&quot;BIBBBAuA_2018_suf1.0.dta&quot;</span></span></code></pre></div>
+<div id="describe" class="section level3" number="1.6.1">
+<h3><span class="header-section-number">1.6.1</span> <code>describe</code></h3>
+<p>Mit <code>describe, short</code> bekommen wir einen Überblick zu den eingelesenen Daten:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb8-1"><a href="stata.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">describe</span>, <span class="kw">short</span></span></code></pre></div>
+<pre><code>Contains data from D:\Datenspeicher\BIBB_BAuA/BIBBBAuA_2018_suf1.0.dta
+  obs:        20,012                          
+ vars:           683                          2 Nov 2021 17:34
+ size:    17,230,332                          
+Sorted by:  intnr</code></pre>
+<p>Hier wurde also ein Datensatz geladen, welcher 20012 Fälle/Zeilen (<code>obs</code>) und 683 Variablen/Spalten (<code>vars</code>) enthält.
+(Wir können den Befehl auch als <code>d,s</code> abkürzen)</p>
+<p>Wir können den <code>describe</code> Befehl auch nutzen, um Informationen zu einer Variable zu erhalten. Dazu hängen wir einfach eine oder mehrere Variablen an <code>describe</code> an:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb10-1"><a href="stata.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">describe</span> F209</span></code></pre></div>
+<pre><code>running D:\oCloud\Home-Cloud\Lehre\BIBB\StataBIBB&gt; rofile.do ...
+
+              storage   display    value
+variable name   type    format     label      variable label
+--------------------------------------------------------------------------------
+F209            byte    %8.0g      F209       Liegt Ihre Arbeitszeit
+                                                normalerweise zwischen 7 und 19
+                                                Uhr?</code></pre>
+<p>Hier sehen wir also in der ersten Spalte nochmal den vollständigen Variablennamen, den Variablentypen (<code>storage type</code> - mehr dazu <a href="stata.html#var_types">hier</a>) sowie - falls vorhanden - eine Beschreibung der Variable (<code>variable label</code>) sowie (ggf.) die Labels für Ausprägungen der Variable (<code>value label</code>).
+Letztere können wir mit Hilfe von <code>labelbook</code> aufrufen (mehr zu Labels später):</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb12-1"><a href="stata.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">labelbook</span> F209</span></code></pre></div>
+<pre><code>running D:\oCloud\Home-Cloud\Lehre\BIBB\StataBIBB&gt; rofile.do ...
+
+
+
+
+
+--------------------------------------------------------------------------------
+value label F209 
+--------------------------------------------------------------------------------
+
+      values                                    labels
+       range:  [1,9]                     string length:  [2,12]
+           N:  3                 unique at full length:  yes
+        gaps:  yes                 unique at length 12:  yes
+  missing .*:  0                           null string:  no
+                               leading/trailing blanks:  no
+                                    numeric -&gt; numeric:  no
+  definition
+           1   ja
+           2   nein
+           9   keine Angabe
+
+   variables:  F209</code></pre>
+<p>Wir können auch alle Variablen aufrufen, die mit <code>F209</code> beginnen, indem wir einen <code>*</code> einsetzen:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb14-1"><a href="stata.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">describe</span> F209*</span></code></pre></div>
+<pre><code>running D:\oCloud\Home-Cloud\Lehre\BIBB\StataBIBB&gt; rofile.do ...
+
+              storage   display    value
+variable name   type    format     label      variable label
+--------------------------------------------------------------------------------
+F209            byte    %8.0g      F209       Liegt Ihre Arbeitszeit
+                                                normalerweise zwischen 7 und 19
+                                                Uhr?
+F209_01         byte    %8.0g      F209_01    Arbeiten Sie in Schichtarbeit?</code></pre>
+</div>
+<div id="browse" class="section level3" number="1.6.2">
+<h3><span class="header-section-number">1.6.2</span> <code>browse</code></h3>
+<p>Mit <code>browse</code> bekommen wir eine Ansicht des Datensatzes:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb16-1"><a href="stata.html#cb16-1" aria-hidden="true" tabindex="-1"></a>browse</span></code></pre></div>
+<p><img src="pics/01_Stata9_bro_Datensatz.png" width="90%" style="display: block; margin: auto;" /></p>
+<p>Wenn wir nur einige Variablen betrachten möchten, hängen wir diese einfach <code>browse</code> an:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb17-1"><a href="stata.html#cb17-1" aria-hidden="true" tabindex="-1"></a>browse intnr Bula gkpol Stib zpalter </span></code></pre></div>
+<p><img src="pics/01_Stata9_bro_Datensatz2.png" width="90%" style="display: block; margin: auto;" /></p>
+<p>Hier bekommen aber immer die gelabelte Ansicht - allerdings stehen dahinter Zahlenwerte. Die Labels helfen uns, deren Bedeutung zu verstehen. Wenn wir aber wie in den nächsten Tagen auch mit den Daten arbeiten wollen, dann beziehen sich diese Operationen immer auf die dahinterstehenden Zahlenwerte. Diese bekommen wir mit der Option <code>nolabel</code> (oft auch einfach als <code>nol</code> abgekürzt):</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb18-1"><a href="stata.html#cb18-1" aria-hidden="true" tabindex="-1"></a>browse intnr Bula gkpol Stib zpalter , <span class="kw">nolabel</span></span></code></pre></div>
+<p><img src="pics/01_Stata9_bro_Datensatz2_nol.png" width="90%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="list" class="section level3" number="1.6.3">
+<h3><span class="header-section-number">1.6.3</span> <code>list</code></h3>
+<p><code>browse</code> eignet sich vor allem für größere Übersichten. Wenn wir nur einige wenige Fälle betrachten möchten, dann ist <code>list</code> eine gute Alternative, da der Output hier gleich im Ergebnisfenster (2) angezeigt wird. Die Funktionsweise von <code>list</code> ähnelt sich im Prinzip der von <code>browse</code>. Mit dem Zusatz <code>in 1/5</code> können wir die ersten 5 Zeilen anzeigen lassen (ansonsten würden alle 20012 Fälle angezeigt!):</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb19-1"><a href="stata.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ot">list</span> intnr Bula gkpol Stib zpalter <span class="kw">in</span> 1/5</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb20-1"><a href="stata.html#cb20-1" aria-hidden="true" tabindex="-1"></a>     | intnr     Bula     gkpol       Stib   zpalter |</span>
+<span id="cb20-2"><a href="stata.html#cb20-2" aria-hidden="true" tabindex="-1"></a>     |-----------------------------------------------|</span>
+<span id="cb20-3"><a href="stata.html#cb20-3" aria-hidden="true" tabindex="-1"></a>  1. |   260   Berlin   500.000   Selbstst        41 |</span>
+<span id="cb20-4"><a href="stata.html#cb20-4" aria-hidden="true" tabindex="-1"></a>  2. |   361   Berlin   500.000   Angestel        51 |</span>
+<span id="cb20-5"><a href="stata.html#cb20-5" aria-hidden="true" tabindex="-1"></a>  3. |   491   Berlin   500.000   Arbeiter        49 |</span>
+<span id="cb20-6"><a href="stata.html#cb20-6" aria-hidden="true" tabindex="-1"></a>  4. |   690   Berlin   500.000    Beamter        63 |</span>
+<span id="cb20-7"><a href="stata.html#cb20-7" aria-hidden="true" tabindex="-1"></a>  5. |   919   Berlin   500.000   Angestel        41 |</span>
+<span id="cb20-8"><a href="stata.html#cb20-8" aria-hidden="true" tabindex="-1"></a>     |-----------------------------------------------|</span></code></pre></div>
+<p>Auch hier können wir wie bei <code>browse</code> die Zahlenwerte ohne die Labels anzeigen lassen, indem wir <code>, nolabel</code> anhängen:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb21-1"><a href="stata.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ot">list</span> intnr Bula gkpol Stib zpalter <span class="kw">in</span> 1/5, <span class="kw">nolabel</span></span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb22-1"><a href="stata.html#cb22-1" aria-hidden="true" tabindex="-1"></a>     | intnr   Bula   gkpol   Stib   zpalter |</span>
+<span id="cb22-2"><a href="stata.html#cb22-2" aria-hidden="true" tabindex="-1"></a>     |---------------------------------------|</span>
+<span id="cb22-3"><a href="stata.html#cb22-3" aria-hidden="true" tabindex="-1"></a>  1. |   260     11       7      4        41 |</span>
+<span id="cb22-4"><a href="stata.html#cb22-4" aria-hidden="true" tabindex="-1"></a>  2. |   361     11       7      2        51 |</span>
+<span id="cb22-5"><a href="stata.html#cb22-5" aria-hidden="true" tabindex="-1"></a>  3. |   491     11       7      1        49 |</span>
+<span id="cb22-6"><a href="stata.html#cb22-6" aria-hidden="true" tabindex="-1"></a>  4. |   690     11       7      3        63 |</span>
+<span id="cb22-7"><a href="stata.html#cb22-7" aria-hidden="true" tabindex="-1"></a>  5. |   919     11       7      2        41 |</span>
+<span id="cb22-8"><a href="stata.html#cb22-8" aria-hidden="true" tabindex="-1"></a>     |---------------------------------------|</span></code></pre></div>
+</div>
+<div id="lookfor" class="section level3" number="1.6.4">
+<h3><span class="header-section-number">1.6.4</span> <code>lookfor</code></h3>
+<p>All diese Befehle setzen aber voraus, dass wir wissen, unter welchem Variablennamen die interessierende Information abgelegt wurde. Mit <code>lookfor "stichwort"</code> können wir den Datensatz nach einem Stichwort durchsuchen:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb23-1"><a href="stata.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">lookfor</span> <span class="st">&quot;Englisch&quot;</span></span></code></pre></div>
+<pre><code>running D:\oCloud\Home-Cloud\Lehre\BIBB\StataBIBB&gt; rofile.do ...
+unrecognized command:  | invalid command name
+r(199);
+
+              storage   display    value
+variable name   type    format     label      variable label
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+F404_01         byte    %8.0g      F404_01    Wie gut mÃ¼ssen Sie Englisch beherrschen? Sicher in Wort
+F404_02         byte    %8.0g      F404_02    Wie gut mÃ¼ssen Sie Englisch beherrschen? Sicher in Schrift
+F404_03         byte    %8.0g      F404_03    Wie gut mÃ¼ssen Sie Englisch beherrschen? Verhandlungssicher
+F404_09         byte    %8.0g      F404_09    Wie gut mÃ¼ssen Sie Englisch beherrschen? Keine Angabe
+F1606_02        byte    %8.0g      F1606_02   Muttersprache: Englisch</code></pre>
+<p>Alternativ können wir auch in der Variablenübersicht mit Hilfe des Suchfelds nach Variablen suchen:
+<img src="pics/01_Stata8_Datensatz_suche2.PNG" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="U1" class="section level2" number="1.7">
+<h2><span class="header-section-number">1.7</span> Übungen 1</h2>
+<ol class="example" style="list-style-type: decimal">
+<li><p>Öffnen Sie Stata und öffnen Sie den DoFile Editor</p></li>
+<li><p>Führen Sie folgende (oder beliebige andere) Taschenrechneraufgaben mit Stata durch:</p></li>
+</ol>
+<ul>
+<li><code>2 * 4</code></li>
+<li><code>2 / 8</code></li>
+<li><code>2 ^ 2</code> // (Potenz)</li>
+<li><code>sqrt(9)</code> // (Wurzel)</li>
+</ul>
+<ol start="3" class="example" style="list-style-type: decimal">
+<li>Lesen Sie die Erwerbstätigenbefragung 2018 in Stata ein. Folgende Schritte helfen Ihnen dabei:</li>
+</ol>
+<ul>
+<li>In welchem Arbeitsverzeichnis befindet sich Stata aktuell? Wo können Sie das erkennen?</li>
+<li>In welchem Ordner haben Sie den Erwerbstätigenbefragung Datensatz abgelegt?</li>
+<li>Navigieren Sie Stata mit <code>cd</code> in diesen Ordner, in dem der Datensatz abgelegt ist!</li>
+<li>Lesen Sie den Datensatz mit <code>use</code> ein</li>
+</ul>
+<ol start="4" class="example" style="list-style-type: decimal">
+<li>Nutzen Sie <code>describe</code> und <code>browse</code>, um sich einen Überblick über den Datensatz zu verschaffen.</li>
+<li>Wie viele Variablen und wie viele Fälle enthält der Datensatz?</li>
+<li>Unter welchem Variablennamen ist die Information abgelegt, ob der*die Befrage Kinder hat?</li>
+</ol>
+<ul>
+<li>Nutzen Sie <code>lookfor</code> oder die Suchfunktion im Variablenfenster.</li>
+<li>Lassen Sie sich die Informationen zur Variable mit <code>describe</code> anzeigen.</li>
+<li>Wie heißt das angehängte Label? Inspizieren Sie es mit <code>labelbook</code>.</li>
+<li>Lassen Sie sich diese Variable im Datenexplorer mit <code>browse</code> anzeigen.</li>
+<li>Lassen Sie sich diese Variable mit den Zahlencodes (<code>nolabel</code>) anstatt der labels anzeigen.</li>
+</ul>
+</div>
+<div id="profi-übungen-1" class="section level2" number="1.8">
+<h2><span class="header-section-number">1.8</span> Profi-Übungen 1</h2>
+<p>Für alle, die noch etwas mehr machen möchten:</p>
+<ul>
+<li>Im zip-Ordner finden Sie auch eine SPSS-Version (.sav-Datei) der Erwerbstätigenbefragung 2018. Lesen Sie diese Dateiversion in Stata ein! (Siehe <a href="stata.html#otherfmts">weitere Anmerkungen</a>)</li>
+</ul>
+</div>
+<div id="anhang-1" class="section level2" number="1.9">
+<h2><span class="header-section-number">1.9</span> Anhang 1</h2>
+<div id="var_types" class="section level3" number="1.9.1">
+<h3><span class="header-section-number">1.9.1</span> Variablentypen</h3>
+<p>In Stata gibt es zwei Variablentypen:</p>
+<ul>
+<li><p>Zahlenvariablentypen: <code>byte</code>,<code>int</code>,<code>long</code>,<code>float</code>,<code>double</code> - der Unterschiede zwischen diesen Variablentypen besteht vor allem in der Spannbreite der möglichen Werte: während <code>byte</code> Werte zwischen -127 und 100 annehmen kann, können in <code>long</code> zwischen -2,147,483,647 2,147,483,620 (Stata verwaltet diese Typen in der Regel automatisch - für weitere Hinweise <code>help data_types</code>)</p></li>
+<li><p>Textvariablen, sog. strings <code>strXX</code> - wobei <code>XX</code> die Zahl der (maximal) verwendeten Zeichen angibt</p></li>
+</ul>
+<p>In der BIBB/BAuA Erwerbstätigenbefragung 2018 sind nur Zahlenvariablen enthalten.</p>
+</div>
+<div id="otherfmts" class="section level3" number="1.9.2">
+<h3><span class="header-section-number">1.9.2</span> import anderer Dateiformate</h3>
+<p>Häufig liegen Datensätze nicht im <code>.dta</code>-Format vor, sondern beispielsweise als Excel-Tabelle (.xslx oder .xls), SPSS-Datei (.sav) oder als .csv-Datei.</p>
+<p>Hierfür stehen alternative Importbefehle zur Verfügung:</p>
+<ul>
+<li><code>import excel</code> für Excel Tabellen</li>
+<li><code>import spss</code> für SPSS-Dateien</li>
+<li><code>import delimited</code> für csv-Dateien</li>
+</ul>
+<p>Hier empfiehlt sich ein Blick in das Auswahlmenü unter File &gt; Import:</p>
+<p><img src="pics/01_import_other.PNG" width="60%" style="display: block; margin: auto;" />
+Nach Klick auf das entsprechende Dateiformat öffnet sich ein Dialogfenster, in das die gewünschten Optionen eingetragen werden können. Sind alle Optionen wie gewünscht gesetzt, gibt es unten gibt es die Möglichkeit, den so zusammengestellten Befehl nicht nur durchzuführen, sondern auch zu kopieren (um ihn beispielsweise in ein DoFile einzufügen):
+<img src="pics/01_import_other_copy.PNG" width="40%" style="display: block; margin: auto;" /></p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="stata2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Stata Tables BIBB.pdf", "Stata Tables BIBB.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

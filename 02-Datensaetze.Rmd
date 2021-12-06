@@ -1,0 +1,457 @@
+# Arbeiten mit Datensätzen in Stata {#stata2} 
+
+```{r setup2, echo = F, message=F, warning = F}
+.libPaths("D:/R-library4")
+knitr::opts_chunk$set(collapse = F)
+library(Statamarkdown)
+# # options(width = 200) # 157
+# stataexe <- "C:/Program Files (x86)/Stata13/StataSE-64.exe"
+stataexe <- "C:/Program Files/Stata16/StataSE-64.exe"
+knitr::opts_chunk$set(engine.path=list(stata=stataexe))
+```
+
+Nachdem wir uns in Stata etwas umgesehen haben, können wir uns jetzt dem eigentlichen Arbeiten mit Datensätzen zuwenden.
+```{stata tab_su1, eval = F}
+cd ....
+use "BIBBBAuA_2018_suf1.0.dta"
+```
+
+## Befehlsstruktur
+
+Ganz nebenbei haben wir in Kapitel 1 bereits die ersten Stata-Befehle verwendet. Bevor wir jetzt aber tiefer einsteigen nochmal einmal allgemein:
+
+Die grundsätzliche Struktur von Stata-Kommandos ist immer `befehl variable, optionen`. Zunächst geben wir also immer an, was passieren soll - bisher war das eben zum Beispiel eine Auflistung (`list`) einiger Variable für einige Zeilen: 
+```{stata scommand1, eval = F}
+list intnr Bula gkpol Stib zpalter in 11/12
+```
+```{stata scommand2, eval = F}
+     | intnr       Bula      gkpol       Stib   zpalter |
+     |--------------------------------------------------|
+ 11. |  1562     Berlin    500.000   Angestel        31 |
+ 12. |  1955     Berlin    500.000   Angestel        58 |
+```
+
+Mit Hilfe von Optionen können wir die Ausgabe verändern: bspw. hatten wir schong gesehen, dass durch das Anhängen der Option `nolabel` die 'rohen' Zahlenwerte statt der beschrifteten Ausprägungen angezeigt werden:
+```{stata scommand3, eval = F}
+list intnr Bula gkpol Stib zpalter in 11/12, nolabel
+```
+```{stata scommands4, eval = F}
+     | intnr   Bula   gkpol   Stib   zpalter |
+     |---------------------------------------|
+ 11. |  1562     11       7      2        31 |
+ 12. |  1955     11       7      2        58 |
+```
+
+### Zeilenumbrüche
+Kommandos in Stata sind zeilenbasiert. D.h. alles was zu einem Kommando gehört, muss in der gleichen Zeile stehen. Umgekehrt wird auch alles, was in einer Zeile steht als Teil des Kommandos verstanden. Daher werden bei `list intnr Bula gkpol Stib zpalter in 11/15` auch nicht nur `intnr` sondern auch die anderen Variablen angezeigt.
+Das funktioniert nicht:
+```{stata rowbased2, eval = F}
+list intnr Bula 
+gkpol Stib zpalter in 11/12
+```
+> (Hier werden erstmal 20012 Zeilen von `intnr` und `Bula` ausgegeben)  
+
+<span style="color:red">`command gkpol is unrecognized`</span>  
+<span style="color:blue">`r(199);`</span>
+
+Mit `///` können wir Zeilen verknüpfen:
+```{stata rowbased3, eval = F}
+list intnr Bula ///
+gkpol Stib zpalter in 11/12 
+```
+```{stata rowbased3b, eval = F}
+     | intnr   Bula   gkpol   Stib   zpalter |
+     |---------------------------------------|
+ 11. |  1562     11       7      2        31 |
+ 12. |  1955     11       7      2        58 |
+```
+
+### Kommentare
+
+Außerdem können wir mit `//` Kommentare in unsere DoFiles einfügen. `//` blendet  alles folgende am Ende der Zeile aus:
+```{stata comment, eval = F}
+list intnr Bula gkpol Stib zpalter in 11/15 // dies ist ein kommentar
+```
+
+`///` kann auch zum Kommentieren verwendet werden:
+```{stata comment3, eval = F}
+list intnr Bula /// hier kann ein kommentar stehen
+gkpol Stib zpalter in 11/15 // hier geht es weiter, aber der Befehl endet mit dieser Zeile
+```
+
+Alternativ können wir mit `*` eine komplette Zeile 'deaktivieren':
+```{stata comment4, eval = F}
+*list intnr Bula gkpol Stib zpalter in 11/15 
+```
+
+So wird der Befehl ignoriert.
+
+## Auszählen & Überblick erhalten
+
+Mit `tabulate` bekommen wir eine Auszählung der Ausprägungen einer Variable, indem wir einfach den Variablennamen anhängen
+(kann auch mit `tab m1202` abgekürzt werden):
+```{stata tab, eval = F}
+tabulate m1202
+```
+
+```{stata tabb, echo = F, collectcode = F}
+qui use "D:\Datenspeicher\BIBB_BAuA/BIBBBAuA_2018_suf1.0.dta", clear
+tab m1202
+```
+
+In der ersten Spalte werden die verschiedenen Ausprägungen aufgelistet, in der zweiten Spalte finden wir dann die absoluten Häufigkeiten (`Freq.`) der jeweiligen Ausprägung, in der dritten Spalte finden wir die relativen Häufigkeiten (`Percent`) und in der vierten Spalte (`Cum.`) finden wir die kumulierten relativen Häufigkeiten:
+
++ `Freq.`: der Datensatz enthält 1,091 Befragte ohne Berufsabschluss  (absolute Häufigkeit)
++ `Percent`: 5,45% der im Datensatz enthaltenen Befragte haben keinen Berufsabschluss (relative Häufigkeit)
++ `Cum`: 5,68% der im Datensatz enthaltenen Befragte haben keinen Berufsabschluss oder machten keine Angabe (kumulierte relative Häufigkeit)
+
+Mit `nolabel` die dahinterliegenden Zahlenwerte anzeigen lassen:
+```{stata tab2, eval = F}
+tabulate m1202, nolabel
+```
+
+```{stata tabb2, echo = F}
+qui use "D:\Datenspeicher\BIBB_BAuA/BIBBBAuA_2018_suf1.0.dta", clear
+tab m1202, nola
+```
+
+Mit Hilfe von `d` und `labelbook` können wir uns die Labels ausgeben lassen:
+```{stata tab_d, eval = F}
+d m1202
+labelbook M1202
+```
+
+```{stata tab_d2, echo = F}
+qui use "D:\Datenspeicher\BIBB_BAuA/BIBBBAuA_2018_suf1.0.dta", clear
+d m1202
+labelbook M1202
+```
+
+Für Fälle ohne gültige Angaben zum höchsten Ausbildungsabschluss wurde also -1 als Wert in `m1202` abgelegt. 
+Stata berücksichtigt diese Tatsache aber noch nicht und summiert bspw. die kumulierten relativen Häufigkeiten auch über die fehlenden Angaben auf.  
+Um das zu ändern, müssen wir -1 als *missing value* überschreiben. 
+
+## Fehlende Werte {#missv}
+
+Fehlende Werte, sog. *missing value*s werden in Stata mit `.` abgelegt und werden dann für die weiteren Berechnungen ausgeschlossen. 
+Um also -1 als `.` zu überschreiben, können wir zB auf den `replace` Befehl zurückgreifen:
+
+```{stata miss2, eval = F}
+tabulate m1202
+replace m1202 = . if m1202 == -1
+tabulate m1202
+```
+```{stata miss2b, echo = F}
+set linesize 80
+qui use "D:\Datenspeicher\BIBB_BAuA/BIBBBAuA_2018_suf1.0.dta", clear
+tab m1202
+replace m1202 = . if m1202 == -1
+tab m1202
+```
+
+Wir bekommen von Stata mitgeteilt, dass wir 45 Beobachtungen verändert und auf missing gesetzt haben. 
+Im folgenden `tabulate` werden diese fehlenden Werte dann ignoriert.
+
+Ein Spezialbefehl für die Überschreibung von bestimmten Werten ist `mvdecode`. Mit `mvdecode` können wir `-1` in mehreren Variablen gleichzeitig als missing überschreiben. Zum Beispiel in `F100_kldb2010_BOF`, `F1609_kldb2010_BOF` und `F1610_kldb2010_BOF`:
+```{stata miss3, eval = F}
+mvdecode F100_kldb2010_BOF F1609_kldb2010_BOF F1610_kldb2010_BOF, mv(-1)
+```
+```{stata miss3b, echo = F}
+qui use "D:\Datenspeicher\BIBB_BAuA/BIBBBAuA_2018_suf1.0.dta", clear
+mvdecode F100_kldb2010_BOF F1609_kldb2010_BOF F1610_kldb2010_BOF, mv(-1)
+```
+> (`F1609_kldb2010_BOF` enthält das BIBB-Berufsoberfeld f. Erwerbsberuf, KldB2010, `F1609_kldb2010_BOF` die selbe Information für den Vater und `F1610_kldb2010_BOF` für die Mutter der\*des Befragten.)
+
+Wir können auch mit `/` einen Wertebereich angeben, der als Missing definiert werden soll, zB. für das Bundesland der Betriebsstätte:
+```{stata miss8, eval = F}
+mvdecode F100_wib1, mv(-4/-1)
+```
+
+```{stata miss9, echo = F}
+qui use "D:\Datenspeicher\BIBB_BAuA/BIBBBAuA_2018_suf1.0.dta", clear
+mvdecode F100_wib1, mv(-4/-1)
+```
+
+Mit `mdesc` bekommen wir eine Auszählung zu fehlenden Werten. `mdesc` ist allerdings kein Standard-Stata-Befehl, sondern muss extra installiert werden. Das ist allerdings kein größerer Aufwand:
+```{stata miss4, eval = F}
+ssc install mdesc
+```
+Anschließend können wir mit `mdesc` die Zahl der missings in `zpalter`, `S2_j`, `F510` und `F511_j` ausgeben lassen:
+```{stata miss5, eval = F}
+mdesc m1202 F100_kldb2010_BOF F1609_kldb2010_BOF F1610_kldb2010_BOF F100_wib1
+```
+```{stata miss5b, echo = F, collectcode=F}
+set linesize 80
+qui use "D:\Datenspeicher\BIBB_BAuA/BIBBBAuA_2018_suf1.0.dta", clear
+qui mvdecode m1202 F100_kldb2010_BOF F1609_kldb2010_BOF F1610_kldb2010_BOF, mv(-1)
+qui mvdecode F100_wib1, mv(-4/-1)
+mdesc m1202 F100_kldb2010_BOF F1609_kldb2010_BOF F1610_kldb2010_BOF F100_wib1
+```
+
+Hinweis: welche Angaben als Missing definiert werden sollen, ist teilweise von der Frage ab, die beantwortet werden soll. Bspw. wurden oben alle uneindeutigen Angaben in `F233` zum Bundesland der Betriebsstätte als missing codiert. Je nach Fragestellung ist das eine mehr oder weniger gute Idee.
+
+In `tabulate` können wir mit der Option `, missing` die fehlenden Werte anzeigen lassen:
+```{stata miss6, eval = F}
+tabulate m1202, missing
+```
+```{stata miss7, echo = F, collectcode=F}
+set linesize 80
+qui use "D:\Datenspeicher\BIBB_BAuA/BIBBBAuA_2018_suf1.0.dta", clear
+qui mvdecode m1202, mv(-1)
+tabulate m1202, missing
+```
+
+## Zwei Variablen, eine Tabelle: Kontingenztabellen
+
+Neben der einfachen Verteilung der Variable interessiert uns aber meistens, ob sich die Verteilung zwischen Gruppen unterscheidet. Hierfür sind Kontingenztabellen ein wichtiges und sehr häuifg verwendetes Werkzeug.
+
+Aus Kontingenztabellen erfahren wir, wie häufig Merkmalskombinationen auftreten. Auch für Kontingenztabellen können wir ebenfalls `tabulate` verwenden. Zum Beispiel können wir uns eine Tabelle anzeigen lassen, die uns die Ausbildungsabschlüsse getrennt nach Geschlechtern zeigt. Da die Variable `S1` keine Missings hat, können wir direkt loslegen.
+
+Für die Kontingenztabelle geben wir dann nach `tabulate` die beiden Variablen an, welche die Zeilen und Spalten definieren:
+```{stata cross_tabx, echo = T, eval = F}
+tabulate m1202 S1
+```
+```{stata cross_tabb, echo = F}
+set linesize 80
+qui use "D:\Datenspeicher\BIBB_BAuA/BIBBBAuA_2018_suf1.0.dta", clear
+qui mvdecode m1202, mv(-1)
+tabulate m1202 S1
+```
+
+Wir erkennen aus dieser Tabelle beispielsweise, dass 1,073 Männer und 652 Frauen eine Aufstiegsfortbildung besitzen.
+
+### In Prozent: Relative Häufigkeiten
+
+Auch hier können wir uns die relativen Häufigkeiten anzeigen lassen, indem wir die Option `,cell` anwenden.
+Um die Tabelle übersichtlich zu halten, können wir mit `nofreq` die absoluten Häufigkeiten ausblenden (ansonsten werden die absoluten  *und* die relativen Häufigkeiten ausgegeben).
+```{stata cell_pct2, echo = T, eval = F}
+tabulate m1202 S1, cell nofreq
+```
+```{stata cell_pct2b, echo = F}
+set linesize 80
+qui use "D:\Datenspeicher\BIBB_BAuA/BIBBBAuA_2018_suf1.0.dta", clear
+qui mvdecode m1202, mv(-1)
+tabulate m1202 S1, cell nofreq
+```
+
+Die hier dargestellten relativen Häufigkeiten beziehen sich jeweils auf die Gesamtzahl der Befragten. Formal dargestellt wird also für die Kombination Aufstiegsfortbildung und Geschlecht  = weiblich die Anzahl der Frauen mit Aufstiegsfortbildung durch die Anzahl **aller Befragten** geteilt: $\frac{\text{Anzahl der Frauen mit Aufstiegsfortbildung}}{\text{Gesamtzahl der Befragten}}$ - Wir können also aus dieser Tabelle ablesen, dass 1,27% *aller* Befragten weiblich sind und eine Aufstiegsfortbildung haben. 
+
+Für den Vergleich zwischen Gruppen sind aber in der Regel die *bedingten relativen Häufigkeiten* informativer. Hier kommt es jetzt darauf an, welche der beiden Variablen die Gruppen definieren sollen und welche Variable wir untersuchen möchten:
+
+### pro Gruppe 1: Zeilenprozente
+
+Wir können diese Tabelle auch mit Zeilenprozenten anzeigen lassen, indem wir die Option `row` verwenden:
+
+```{stata row_pct, echo = T, eval = F}
+tabulate m1202 S1, row nofreq
+```
+```{stata row_pctb, echo = F}
+set linesize 120
+qui use "D:\Datenspeicher\BIBB_BAuA/BIBBBAuA_2018_suf1.0.dta", clear
+qui mvdecode m1202, mv(-1)
+tabulate m1202 S1, row nofreq
+```
+*Achtung!* Damit ändert sich jeweils die Interpretation der Tabelle! Wir ändern durch `row` die Bezugsgröße oder formal ausgedrückt den Nenner:  
+
+Für die **Zeilenprozente** werden die Werte in Bezug zu den Zeilensummen gesetzt. Also wird die Anzahl der ledigen 35-59 Jährigen ins Verhältnis zur Gesamtzahl der 1x/Woche Internet nutzenden Befragten gesetzt: $\frac{\text{Anzahl der Frauen mit Aufstiegsfortbildung}}{\text{Anzahl der Befragten mit Aufstiegsfortbildung}}$
+
+Interpretation: 37.80% *der Befragten mit Aufstiegsfortbildung* sind Frauen.
+  
+### pro Gruppe 2: Spaltenprozente
+Wir können diese Tabelle auch mit Spaltenprozenten anzeigen lassen, indem wir die Option `col` verwenden:
+
+```{stata col_pct, echo = T, eval = F}
+tabulate m1202 S1, col nofreq
+```
+```{stata col_pctb, echo = F}
+set linesize 120
+qui use "D:\Datenspeicher\BIBB_BAuA/BIBBBAuA_2018_suf1.0.dta", clear
+qui mvdecode m1202, mv(-1)
+tabulate m1202 S1, col nofreq
+```
+
+Für die **Spaltenprozente** werden die Werte in Bezug zu den Spaltensummen gesetzt. Also wird die Anzahl der 1x/Woche Internet nutzenden Frauen ins Verhältnis zur Zahl der befragten Frauen gesetzt: $\frac{\text{Anzahl der Frauen mit Aufstiegsfortbildung}}{\text{Gesamtzahl der befragten Frauen}}$ - Interpretation: "6.58% der *befragten Frauen* haben eine Aufstiegsfortbildung". 
+
+*** 
+
+**[Übung1](#tab2)**
+
+*** 
+
+## metrische Variablen
+
+
+Für metrisch skalierte Variablen mit deutlich mehr Ausprägungen können wir `tabulate` zwar theoretisch auch verwenden, allerdings wird eine Tabelle hier sehr schnell sehr unübersichtlich:
+(Zum Unterschied zwischen metrischen und kategorial skalierten Variablen kommen wir [gleich](#skalenn))
+```{stata tab1, eval = F}
+mvdecode zpalter, mv(9999)
+tabulate zpalter
+```
+
+```{stata tab1b, echo = F}
+set linesize 80
+qui use "D:\Datenspeicher\BIBB_BAuA/BIBBBAuA_2018_suf1.0.dta", clear
+qui mvdecode zpalter, mv(9999)
+tab zpalter
+```
+
+Für metrische Variablen empfiehlt sich daher `summarize` als Überblicksbefehl:
+```{stata su1, eval = F}
+summarize zpalter
+```
+```{stata su1b, echo = F}
+set linesize 80
+qui use "D:\Datenspeicher\BIBB_BAuA/BIBBBAuA_2018_suf1.0.dta", clear
+qui mvdecode zpalter, mv(9999)
+su zpalter
+```
+`summarize zpalter` kann auch mit `su zpalter` abgekürzt werden.
+Hier bekommen wir die Anzahl der Beobachtungen (`Obs.`), das arithmetische Mittel (`Mean`), sowie die Minimal- und Maximalwerte ausgegeben (`Min`&`Max`). (zur Standardabweichung `Std. Dev.` kommen wir noch).
+
+`summarize` klappt auch mit mehreren Variablen auf einmal (bei F518_SUF handelt es sich um den monatlichen Bruttoverdienst der Befragten):
+```{stata su2, eval = F}
+summarize zpalter F518_SUF // klappt auch mit mehreren Variablen
+```
+```{stata su2b, echo = F}
+set linesize 80
+qui use "D:\Datenspeicher\BIBB_BAuA/BIBBBAuA_2018_suf1.0.dta", clear
+qui mvdecode zpalter F518_SUF, mv(9999 99998/99999)
+summarize zpalter F518_SUF // klappt auch mit mehreren Variablen
+```
+
+## Exkurs: Skalenniveau {#skalenn}
+
+Im Zusammenhang mit Alter war gerade von metrischen Variablen die Rede. Dabei geht es um das sog. Skalenniveau von Variablen und Merkmalen.
+Dabei geht es um den Informationsgehalt von Variablen: welche Informationen können wir aus einer Variable ablesen? 
+Prinzipiell wird zwischen <span style="color:#7D9BB5">kategorialen</span> und <span style="color:#E38717">metrischen</span> Skalenniveaus unterschieden.
+Der zentrale Unterschied besteht darin, dass bei kategorialen Variablen Zahlen_codes_ verwendet werden, wohingegen bei metrischen Variablen die Werte als tatsächliche Zahlenwerte interpretierbar sind. 
+Innerhalb der kategorialen Merkmale wird wiederum zwischen nominaler und ordinaler Skalierung unterschieden, die metrischen Merkmale lassen sich in intervall- und ratio-skalierte Variablen unterscheiden.
+
+
+```{r skal1, echo = F,out.width = "100%",fig.height= 2.5, fig.align="center"}
+knitr::include_graphics("./pics/02_Skalenniveau.png")
+```
+
+Sehen wir uns das einmal für die Variablen Geschlecht (`S1`), Schulbildung (`S3`), Geburtsjahr (`S2_j`) und Alter (`zpalter`) an:
+
+```{stata skal_list, eval = F}
+list S1 S3 S2_j zpalter in 1/5, nol
+```
+
+```{stata skal_list2, eval = F}
+     +--------------------------+
+     | S1   S3   S2_j   zpalter |
+     |--------------------------|
+  1. |  1    8   1976        41 |
+  2. |  2    5   1966        51 |
+  3. |  1    7   1968        49 |
+  4. |  2    8   1954        63 |
+  5. |  2    7   1976        41 |
+     +--------------------------+
+```
+
+
+```{stata skal_list3, eval = F}
+list S1 S3 S2_j zpalter in 1/5
+```
+
+```{stata skal_list4, eval = F}
+     +--------------------------------------+
+     |       S1         S3   S2_j   zpalter |
+     |--------------------------------------|
+  1. |  männlic   Abitur /   1976        41 |
+  2. | weiblich   Realschu   1966        51 |
+  3. |  männlic   Fachhoch   1968        49 |
+  4. | weiblich   Abitur /   1954        63 |
+  5. | weiblich   Fachhoch   1976        41 |
+     +--------------------------------------+
+```
+
+**$\Rightarrow$ Skalenniveau bestimmt, ob `tabulate` oder `summarize` die passenden Befehle sind**
+
+
+Literaturtipps:
+
++ S.18 *ff.* in [Diaz-Bone, R. (2019). Statistik für Soziologen (4. Auflage)](https://www.utb-studi-e-book.de/9783838550718)
++ S.12 *ff.* in [Bortz, J., & Schuster, C. (2010). Statistik für Human- und Sozialwissenschaftler (7. Auflage)](https://link.springer.com/book/10.1007/978-3-642-12770-0) (ausführliche formale Beschreibung)
+
+*** 
+
+**[Übung2](#su2)**
+
+*** 
+
+## Nochmal von vorne: Daten neu laden
+
+Fälle gelöscht, die doch nötig ist? Missings falsch codiert? Das ist zwar ärgerlich, aber ein riesen Vorteil der DoFile-basierten Datenarbeit mit Stata ist die Reproduzierbarkeit. Wir können einfach nochmal von vorne anfangen. Dazu lesen wir die Original-Daten einfach erneut mit `use` ein. Allerdings ist dann eine Besonderheit zu beachten:
+
+```{stata re_use, eval = F}
+use "BIBBBAuA_2018_suf1.0.dta"
+```
+
+`no; dataset in memory has changed since last saved`
+
+Wir müssen erst den existierenden Datensatz mit `clear` löschen 
+```{stata, eval = F, echo =T }
+clear
+use "BIBBBAuA_2018_suf1.0.dta"
+```
+oder die `clear` Option für `use` verwenden:
+```{stata, eval = F, echo =T }
+use "BIBBBAuA_2018_suf1.0.dta", clear
+```
+
+## Speichern
+
+Natürlich können wir unsere Daten auch abspeichern, wenn alles wie gewünscht geklappt hat. Dafür gibt es den Befehl `save`, der analog zu `use` funktioniert. Wenn wir allerdings einfach wieder den Original-Datensatznamen angeben und in der Zwischenzeit Variablen erstellt oder gelöscht haben, dann bekommen wir folgende Fehlermeldung:
+
+```{stata, eval = F}
+cd ... 
+save "BIBBBAuA_2018_suf1.0.dta"
+```
+<span style="color:red">`file BIBBBAuA_2018_suf1.0.dta already exists`</span>  
+<span style="color:blue">`r(602);`</span>
+
+Wir geben also entweder einen anderen Dateinamen an:
+```{stata, eval = F}
+save "BIBBBAuA_2018_suf1.0_NEU.dta"
+```
+Wir können aber auch mit der Option `replace` explizit mitteilen, dass die Datei überschrieben werden soll:
+```{stata, eval = F}
+save "BIBBBAuA_2018_suf1.0.dta", replace
+```
+**Achtung:** Damit sind die Originaldaten aber natürlich weg.
+
+## Übungen 2
+### Übung 2-1 {#tab2}
+
+(@) Laden Sie die Erwerbstätigenbefragung in Stata. 
+
+(@) Die Variable `F100_wib1` erfasst, ob die Befragten in einem wissensintensiven Beruf tätig sind (ja/nein).
+      + Lassen Sie sich eine Tabelle für `F100_wib2` anzeigen. Welche ist die häufigste Ausprägung?
+      + Lassen Sie sich die Zahlencodes anstelle der Labels anzeigen (`nolabel`)
+      + Überschreiben Sie alle Codes für fehlende Angaben mit `.` Denken Sie an [`labelbook`](#missv)).
+      + Lassen Sie sich mit `tabulate` die Häufigkeitsauszählung erneut anzeigen. Hat sich die Fallzahl zu vorhin verändert?
+      + Wie können Sie die fehlenden Werte auch in `tabulate` auszählen lassen? Lassen Sie sich diese Auszählung anzeigen!
+      + Für wie viele Befragte liegt keine Angabe zum wissensintensiven Beruf vor? Nutzen Sie `mdesc`.
+
+(@) Lassen Sie sich jetzt `F100_wib2` getrennt nach der Wohnortgröße ausgeben. Die Variable `gkpol` beinhaltet die Größenklasse der Wohngemeinde der Befragten in 7 Kategorien (bis 2000 Einwohner, 2000-5000 Einwohner, usw.)
+      + Welche Merkmalskombination ist die häufigste? 
+      + Welcher Anteil der Befragten aus Städten mit über 500.000 Einwohnern ist in einem wissenintensiven Beruf tätig?
+      + Wie hoch ist der Anteil der in einem wissenintensiven Beruf tätig Befragten, die in Orten mit unter 2.000 Einwohnern leben?
+
+(@) Kommentieren Sie einen Ihrer bisherigen Befehle mit `//`! Probieren Sie auch aus, mit `///` einen Befehl über mehrere Zeilen zu verteilen!
+
+### Übung 2-2 {#su2}
+
+(@) Die Variable `F1104` beinhaltet das Jahr des Schulabschlusses.
+      + Verwenden Sie `summarize` um einen Überblick zu dieser Variable zu bekommen
+      + Welches Skalenniveau hat die Variable? 
+      + Hat die Variable `F1104` Werte, die Sie mit `.` ersetzen sollten? (Denken Sie an [`labelbook`](#missv))
+      + Führen Sie ggf. die Umcodierung der problematischen Werte auf `.` durch, um sie so Stata kenntlich zu machen.
+      + Lassen Sie sich `F1104` erneut mit `summarize` anzeigen: hat alles geklappt wie es soll?
+      + Für wie viele Befragte liegt kein Schulabschlussjahr vor? Nutzen Sie `mdesc`.
+      
+      
+
+
