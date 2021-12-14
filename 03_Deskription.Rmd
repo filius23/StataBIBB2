@@ -233,13 +233,14 @@ $\Rightarrow$ *Wo sind die Einkommen also ungleicher verteilt?*[^033]
 Anmerkung: hier wurden die Missings in `F518_SUF` mit `mvdecode F518_SUF, mv(99998/ 99999)` ausgeschlossen.
 
 
-## Übungen 3
-
-### Übung 3-1 {#met}  
+## Übungen {#met}  
 
 
-(@) Laden Sie den BIBB/BAuA Erwerbstätigenbefragung 2018 (`BIBBBAuA_2018_suf1.dta`). Analysieren Sie die Einkommensangaben (`F518_SUF`):
-    + Denken Sie daran, die fehlenden Werte für `F518_SUF` mit als Missing zu überschreiben! (bspw. `mvdecode`, sehen Sie mit `labelbook F518` Codebuch nach, welche Werte als fehlende Angaben zu betrachten sind)
+(@) Laden Sie den BIBB/BAuA Erwerbstätigenbefragung 2018 (`BIBBBAuA_2018_suf1.dta`). Analysieren Sie die Einkommensangaben (`F518_SUF`). Denken Sie daran, die fehlenden Werte für `F518_SUF` mit als Missing zu überschreiben! 
+```{stata, eval = F}
+mvdecode F518_SUF, mv( 99998/99999)
+```
+    
 (@) Betrachten Sie die Einkommensangaben mit `summarize`
     + Für wie viele Beobachtungen haben Sie eine gültige Angabe (nicht-Missing)?
     + Wo liegt das arith. Mittel für die Einkommensangaben?
@@ -248,8 +249,7 @@ Anmerkung: hier wurden die Missings in `F518_SUF` mit `mvdecode F518_SUF, mv(999
 
 (@) Verwenden Sie jetzt `tabstat`, um folgende Kennzahlen für `F518_SUF` zu berechnen:
     + Das arithm. Mittel, den Median, das 25%- und 75%-Quartil sowie die Varianz und den Variationskoeffizienten - was sagen Ihnen die Werte jeweils?
-    + Berechnen Sie nun alle Werte getrennt für Männer und Frauen (Variable `S1`) - welche Werte erhalten Sie jeweils für die Kennzahlen?
-    + Vergleichen Sie die Werte! Wie unterscheiden sich die Einkommensangaben zwischen Männern und Frauen?
+    + Berechnen Sie nun alle Werte getrennt für Männer und Frauen (Variable `S1`).
   
 (@) Berechnen Sie den Gini-Koeffizenten für `F518_SUF`! (Denken Sie daran, vor der ersten Verwendung `fastgini` zu installieren - siehe [hier](#gini))
 

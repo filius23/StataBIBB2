@@ -473,7 +473,7 @@ reg F518_SUF ib2.educ
 ## mehrere unabhängige Variablen
 
 Natürlich können wir auch mehrere unabhängige Variablen in unser Modell aufnehmen. Beispielsweise können wir so für die Wochenarbeitszeiten kontrollieren:
-$$\hat{\texttt{F518_SUF}} = \beta0 + \beta1\times\texttt{educ2} + \beta2\times\texttt{educ3} + \beta3\times\texttt{F200} + \beta4\times\texttt{educ2}\times\texttt{F200}$$
+$$\widehat{\texttt{F518_SUF}} = \beta0 + \beta1\times\texttt{educ2} + \beta2\times\texttt{educ3} + \beta3\times\texttt{F200} + \beta4\times\texttt{educ2}\times\texttt{F200}$$
 
 
 ```{stata mreg1, eval = F}
@@ -510,7 +510,7 @@ knitr::include_graphics("./pics/09_mplot1.png")
 
 Wenn wir uns aber fragen, ob sich der Zusammenhang zwischen der Schulbildung und dem Einkommen mit der Wochenarbeitszeit verändert, benötigen wir einen Interaktionsterm:
 
-$$\hat{\texttt{F518_SUF}} = \beta0 + \beta1\times\texttt{educ2} + \beta2\times\texttt{educ3} + \beta3\times\texttt{F200} + \beta4\times\texttt{educ2}\times\texttt{F200} + \beta5\times\texttt{educ3}\times\texttt{F200}$$
+$$\widehat{\texttt{F518_SUF}} = \beta0 + \beta1\times\texttt{educ2} + \beta2\times\texttt{educ3} + \beta3\times\texttt{F200} + \beta4\times\texttt{educ2}\times\texttt{F200} + \beta5\times\texttt{educ3}\times\texttt{F200}$$
 
 ```{stata mreg13, eval = F}
 reg F518_SUF i.educ##c.F200
@@ -577,24 +577,25 @@ knitr::include_graphics("./pics/09_mplot3.png")
 ```
 
 
-## Übungen 9
+## Übungen 
 
 Laden Sie die Erwerbstätigenbefragung. 
 
-### Übung 1 {#regue1}
+### Übung {#regue1}
 
 Berechnen Sie ein Regressionsmodell mit der Arbeitszeit (`az`) aus der Hauptbeschäftigung als abh. Variable und dem Alter der Befragten (`zpalter`) als unabh. Variable.
-  + Denken Sie daran, die Missings in `zupalter` zu überschreiben: `mvdecode zpalter, mv(9999)`
-  + Weclhe Richtung hat der Zusammenhang? Arbeiten ältere Befragte eher mehr oder eher weniger? 
-  + Wie ist der Koeffizient zu interpretieren? Was können Sie über die Varianzaufklärung sagen?
 
-### Übung 2 {#regue2}
++ Denken Sie daran, die Missings in `zupalter` zu überschreiben: `mvdecode zpalter, mv(9999)`
++ Weclhe Richtung hat der Zusammenhang? Arbeiten ältere Befragte eher mehr oder eher weniger? 
++ Wie ist der Koeffizient zu interpretieren? Was können Sie über die Varianzaufklärung sagen?
+
+### Übung {#regue2}
 
 3. Berechnen Sie ein Regressionsmodell mit der Arbeitszeit (`az`) aus der Hauptbeschäftigung als abh. Variable und der Ausbildung der Befragten (`m1202`) als unabh. Variable: wie sind die Koeffizienten zu interpretieren? 
 `mvdecode m1202,mv(-1)`
 
 
-### Übung 3 {#regue3}
+### Übung {#regue3}
 4. Erstellen Sie ein multivariates Modell mit `az` als abhängiger Variable hat und der Ausbildung (`m1202`)  und dem Alter der Befragten (`zpalter`) als unabhängiger Variable.
 
 5. Verändern Sie das multivariate Modell aus 4. um eine Interaktion zwischen der Ausbildung (`m1202`)  und dem Alter der Befragten (`zpalter`)
@@ -626,5 +627,7 @@ marginsplot, ///
 knitr::include_graphics("./pics/09_mplot4.png")
 ```
 
-**[mehr zu Stata-Grafiken](https://filius23.github.io/Stata_Skript/dataviz.html#optionen)**
+**[mehr zu Stata-Grafiken](https://filius23.github.io/Stata_Skript/dataviz.html#optionen)**  
+
+
 **[weiterführende Informationen](https://www.stata.com/meeting/germany18/slides/germany18_Jann.pdf)**

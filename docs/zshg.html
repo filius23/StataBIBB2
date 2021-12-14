@@ -194,10 +194,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1.3" data-path="desc1.html"><a href="desc1.html#by_vgl"><i class="fa fa-check"></i><b>3.1.3</b> Kennzahlen vergleichen mit <code>tabstat</code></a></li>
 <li class="chapter" data-level="3.1.4" data-path="desc1.html"><a href="desc1.html#gini"><i class="fa fa-check"></i><b>3.1.4</b> Gini-Koeffizient</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="desc1.html"><a href="desc1.html#übungen-3"><i class="fa fa-check"></i><b>3.2</b> Übungen 3</a>
-<ul>
-<li class="chapter" data-level="3.2.1" data-path="desc1.html"><a href="desc1.html#met"><i class="fa fa-check"></i><b>3.2.1</b> Übung 3-1</a></li>
-</ul></li>
+<li class="chapter" data-level="3.2" data-path="desc1.html"><a href="desc1.html#met"><i class="fa fa-check"></i><b>3.2</b> Übungen</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="iflab.html"><a href="iflab.html"><i class="fa fa-check"></i><b>4</b> if-Bedingungen</a>
 <ul>
@@ -268,7 +265,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.6.1" data-path="zshg.html"><a href="zshg.html#tvsmu"><i class="fa fa-check"></i><b>7.6.1</b> Übung</a></li>
 <li class="chapter" data-level="7.6.2" data-path="zshg.html"><a href="zshg.html#tgroup"><i class="fa fa-check"></i><b>7.6.2</b> Übung</a></li>
 <li class="chapter" data-level="7.6.3" data-path="zshg.html"><a href="zshg.html#met_ord"><i class="fa fa-check"></i><b>7.6.3</b> Übung</a></li>
-<li class="chapter" data-level="7.6.4" data-path="zshg.html"><a href="zshg.html#übung"><i class="fa fa-check"></i><b>7.6.4</b> Übung</a></li>
 </ul></li>
 <li class="chapter" data-level="7.7" data-path="zshg.html"><a href="zshg.html#anhang-2"><i class="fa fa-check"></i><b>7.7</b> Anhang</a>
 <ul>
@@ -323,7 +319,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.2.4" data-path="appendix.html"><a href="appendix.html#werte-labeln-label-values"><i class="fa fa-check"></i><b>10.2.4</b> Werte labeln <code>label values</code></a></li>
 <li class="chapter" data-level="10.2.5" data-path="appendix.html"><a href="appendix.html#foreach"><i class="fa fa-check"></i><b>10.2.5</b> Fortgeschrittene Programmierung: foreach-Schleife</a></li>
 <li class="chapter" data-level="10.2.6" data-path="appendix.html"><a href="appendix.html#exportieren"><i class="fa fa-check"></i><b>10.2.6</b> exportieren</a></li>
-<li class="chapter" data-level="10.2.7" data-path="appendix.html"><a href="appendix.html#übung-1"><i class="fa fa-check"></i><b>10.2.7</b> Übung</a></li>
+<li class="chapter" data-level="10.2.7" data-path="appendix.html"><a href="appendix.html#übung"><i class="fa fa-check"></i><b>10.2.7</b> Übung</a></li>
 </ul></li>
 <li class="chapter" data-level="10.3" data-path="appendix.html"><a href="appendix.html#adopath"><i class="fa fa-check"></i><b>10.3</b> <code>adopath</code></a></li>
 <li class="chapter" data-level="10.4" data-path="appendix.html"><a href="appendix.html#log-file"><i class="fa fa-check"></i><b>10.4</b> log file</a></li>
@@ -540,45 +536,30 @@ Test of Ho: zpalter and F231 are independent
     Prob &gt; |t| =       0.0004</code></pre>
 <p>Es zeigt sich also mit einem Korrelationskoeffizienten von 0.05 ein schwacher, positiver Zusammenhang.
 Für eine Korrelationsmatrix mit Rangkorrelationskoeffizienten müssen wir aber einen kleinen Umweg gehen und mit Hilfe von <code>egen</code> die Werte in Ränge umrechnen, um dann <code>pwcorr</code> verwenden zu können.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb14-1"><a href="zshg.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">egen</span> zpalter_rnk = <span class="fu">rank</span>(zpalter) , <span class="kw">unique</span></span>
-<span id="cb14-2"><a href="zshg.html#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="kw">egen</span> F231_rnk    = <span class="fu">rank</span>(F231)    , <span class="kw">unique</span></span>
-<span id="cb14-3"><a href="zshg.html#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="kw">egen</span> F200_rnk    = <span class="fu">rank</span>(F200)    , <span class="kw">unique</span></span>
-<span id="cb14-4"><a href="zshg.html#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="kw">egen</span> F1408_rnk   = <span class="fu">rank</span>(F1408)   , <span class="kw">unique</span></span>
-<span id="cb14-5"><a href="zshg.html#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-6"><a href="zshg.html#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="kw">pwcorr</span> zpalter_rnk F231_rnk  F200_rnk F1408_rnk, sig</span>
-<span id="cb14-7"><a href="zshg.html#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="kw">pwcorr</span> zpalter F231 F200 F1408, sig <span class="co">// zum Vergleich</span></span></code></pre></div>
-<pre><code>             | zpalte~k F231_rnk F200_rnk F1408_~k
--------------+------------------------------------
- zpalter_rnk |   1.0000 
-             |
-             |
-    F231_rnk |   0.0506   1.0000 
-             |   0.0008
-             |
-    F200_rnk |  -0.0655   0.1135   1.0000 
-             |   0.0000   0.0000
-             |
-   F1408_rnk |   0.1712  -0.0229  -0.2378   1.0000 
-             |   0.0000   0.2947   0.0000
-             |
-
-zum Vergleich Pearson-Korrelationskoeffizient
-
-             |  zpalter     F231     F200    F1408
--------------+------------------------------------
-     zpalter |   1.0000 
-             |
-             |
-        F231 |   0.0548   1.0000 
-             |   0.0003
-             |
-        F200 |  -0.0558   0.0768   1.0000 
-             |   0.0000   0.0000
-             |
-       F1408 |   0.2010  -0.0169  -0.2518   1.0000 
-             |   0.0000   0.4396   0.0000
-             |</code></pre>
-<p>Eine Abkürzung für die Umrechnung <a href="appendix.html#foreach">hier</a></p>
+<!-- ```{stata rcorrm, eval = F} -->
+<!-- egen zpalter_rnk = rank(zpalter) , unique -->
+<!-- egen F231_rnk    = rank(F231)    , unique -->
+<!-- egen F200_rnk    = rank(F200)    , unique -->
+<!-- egen F1408_rnk   = rank(F1408)   , unique -->
+<!-- pwcorr zpalter_rnk F231_rnk  F200_rnk F1408_rnk, sig -->
+<!-- pwcorr zpalter F231 F200 F1408, sig // zum Vergleich -->
+<!-- ``` -->
+<!-- ```{stata rcorr1b, echo =F} -->
+<!-- quietly{ -->
+<!-- set linesize 100 -->
+<!-- qui use "D:\Datenspeicher\BIBB_BAuA/BIBBBAuA_2018_suf1.0.dta", clear -->
+<!--    mvdecode zpalter, mv(9999) -->
+<!--    replace F231 =  . if F231 > 99 -->
+<!--    mvdecode F200 F1408, mv( 97/99) -->
+<!--    foreach v of varlist zpalter F231 F200 F1408 { -->
+<!--        egen `v'_rnk = rank (`v'), unique -->
+<!--     } -->
+<!-- } -->
+<!-- pwcorr zpalter_rnk F231_rnk  F200_rnk F1408_rnk, sig -->
+<!-- dis "zum Vergleich Pearson-Korrelationskoeffizient" -->
+<!-- pwcorr zpalter F231 F200 F1408, sig -->
+<!-- ``` -->
+<!-- Eine Abkürzung für die Umrechnung [hier](#foreach) -->
 </div>
 </div>
 <div id="tabellenbasierte-zusammenhangsmaße" class="section level2" number="7.5">
@@ -672,7 +653,7 @@ nie
 </tbody>
 </table>
 <p>So sieht die Verteilung zunächst in einer Kreuztabelle aus:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb16-1"><a href="zshg.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> F600_12 educ</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb14-1"><a href="zshg.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> F600_12 educ</span></code></pre></div>
 <pre><code> HÃ¤ufigkeit: |
   unter LÃ¤rm |               educ
     arbeiten |     Haupt   m. Reife  (Fach-)Ab |     Total
@@ -685,7 +666,7 @@ nie
        Total |     2,798      6,326     10,601 |    19,725 </code></pre>
 <div id="tau" class="section level3" number="7.5.1">
 <h3><span class="header-section-number">7.5.1</span> Konkordanzmaße</h3>
-<div class="sourceCode" id="cb18"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb18-1"><a href="zshg.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> educ mi02</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb16-1"><a href="zshg.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> educ mi02</span></code></pre></div>
 <pre><code>           |       HÃ¤ufigkeit: unter LÃ¤rm arbeiten
       educ |    hÃ¤ufig   manchmal     selten        nie |     Total
 -----------+--------------------------------------------+----------
@@ -695,7 +676,7 @@ nie
 -----------+--------------------------------------------+----------
      Total |     4,083      3,309      3,171      9,162 |    19,725 </code></pre>
 <p>Zur Berechnung in Stata können wir <code>ktau</code> verwenden:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb20-1"><a href="zshg.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">ktau</span>  educ F600_12</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb18-1"><a href="zshg.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">ktau</span>  educ F600_12</span></code></pre></div>
 <pre><code>  Number of obs =   19725
 Kendall&#39;s tau-a =       0.0965
 Kendall&#39;s tau-b =       0.1517
@@ -708,7 +689,7 @@ Test of Ho: educ and F600_12 are independent
 Da höhere Werte in <code>F600_12</code> seltenere Belastung angeben sind also Befragte mit höherer Schulbildung seltener von Lärm belastet.
 Der Wert von Kendall’s <span class="math inline">\(\tau_a\)</span> ist deutlich niedriger als von Kendall’s <span class="math inline">\(\tau_b\)</span>, da hier der Nenner durch die Berücksichtigung <em>aller</em> möglichen Paarvergleiche größer wird, der Zähler aber für beide Varianten von Kendall’s <span class="math inline">\(\tau\)</span> gleich definiert ist.</p>
 <p>Ein weiteres Maß ist Goodman &amp; Kruskal’s <span class="math inline">\(\gamma\)</span>, dieses bekommen wir mit der Option <code>,gamma</code> in <code>tab</code>:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb22-1"><a href="zshg.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> educ F600_12, <span class="kw">gamma</span></span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb20-1"><a href="zshg.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> educ F600_12, <span class="kw">gamma</span></span></code></pre></div>
 <pre><code>           |       HÃ¤ufigkeit: unter LÃ¤rm arbeiten
       educ |    hÃ¤ufig   manchmal     selten        nie |     Total
 -----------+--------------------------------------------+----------
@@ -725,7 +706,7 @@ Der Wert von Kendall’s <span class="math inline">\(\tau_a\)</span> ist deutlic
 <h3><span class="header-section-number">7.5.2</span> Chi² &amp; Cramér’s V</h3>
 <p><span class="math inline">\(\chi^2\)</span> basiert auf dem Vergleich der beobachteten Häufigkeit mit einer (theoretischen) Verteilung, welche statistische Unabhängigkeit abbildet (Indifferenztabelle - <a href="zshg.html#indiff">mehr dazu</a>). Wir bleiben bei <code>aq03</code> und <code>dh01</code>. Den <span class="math inline">\(\chi^2\)</span>-Wert für diese Häufigkeitstabelle bekommen wir mit <code>, chi2</code>:
 Mit der Option <code>, V</code> bekommen wir auch Cramér’s V ausgegeben:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb24-1"><a href="zshg.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> F204 S1, chi </span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb22-1"><a href="zshg.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> F204 S1, chi </span></code></pre></div>
 <pre><code>        Wie wird Ihre |
   Mehrarbeit bzw. wie |
           werden Ihre |      Geschlecht
@@ -749,49 +730,37 @@ durch Freizeitausglei |     1,924      2,308 |     4,232
 </div>
 <div id="übungen" class="section level2" number="7.6">
 <h2><span class="header-section-number">7.6</span> Übungen</h2>
-<ol class="example" style="list-style-type: decimal">
-<li>Laden Sie die Erwerbstätigenbefragung in Stata.</li>
-</ol>
+<p>Laden Sie die Erwerbstätigenbefragung in Stata.</p>
 <div id="tvsmu" class="section level3" number="7.6.1">
 <h3><span class="header-section-number">7.6.1</span> Übung</h3>
-<ol start="2" class="example" style="list-style-type: decimal">
-<li><p>Berechnen Sie das Konfidenzintervall für die durchschnittliche Arbeitszeit (<code>az</code>)</p></li>
-<li><p>Testen Sie die Hypothese, dass die eigentliche durchschnittliche Arbeitszeit 38.5 Stunden beträgt. Interpretieren Sie die Ergebnisse im Sinne einen rechts-, links- und beidseitigen Tests!</p></li>
+<ol class="example" style="list-style-type: decimal">
+<li>Testen Sie die Hypothese, dass die eigentliche durchschnittliche Arbeitszeit 38.5 Stunden beträgt.</li>
 </ol>
 </div>
 <div id="tgroup" class="section level3" number="7.6.2">
 <h3><span class="header-section-number">7.6.2</span> Übung</h3>
-<ol start="4" class="example" style="list-style-type: decimal">
+<ol start="2" class="example" style="list-style-type: decimal">
 <li>Testen Sie die Hypothese, dass ein signifikanter Unterschied in der Arbeitszeit (<code>az</code>) zwischen Männern und Frauen besteht (<code>S1</code>)</li>
 </ol>
 </div>
 <div id="met_ord" class="section level3" number="7.6.3">
 <h3><span class="header-section-number">7.6.3</span> Übung</h3>
-<ol start="5" class="example" style="list-style-type: decimal">
+<ol start="3" class="example" style="list-style-type: decimal">
 <li>Untersuchen Sie den Zusammenhang zwischen der Wochenarbeitszeit (<code>az</code>) und dem Einkommen (<code>F518_SUF</code>) der Befragten. Welches Maß ist das richtige?</li>
 </ol>
 <ul>
 <li>Denken Sie daran, die Missings in <code>F518_SUF</code> auszuschließen: <code>mvdecode F518_SUF, mv(99998/99999)</code>, <code>az</code> hat keine Missings.</li>
 </ul>
-<ol start="6" class="example" style="list-style-type: decimal">
+<ol start="4" class="example" style="list-style-type: decimal">
 <li>Untersuchen Sie den Zusammenhang zwischen der Häufigkeit von starkem Termin- oder Leistungsdruck <code>F411_01</code> und der dreistufigen Schulbildungsvariable <code>educ</code>.</li>
 </ol>
 <ul>
 <li>So können Sie <code>educ</code> erstellen:</li>
 </ul>
-<div class="sourceCode" id="cb26"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb26-1"><a href="zshg.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">recode</span> S3 (2/4 = 1 <span class="st">&quot;Haupt&quot;</span>)(5/6 = 2 <span class="st">&quot;mittlere Reife&quot;</span>) (7/9 = 3 <span class="st">&quot;(Fach-)Abi&quot;</span>) (<span class="kw">else</span> = .), into(educ)</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb24-1"><a href="zshg.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">recode</span> S3 (2/4 = 1 <span class="st">&quot;Haupt&quot;</span>)(5/6 = 2 <span class="st">&quot;mittlere Reife&quot;</span>) (7/9 = 3 <span class="st">&quot;(Fach-)Abi&quot;</span>) (<span class="kw">else</span> = .), into(educ)</span></code></pre></div>
 <ul>
 <li>Denken Sie daran, die Missings in <code>F411_01</code> zu überschreiben: <code>mvdecode F411_01, mv(9)</code></li>
 <li>Berechnen Sie ein oder mehrere geeignete Zusammenhangsmaße für diese beiden Variablen.</li>
-</ul>
-</div>
-<div id="übung" class="section level3" number="7.6.4">
-<h3><span class="header-section-number">7.6.4</span> Übung</h3>
-<ol start="7" class="example" style="list-style-type: decimal">
-<li>Untersuchen Sie den Zusammenhang zwischen der Frage, ob der*die Befragte teiweise von zu Hause aus arbeitet (<code>F228</code>) und ob die Befragten gerne eine andere als ihre aktuelle Tätigkeit (<code>F103</code>) ausüben würden.</li>
-</ol>
-<ul>
-<li>In beiden Variablen ist <code>9</code> als fehlender Wert auszuschließen</li>
 </ul>
 </div>
 </div>
@@ -800,7 +769,7 @@ durch Freizeitausglei |     1,924      2,308 |     4,232
 <div id="indiff" class="section level3" number="7.7.1">
 <h3><span class="header-section-number">7.7.1</span> Indifferenztabelle</h3>
 <p><a href="zshg.html#chi2"><span class="math inline">\(\chi^2\)</span></a> ergibt sich aus der Differenz zwischen der Indifferenztabelle und den beobachteten Häufigkeiten. Die Indifferenztabelle können wir mit <code>,expected</code> aufrufen (mit <code>nofreq</code> blenden wir die tatsächlichen Häufigkeiten aus):</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb27-1"><a href="zshg.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> F204 S1, expected nofreq</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb25-1"><a href="zshg.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> F204 S1, expected nofreq</span></code></pre></div>
 <pre><code>                      |      Geschlecht
                  F204 |  mÃ¤nnlich   weiblich |     Total
 ----------------------+----------------------+----------

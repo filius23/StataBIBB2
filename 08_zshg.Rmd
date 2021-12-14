@@ -224,34 +224,34 @@ spearman zpalter F231
 Es zeigt sich also mit einem Korrelationskoeffizienten von 0.05 ein schwacher, positiver Zusammenhang. 
 Für eine Korrelationsmatrix mit Rangkorrelationskoeffizienten müssen wir aber einen kleinen Umweg gehen und mit Hilfe von `egen` die Werte in Ränge umrechnen, um dann `pwcorr` verwenden zu können.
 
-```{stata rcorrm, eval = F}
-egen zpalter_rnk = rank(zpalter) , unique
-egen F231_rnk    = rank(F231)    , unique
-egen F200_rnk    = rank(F200)    , unique
-egen F1408_rnk   = rank(F1408)   , unique
+<!-- ```{stata rcorrm, eval = F} -->
+<!-- egen zpalter_rnk = rank(zpalter) , unique -->
+<!-- egen F231_rnk    = rank(F231)    , unique -->
+<!-- egen F200_rnk    = rank(F200)    , unique -->
+<!-- egen F1408_rnk   = rank(F1408)   , unique -->
 
-pwcorr zpalter_rnk F231_rnk  F200_rnk F1408_rnk, sig
-pwcorr zpalter F231 F200 F1408, sig // zum Vergleich
-```
+<!-- pwcorr zpalter_rnk F231_rnk  F200_rnk F1408_rnk, sig -->
+<!-- pwcorr zpalter F231 F200 F1408, sig // zum Vergleich -->
+<!-- ``` -->
 
-```{stata rcorr1b, echo =F}
-quietly{
-set linesize 100
-qui use "D:\Datenspeicher\BIBB_BAuA/BIBBBAuA_2018_suf1.0.dta", clear
-   mvdecode zpalter, mv(9999)
-   replace F231 =  . if F231 > 99
-   mvdecode F200 F1408, mv( 97/99)
-  
-   foreach v of varlist zpalter F231 F200 F1408 {
-	    egen `v'_rnk = rank (`v'), unique
-    }
-}
-pwcorr zpalter_rnk F231_rnk  F200_rnk F1408_rnk, sig
-dis "zum Vergleich Pearson-Korrelationskoeffizient"
-pwcorr zpalter F231 F200 F1408, sig
-```
+<!-- ```{stata rcorr1b, echo =F} -->
+<!-- quietly{ -->
+<!-- set linesize 100 -->
+<!-- qui use "D:\Datenspeicher\BIBB_BAuA/BIBBBAuA_2018_suf1.0.dta", clear -->
+<!--    mvdecode zpalter, mv(9999) -->
+<!--    replace F231 =  . if F231 > 99 -->
+<!--    mvdecode F200 F1408, mv( 97/99) -->
 
-Eine Abkürzung für die Umrechnung [hier](#foreach)
+<!--    foreach v of varlist zpalter F231 F200 F1408 { -->
+<!-- 	    egen `v'_rnk = rank (`v'), unique -->
+<!--     } -->
+<!-- } -->
+<!-- pwcorr zpalter_rnk F231_rnk  F200_rnk F1408_rnk, sig -->
+<!-- dis "zum Vergleich Pearson-Korrelationskoeffizient" -->
+<!-- pwcorr zpalter F231 F200 F1408, sig -->
+<!-- ``` -->
+
+<!-- Eine Abkürzung für die Umrechnung [hier](#foreach) -->
 
 ## Tabellenbasierte Zusammenhangsmaße       
    
@@ -393,14 +393,11 @@ $$ Cramer's\,\,V = \sqrt{\frac{\chi^2}{n \times min(k-1,m-1)}}=\sqrt{\frac{225.4
 
 ## Übungen 
 
-(@) Laden Sie die Erwerbstätigenbefragung in Stata. 
+Laden Sie die Erwerbstätigenbefragung in Stata. 
 
 ### Übung {#tvsmu}
 
-(@) Berechnen Sie das Konfidenzintervall für die durchschnittliche Arbeitszeit (`az`)
-
-(@) Testen Sie die Hypothese, dass die eigentliche durchschnittliche Arbeitszeit 38.5 Stunden beträgt. Interpretieren Sie die Ergebnisse im Sinne einen rechts-, links- und beidseitigen Tests!
-
+(@) Testen Sie die Hypothese, dass die eigentliche durchschnittliche Arbeitszeit 38.5 Stunden beträgt. 
 
 ### Übung {#tgroup}
 
@@ -419,12 +416,6 @@ recode S3 (2/4 = 1 "Haupt")(5/6 = 2 "mittlere Reife") (7/9 = 3 "(Fach-)Abi") (el
 ```
   + Denken Sie daran, die Missings in `F411_01` zu überschreiben: `mvdecode F411_01, mv(9)`
   + Berechnen Sie ein oder mehrere geeignete Zusammenhangsmaße für diese beiden Variablen.
-
-### Übung 
-
-(@) Untersuchen Sie den Zusammenhang zwischen der Frage, ob der\*die Befragte teiweise von zu Hause aus arbeitet (`F228`) und ob die Befragten gerne eine andere als ihre aktuelle Tätigkeit (`F103`) ausüben würden. 
-  + In beiden Variablen ist `9` als fehlender Wert auszuschließen
-
 
 ## Anhang
 
