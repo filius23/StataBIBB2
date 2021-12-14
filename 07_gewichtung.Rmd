@@ -1,0 +1,298 @@
+# Inferenzstatistik {#infer} 
+
+```{r setup7, echo = F, message=F, warning = F}
+.libPaths("D:/R-library4")
+knitr::opts_chunk$set(collapse = TRUE)
+knitr::opts_chunk$set(dpi=800)
+library(Statamarkdown)
+library(tidyverse)
+library(kableExtra)
+# stataexe <- "C:/Program Files (x86)/Stata13/StataSE-64.exe"
+stataexe <- "C:/Program Files/Stata16/StataSE-64.exe"
+knitr::opts_chunk$set(engine.path=list(stata=stataexe))
+# baua <- readstata13::readhttp://127.0.0.1:8264/rmd_output/0/appendix.html#.dta13("D:/Datenspeicher/BIBB_BAuA/BIBBBAuA_2018_suf1.0.dta",convert.factors = F)
+z_wert <-2.5804
+```
+
+
+## Inferenz: von der Stichprobe zur allgemeinen Aussage
+
+Bisher haben wir die Angaben aus unserem Datensatz immer als fix angesehen. 
+Ziel einer statistischen Auswertung ist aber meistens, Aussagen über die *Grundgesamtheit* oder *Population* zu treffen. 
+Im Fall der ETB 2018 wären das also alle Erwerbstätigen in Deutschland.
+Dazu sind Konfidenzintervall gebräuchlich, für den Mittelwert können wir `mean` verwenden:
+```{stata kistata, eval =F}
+mean zpalter
+```
+
+```{stata kistata2, echo = F}
+set linesize 80
+qui use "D:\Datenspeicher\BIBB_BAuA/BIBBBAuA_2018_suf1.0.dta", clear
+qui mvdecode zpalter, mv(9999)
+mean zpalter
+```
+
+## `ttest` {#ttest}
+
+Ausgangsszenario: wir betrachten ein Merkmal und möchten durch eine Stichprobe überprüfen, ob der Mittelwert mit unserer Vermutung übereinstimmt bzw. größer/kleiner ist. 
+Dies leisten die Hypothesentests, sog. t-Tests. 
+Testen wir auf Übereinstimmung, verwenden wir einen sog. beidseitigen Test, bei einem einseitigen Test testen wir ob der Stichprobenwert signifikant größer bzw. kleiner als der vermutete Populationswert ist.
+Auch hier bleiben wir beim Durchschnittsalter der Erwerbstätigen - mit welcher Sicherheit können wir ausschließen, dass das Durchschnittsalter 47.4 Jahre ist?
+
+Formal werden die Hypothesen dann wie folgt festgehalten:
+
++ beidseitiger Test
+  + $H_0: \mu = 47.4\;Jahre$ und $H_A: \mu \neq 47.4\;Jahre$  
++ gerichtete Hypothesen:
+  + rechtsseitiger Test  
+  $H_0: \mu \leqslant 47.4\;Jahre$ und $H_A: \mu > 47.4\;Jahre$  
+  $\Rightarrow$ die $H_A$ postuliert, dass der wahre Wert **größer** als der Wert aus der $H_0$ ist
+  + linksseitiger Test  
+  $H_0: \mu \geqslant 47.4\;Jahre$ und $H_A: \mu < 47.4\;Jahre$  
+  $\Rightarrow$ die $H_A$ postuliert, dass der wahre Wert **kleiner** als der Wert aus der $H_0$ ist
+
+Die grundlegende Idee des Hypothesentests ist, dass wir uns nur dann für die Alternativhypothese entscheiden, wenn wir eine ausreichend große Abweichung von dem in der $H_0$ postulierten Wert feststellen. Dazu berechnen wir den $t$-Wert für den SP-Mittelwert entsprechend dieser Formel:  
+
+$$t = \frac{\bar{x}-\mu_{0}}{\frac{s_{x}}{\sqrt{n}}}$$
+
+Wir berechnen also, mit welcher Irrtumswahrscheinlichkeit wir die $H_0$ verwerfen können. Anders formuliert: wie wahrscheinlich ist es, das $\bar{x}$ in einer Stichprobe zu erhalten obwohl $\mu_0$ in der Grundgesamtheit richtig ist?
+
+In der Wissenschaft hat sich als Konvention etabliert, von einem signifikanten Unterschied zu sprechen wenn die Irrtumswahrscheinlichkeit unter 5% liegt. Das bedeutet:
+
+> *Assuming that the null hypothesis is true and the study is repeated an infinite number times by drawing random samples from the same populations(s), less than 5% of these results will be more extreme than the current result.*[^1]
+
+[^1]: [Failing Grade: 89% of Introduction-to-Psychology Textbooks That Define or Explain Statistical Significance Do So Incorrectly. Advances in Methods and Practices in Psychological Science, 2515245919858072.](https://doi.org/10.1177/2515245919858072)
+
+
+`ttest` berechnet immer die Ergebnisse für einen links-, beid- und rechtsseitigen t-Test.
+Neben den zu testenden Werten geben wir mit `mu` den in der Nullhypothese festgehaltenen Mittelwert an:
+```{stata ttest1a, eval = F}
+ttest zpalter==47.4
+```
+```{stata ttest1b, echo = F}
+set linesize 80
+qui use "D:\Datenspeicher\BIBB_BAuA/BIBBBAuA_2018_suf1.0.dta", clear
+qui mvdecode zpalter, mv(9999)
+ttest zpalter==47.4
+```
+
+Der p-Wert unter `mean < 47.4` ist mit `r round(pt(q = -z_wert, df = 19836),4)` kleiner als 0,05, dementsprechend würden wir auf Basis eines linksseitigen Hypothesentests die $H_0$ verwerfen.
+
+Das p-Wert unter `mean != 47.4` liegt also deutlich unter 0,05. Wir würden also die $H_0$ verwerfen, dass das Durchschnittsalter ür die Grundpopulation der Erwerbstätigen in D  gleich 47.4 Jahre ist.
+
+Wir sehen unter `mean > 47.4`, dass der p-Wert `r round(pt(q = z_wert, df = 19836),4)` deutlich größer als 0,05 ist - dementsprechend würden wir auf Basis eines rechtsseitigen Hypothesentests die $H_0$ nicht verwerfen.
+
+***
+
+[**Übung 1**](#tvsmu)
+
+***
+
+## Mittelwertvergleiche mit dem t-Test {#mittelwertttest}
+
+Diese Testlogik können wir auch dazu verwenden, Kennzahlen für verschiedene Gruppen zu vergleichen. 
+
+### Unverbundener t-Test
+Eine häufige Frage zielt darauf ab zu analysieren, ob sich die Durchschnittswerte eines Merkmals zwischen zwei Gruppen unterscheiden.
+Beispielsweise könnten wir das Durchschnittsalter zwischen erwerbstätigen Männern und Frauen vergleichen.
+
+Auch für Gruppenvergleich müssen zunächst Hypothesen aufgestellt werden. 
+
++ Für einen beidseitigen Test ist die Alternativhypothese, dass es einen Gruppenunterschied gibt:  
+
+    $H_0: \mu_1 - \mu_2 = 0 \qquad H_A: \mu_1 - \mu_2 \neq 0$
+ 
++ Ein linksseitiger Test hätte entsprechend die Alternativhypothese, dass der Gruppenunterschied *kleiner* als 0 ist:  
+
+    $H_0: \mu_1 - \mu_2 \geqslant 0 \qquad H_A: \mu_1 - \mu_2 < 0$
+
++ Ein rechtssseitiger Test hätte entsprechend die Alternativhypothese, dass der Gruppenunterschied *größer* als 0 ist:  
+
+    $H_0: \mu_1 - \mu_2 \leqslant 0 \qquad H_A: \mu_1 - \mu_2 > 0$
+
+Für den Altersvergleich zwischen Frauen und Männern ergeben sich folgende Hypothesen:
+
++ ungerichtete Hypothese: $H_0: Alter_{m} - Alter_{f} = 0 \qquad H_A: Alter_{m} - Alter_{f} \neq 0$
++ linksseitige Hypothese: $H_0: Alter_{m} - Alter_{f} \geqslant 0 \qquad H_A: Alter_{m} - Alter_{f} < 0$
++ rechtsseitige Hypothese: $H_0: Alter_{m} - Alter_{f} \leqslant 0 \qquad H_A: Alter_{m} - Alter_{f} > 0$
+
+Wenn wir nun die beiden Mittelwerte für Männer und Frauen vergleichen, greifen wieder auf den `ttest` zurück, aber hier geben wir anstelle von `== XYZ` mit `by(sex)` die Gruppenvariable an. Mit `unequal` lassen wir zudem zu, dass die Varianz des Alters in beiden Gruppen unterschiedlich ist (was sehr häufig der Fall ist):
+```{stata ttest6, eval = F}
+ttest zpalter, by(S1) unequal
+```
+```{stata ttest6b, echo=F}
+set linesize 80
+qui use "D:\Datenspeicher\BIBB_BAuA/BIBBBAuA_2018_suf1.0.dta", clear
+qui mvdecode zpalter, mv(9999)
+ttest zpalter, by(S1) unequal
+```
+
+Für die jeweiligen Tests ergeben sich folgende Entscheidungen:
+
+  + beidseitiger Test: Da der p-Wert für den beiseitigen Test (unter `Ha: diff != 0`) deutlich unter 0,05 liegt, können wir hier die $H_0$ verwerfen und gehen von signifikanten Altersunterschieden aus.  
+  + rechtsseitiger Test: für einen rechtsseitigen Test achten wir auf `Ha: diff > 0`- die erwerbstätigen Männer sind also nicht signifikant *älter* als die erwerbstätigen Frauen.
+ + linksseitiger Test: für einen linksseitigen Test ist hingegen `Ha: diff < 0` ausschlaggebend: erwerbstätigen Männer sind also signifikant *jünger* als erwerbstätige Frauen.
+
+***
+
+[**Übung 7.2**](#tgroup)
+
+***
+
+### Verbundener t-Test
+
+Möchten wir Werte vergleichen, welche in einer Verbindung zueinander stehen, ist der verbundene t-Test die richtige Wahl. Beispiele für verbundene Stichproben sind beispielsweise experimentelle Untersuchungen, welche Daten vor und nach einer Maßnahme/Treatment/Intervention messen. Anschließend soll anhand des Vergleichs der Ergebnisse und die Wirkung der Maßnahme evaluiert werden. Hier sind die Messwerte aus den beiden Gruppen ("vorher" und "nachher") miteinander *verbunden* - bspw. wird eine Person mit Bluthochdruck auch nach der Maßnahme in der Tendenz einen höheren Blutdruck haben als eine Person, welche bereits zuvor einen niedrigeren Blutdruck hatte.
+
+Ein fiktionales Beispiel:
+
+```{stata , eval = F}
+webuse bpwide
+browse bp_before bp_after 
+```
+
+
+```{r bpwide_shot, echo = F,out.width = "60%",out.height="60%", fig.align="center"}
+knitr::include_graphics("./pics/07_bpwide.png")
+```
+
+Diese vorher/nachher Werte können wir jetzt mit einem verbundenen t-Test vergleichen:
+```{stata, eval = F}
+ttest bp_before==bp_after
+```
+
+```{stata, echo = F}
+set linesize 200
+qui clear
+qui webuse bpwide,clear
+ttest bp_before==bp_after
+```
+
+Auch hier sehen wir wieder die Ergebnisse für einen links- (` Ha: mean(diff) < 0 `) beid- (`Ha: mean(diff) != 0`) und rechtsseitigen (`Ha: mean(diff) > 0`) Test. Wir erkennen aus den Ergebnissen, dass der Blutdruck der Patient\*innen:
+
+  + nach dem Treatment nicht signifikant höher ist - linksseitiger Test (*bp_before < bp_after*), linke Spalte
+  + sich vor und nach dem Treatment signifikant unterscheidet - beiseitiger Test (*bp_before != bp_after*), mittlere Spalte
+  + nach dem Treatment signifikant niedriger ist - rechtsseitiger Test (*bp_before > bp_after*), rechte Spalte
+
+    
+
+
+## Übersicht zu Varianten für `ttest`
+
+Für alle `ttest`-Varianten können wir mit `, level(..)` auch ein anderes Signifikanzniveau wählen. Standardmäßig wird $\alpha=0,05\%$ verwendet.
+
++ Vergleich zu einem Referenzwert: `ttest testvariable == referenzwert`
+
+Für Mittelwertvergleich gibt es insgesamt zwei Aspekte, anhand derer sich t-Tests unterscheiden:
+
++ Die Varianz der Messwerte in den verglichenen Gruppen ist ...
+  + gleich: $\Rightarrow$ `ttest testvariable, by(gruppenvariable)` 
+  + verschieden: $\Rightarrow$ `ttest testvariable, by(gruppenvariable) unequal` (wie oben)
+  
++ Verbundene oder unverbundene Stichprobe?
+  + Sind die einzelnen Messwerte voneinander unabhängig? D.h. ein Messwert steht in keinem direkten Zusammenhang mit einem anderen $\Rightarrow$ `ttest testvariable, by(gruppenvariable)` für eine unverbundene Stichprobe (mit ggf. `unequal`)
+  + Stehen die einzelnen Messwerte in einem Zusammenhang? D.h. ein Messwert steht in einem direkten Zusammenhang mit einem anderen
+    $\Rightarrow$ Werte für beide Variablen sollten "nebeneinander" abgelegt sein (*wide*-Format), dann kann mit `ttest vorher==nachher` ein verbundener `ttest` durchgeführt werden.
+
+
+
+## Gewichtung in Stata
+
+> Bei der Datenanalyse ist man oft mit einer Stichprobe aus einer größeren Population konfrontiert und man möchte aus dieser Stichprobe Rückschlüsse auf die größere Population ziehen. Die meisten statistischen Verfahren für diese sog. „Inferenzstatistik“ beruhen dabei auf der Annahme, dass die Stichprobe eine einfache Zufallsstichprobe ist. Bei einer solchen Stichprobe gelangen alle Elemente der Grundgesamtheit mit der gleichen Wahrscheinlichkeit in die Stichprobe. In der Praxis sind solche Stichproben aber die große Ausnahme. Häufig haben bestimmte Gruppen von Personen höhere Auswahlwahrscheinlichkeiten als andere. [Kohler/Kreuter, S.1](https://doi.org/10.1515/9783110469509)
+
+Grundsätzlich sind in Stata drei Arten der Gewichtung verfügbar:
+
++ `pweight` $\Rightarrow$ die Beobachtungen aus der Grundgesamtheit haben eine unterschiedliche Wahrscheinlichkeit, in der Stichprobe zu sein
++ `fweight` $\Rightarrow$ jede Beobachtung kommt mehrfach vor (Hochrechnungsfaktor)
++ `aweight` $\Rightarrow$ jede Beobachtung im Datensatz ist eigentlich ein Gruppenmittelwert, der auf mehreren Beobachtungen basiert
+
+[*Weiterlesen*](https://www.parisschoolofeconomics.eu/docs/dupraz-yannick/using-weights-in-stata(1).pdf)
+
+
+Wir können Gewichtungen in Stata auf zwei Weisen anwenden:
+
+Zum einen können die Daten mit dem Befehl `svyset` als Surveydaten definiert werden. Hierbei können Variablen spezifiziert werden, die Informationen über das Survey-Design enthalten, wie die Stratifizierung und die anzuwendende Gewichtungsvariable. Anschließende Analyseverfahren werden mit dem Befehlspräfix `svy` durchgeführt. In diesem Beispiel:
+```{stata weight1, eval = F}
+tabulate S1 // ungewichtet
+```
+```{stata weight1b, echo = F}
+qui use "D:\Datenspeicher\BIBB_BAuA/BIBBBAuA_2018_suf1.0.dta", clear
+tabulate S1
+```
+
+(Mit `format(%10.3f)` können wir die Darstellung als *scientific notation* (`1.1e+04`) umgehen)
+```{stata weight1a, eval = F}
+svyset _n [pweight=gew2018]
+svy: tabulate S1 , col count format(%10.3f)
+```
+
+```{stata weight1ab, echo = F}
+set linesize 100
+qui use "D:\Datenspeicher\BIBB_BAuA/BIBBBAuA_2018_suf1.0.dta", clear
+svyset _n [pweight=gew2018]
+svy: tabulate S1 , col count
+svy: tabulate S1 , col count format(%10.3f)
+```
+
+Allerdings steht das `svy`-Präfix  nicht für jeden Befehl zur Verfügung. 
+Außerdem können kein weiteren Präfixe neben `svy` verwendet werden - beispielsweise [`by`](#by). 
+Daher steht auch eine Alternative zur Verfügung, bei der wir die Gewichtung bei jedem Auswertungsschritt einzeln angeben. 
+In unserem Beispiel also 
+```{stata weight2, eval = F}
+tabulate S1 [fweight=gew2018]
+```
+<span style="color:red">`may not use noninteger frequency weights`</span>  
+<span style="color:blue">`r(401);`</span>
+
+Allerdings akzeptiert Stata bei Häufigkeitsgewichten "frequency weights", keine Gewichtungswerte mit Nachkommastellen.
+Leider führt ein einfaches Auf- oder Abrunden führt aber häufig zu falschen Ergebnissen: 
+```{stata weight2b, eval = F}
+tabulate S1 [fweight=round(gew2018)] // runden führt zu Abweichung - Vergleich mit svy: Ergebnis
+```
+
+```{stata weight2ab, echo = F}
+qui use "D:\Datenspeicher\BIBB_BAuA/BIBBBAuA_2018_suf1.0.dta", clear
+tabulate S1 [fweight=round(gew2018)] // runden führt zu Abweichung - Vergleich mit svy: Ergebnis
+```
+Eine mögliche Lösung dieser Problematik ist es, zunächst die Gewichtungsvariable mit einer hohen Zahl (bspw.100 000) zu multiplizieren
+und anschließend auf ganze Werte zu runden:
+
+```{stata weight3, eval =F}
+tabulate S1 [fweight=round(gew2018*100 000)]
+```
+
+Das führt zu korrekten Verteilungen. 
+Allerdings ist für die Ergebnisse jedoch zu beachten, dass die zu Grunde liegende Fallzahl anschließend wieder korrigiert werden muss (also in diesem Beispiel durch 100 000 geteilt werden muss).
+
+Der eigentliche Zweck von `fweight` ist aber, die Auszählung "hochzugewichten".
+In der Erwerbstätigenbefragung können wir das mit `gew2018_hr17`, dem Hochrechnungsfaktor auf dem Mikrozensus 2017 erreichen:
+```{stata fweight1a1, eval = F}
+tabulate S1 [fweight = round(gew2018_hr17)]
+```
+
+```{stata fweight1ab1, echo = F}
+set linesize 100
+qui use "D:\Datenspeicher\BIBB_BAuA/BIBBBAuA_2018_suf1.0.dta", clear
+tabulate S1 [fweight = round(gew2018_hr17)]
+```
+
+Die Fallzahl ist also hier dann deutlich größer als die im Datensatz vorhandenen Fälle $\Rightarrow$ jeder Fall im Datensatz steht für eine Vielzahl an Fällen.
+
+## Übungen 7 
+
+Laden Sie den BIBB/BAuA Erwerbstätigenbefragung 2018 (`BIBBBAuA_2018_suf1.dta`). 
+
+##### Übung 7.1 {#tvsmu}
+
+(@) Berechnen Sie das Konfidenzintervall für die durchschnittliche Arbeitszeit (`az`)
+
+(@) Testen Sie die Hypothese, dass die eigentliche durchschnittliche Arbeitszeit 38.5 Stunden beträgt. Interpretieren Sie die Ergebnisse im Sinne einen rechts-, links- und beidseitigen Tests!
+
+
+##### Übung 7.2 {#tgroup}
+
+(@) Testen Sie die Hypothese, dass ein signifikanter Unterschied in der Arbeitszeit (`az`) zwischen Männern und Frauen besteht (`S1`)
+
+##### Übung 7.3 {#weight}
+
+(@) Erstellen Sie eine Häufigkeitsauszählung der Ausbildungsabschlüsse (`m1202`) - zunächst ohne und dann mit Gewichtung. Verwenden Sie sowohl die `pweights`  als auch die `fweights` an.
+

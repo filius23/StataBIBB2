@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>10 Anhang - fortgeschrittene Themen | Stata Einführung am BIBB</title>
+  <meta name="description" content="This site has been creating using the bookdown R package." />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="10 Anhang - fortgeschrittene Themen | Stata Einführung am BIBB" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This site has been creating using the bookdown R package." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="10 Anhang - fortgeschrittene Themen | Stata Einführung am BIBB" />
+  
+  <meta name="twitter:description" content="This site has been creating using the bookdown R package." />
+  
+
+<meta name="author" content="Andreas Filser" />
+
+
+<meta name="date" content="2021-12-14" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="lit.html"/>
+
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Stata @ BIBB</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Herzlich Willkommen</a></li>
+<li class="chapter" data-level="1" data-path="stata.html"><a href="stata.html"><i class="fa fa-check"></i><b>1</b> Überblick zu Stata</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="stata.html"><a href="stata.html#taschenrechner"><i class="fa fa-check"></i><b>1.1</b> Taschenrechner</a></li>
+<li class="chapter" data-level="1.2" data-path="stata.html"><a href="stata.html#darstellung-in-diesem-skript"><i class="fa fa-check"></i><b>1.2</b> Darstellung in diesem Skript</a></li>
+<li class="chapter" data-level="1.3" data-path="stata.html"><a href="stata.html#dofile-editor"><i class="fa fa-check"></i><b>1.3</b> DoFile Editor</a></li>
+<li class="chapter" data-level="1.4" data-path="stata.html"><a href="stata.html#datensätze-laden"><i class="fa fa-check"></i><b>1.4</b> Datensätze laden</a></li>
+<li class="chapter" data-level="1.5" data-path="stata.html"><a href="stata.html#überblicksbefehle"><i class="fa fa-check"></i><b>1.5</b> Überblicksbefehle</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="stata.html"><a href="stata.html#describe"><i class="fa fa-check"></i><b>1.5.1</b> <code>describe</code></a></li>
+<li class="chapter" data-level="1.5.2" data-path="stata.html"><a href="stata.html#browse"><i class="fa fa-check"></i><b>1.5.2</b> <code>browse</code></a></li>
+<li class="chapter" data-level="1.5.3" data-path="stata.html"><a href="stata.html#list"><i class="fa fa-check"></i><b>1.5.3</b> <code>list</code></a></li>
+<li class="chapter" data-level="1.5.4" data-path="stata.html"><a href="stata.html#lookfor"><i class="fa fa-check"></i><b>1.5.4</b> <code>lookfor</code></a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="stata.html"><a href="stata.html#U1"><i class="fa fa-check"></i><b>1.6</b> Übungen 1</a></li>
+<li class="chapter" data-level="1.7" data-path="stata.html"><a href="stata.html#profi-übungen-1"><i class="fa fa-check"></i><b>1.7</b> Profi-Übungen 1</a></li>
+<li class="chapter" data-level="1.8" data-path="stata.html"><a href="stata.html#anhang-1"><i class="fa fa-check"></i><b>1.8</b> Anhang 1</a>
+<ul>
+<li class="chapter" data-level="1.8.1" data-path="stata.html"><a href="stata.html#var_types"><i class="fa fa-check"></i><b>1.8.1</b> Variablentypen</a></li>
+<li class="chapter" data-level="1.8.2" data-path="stata.html"><a href="stata.html#otherfmts"><i class="fa fa-check"></i><b>1.8.2</b> import anderer Dateiformate</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="stata2.html"><a href="stata2.html"><i class="fa fa-check"></i><b>2</b> Arbeiten mit Datensätzen in Stata</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="stata2.html"><a href="stata2.html#befehlsstruktur"><i class="fa fa-check"></i><b>2.1</b> Befehlsstruktur</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="stata2.html"><a href="stata2.html#zeilenumbrüche"><i class="fa fa-check"></i><b>2.1.1</b> Zeilenumbrüche</a></li>
+<li class="chapter" data-level="2.1.2" data-path="stata2.html"><a href="stata2.html#kommentare"><i class="fa fa-check"></i><b>2.1.2</b> Kommentare</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="stata2.html"><a href="stata2.html#auszählen-überblick-erhalten"><i class="fa fa-check"></i><b>2.2</b> Auszählen &amp; Überblick erhalten</a></li>
+<li class="chapter" data-level="2.3" data-path="stata2.html"><a href="stata2.html#missv"><i class="fa fa-check"></i><b>2.3</b> Fehlende Werte</a></li>
+<li class="chapter" data-level="2.4" data-path="stata2.html"><a href="stata2.html#zwei-variablen-eine-tabelle-kontingenztabellen"><i class="fa fa-check"></i><b>2.4</b> Zwei Variablen, eine Tabelle: Kontingenztabellen</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="stata2.html"><a href="stata2.html#in-prozent-relative-häufigkeiten"><i class="fa fa-check"></i><b>2.4.1</b> In Prozent: Relative Häufigkeiten</a></li>
+<li class="chapter" data-level="2.4.2" data-path="stata2.html"><a href="stata2.html#pro-gruppe-1-zeilenprozente"><i class="fa fa-check"></i><b>2.4.2</b> pro Gruppe 1: Zeilenprozente</a></li>
+<li class="chapter" data-level="2.4.3" data-path="stata2.html"><a href="stata2.html#pro-gruppe-2-spaltenprozente"><i class="fa fa-check"></i><b>2.4.3</b> pro Gruppe 2: Spaltenprozente</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="stata2.html"><a href="stata2.html#metrische-variablen"><i class="fa fa-check"></i><b>2.5</b> metrische Variablen</a></li>
+<li class="chapter" data-level="2.6" data-path="stata2.html"><a href="stata2.html#nochmal-von-vorne-daten-neu-laden"><i class="fa fa-check"></i><b>2.6</b> Nochmal von vorne: Daten neu laden</a></li>
+<li class="chapter" data-level="2.7" data-path="stata2.html"><a href="stata2.html#speichern"><i class="fa fa-check"></i><b>2.7</b> Speichern</a></li>
+<li class="chapter" data-level="2.8" data-path="stata2.html"><a href="stata2.html#übungen-2"><i class="fa fa-check"></i><b>2.8</b> Übungen 2</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="stata2.html"><a href="stata2.html#tab2"><i class="fa fa-check"></i><b>2.8.1</b> Übung 2-1</a></li>
+<li class="chapter" data-level="2.8.2" data-path="stata2.html"><a href="stata2.html#su2"><i class="fa fa-check"></i><b>2.8.2</b> Übung 2-2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="desc1.html"><a href="desc1.html"><i class="fa fa-check"></i><b>3</b> Deskriptive Statistik</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="desc1.html"><a href="desc1.html#metrische-variablen-beschreiben"><i class="fa fa-check"></i><b>3.1</b> Metrische Variablen beschreiben</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="desc1.html"><a href="desc1.html#lage--und-konzentrationsmaße"><i class="fa fa-check"></i><b>3.1.1</b> Lage- und Konzentrationsmaße</a></li>
+<li class="chapter" data-level="3.1.2" data-path="desc1.html"><a href="desc1.html#tabstat"><i class="fa fa-check"></i><b>3.1.2</b> <code>tabstat</code></a></li>
+<li class="chapter" data-level="3.1.3" data-path="desc1.html"><a href="desc1.html#by_vgl"><i class="fa fa-check"></i><b>3.1.3</b> Kennzahlen vergleichen mit <code>tabstat</code></a></li>
+<li class="chapter" data-level="3.1.4" data-path="desc1.html"><a href="desc1.html#gini"><i class="fa fa-check"></i><b>3.1.4</b> Gini-Koeffizient</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="desc1.html"><a href="desc1.html#übungen-3"><i class="fa fa-check"></i><b>3.2</b> Übungen 3</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="desc1.html"><a href="desc1.html#met"><i class="fa fa-check"></i><b>3.2.1</b> Übung 3-1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="iflab.html"><a href="iflab.html"><i class="fa fa-check"></i><b>4</b> if-Bedingungen</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="iflab.html"><a href="iflab.html#if-bedingungen---nur-manche-zeilen-ansehen"><i class="fa fa-check"></i><b>4.1</b> if-Bedingungen - nur manche Zeilen ansehen</a></li>
+<li class="chapter" data-level="4.2" data-path="iflab.html"><a href="iflab.html#labels"><i class="fa fa-check"></i><b>4.2</b> Labels</a></li>
+<li class="chapter" data-level="4.3" data-path="iflab.html"><a href="iflab.html#miss_if"><i class="fa fa-check"></i><b>4.3</b> Fehlende Werte</a></li>
+<li class="chapter" data-level="4.4" data-path="iflab.html"><a href="iflab.html#keep-drop-fälle-dauerhaft-löschen"><i class="fa fa-check"></i><b>4.4</b> keep &amp; drop: Fälle dauerhaft löschen</a></li>
+<li class="chapter" data-level="4.5" data-path="iflab.html"><a href="iflab.html#ifue"><i class="fa fa-check"></i><b>4.5</b> Übungen 4</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="gen.html"><a href="gen.html"><i class="fa fa-check"></i><b>5</b> Variablen erstellen und verändern</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="gen.html"><a href="gen.html#gen-ist-gut-kontrolle-ist-besser"><i class="fa fa-check"></i><b>5.1</b> gen ist gut, Kontrolle ist besser</a></li>
+<li class="chapter" data-level="5.2" data-path="gen.html"><a href="gen.html#dummyvar"><i class="fa fa-check"></i><b>5.2</b> Dummy-Variablen erstellen</a></li>
+<li class="chapter" data-level="5.3" data-path="gen.html"><a href="gen.html#label"><i class="fa fa-check"></i><b>5.3</b> Neue Variablen labeln</a></li>
+<li class="chapter" data-level="5.4" data-path="gen.html"><a href="gen.html#bestehende-variablen-verändern"><i class="fa fa-check"></i><b>5.4</b> Bestehende Variablen verändern</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="gen.html"><a href="gen.html#recode"><i class="fa fa-check"></i><b>5.4.1</b> <code>recode</code></a></li>
+<li class="chapter" data-level="5.4.2" data-path="gen.html"><a href="gen.html#replace-informationen-aus-mehreren-variablen-in-einer-variable-zusammenführen"><i class="fa fa-check"></i><b>5.4.2</b> <code>replace</code>: Informationen aus mehreren Variablen in einer Variable zusammenführen</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="gen.html"><a href="gen.html#genue"><i class="fa fa-check"></i><b>5.5</b> Übungen</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="gen.html"><a href="gen.html#ue51"><i class="fa fa-check"></i><b>5.5.1</b> Übung</a></li>
+<li class="chapter" data-level="5.5.2" data-path="gen.html"><a href="gen.html#ue52"><i class="fa fa-check"></i><b>5.5.2</b> Übung</a></li>
+<li class="chapter" data-level="5.5.3" data-path="gen.html"><a href="gen.html#ue53"><i class="fa fa-check"></i><b>5.5.3</b> Übung</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="egen.html"><a href="egen.html"><i class="fa fa-check"></i><b>6</b> Variablen erstellen (2), Hilfe verwenden</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="egen.html"><a href="egen.html#egen-1"><i class="fa fa-check"></i><b>6.1</b> <code>egen</code></a></li>
+<li class="chapter" data-level="6.2" data-path="egen.html"><a href="egen.html#erklärungen-für-help-und-stata-begriffe"><i class="fa fa-check"></i><b>6.2</b> Erklärungen für <code>help</code> und Stata-Begriffe</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="egen.html"><a href="egen.html#listexpl"><i class="fa fa-check"></i><b>6.2.1</b> numlist, varlist, varname</a></li>
+<li class="chapter" data-level="6.2.2" data-path="egen.html"><a href="egen.html#beispielsyntax-in-den-help-dateien"><i class="fa fa-check"></i><b>6.2.2</b> Beispielsyntax in den <code>help</code> Dateien</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="egen.html"><a href="egen.html#by"><i class="fa fa-check"></i><b>6.3</b> <code>by</code></a></li>
+<li class="chapter" data-level="6.4" data-path="egen.html"><a href="egen.html#egenue"><i class="fa fa-check"></i><b>6.4</b> Übungen</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="egen.html"><a href="egen.html#egenue1"><i class="fa fa-check"></i><b>6.4.1</b> Übungen</a></li>
+<li class="chapter" data-level="6.4.2" data-path="egen.html"><a href="egen.html#byue"><i class="fa fa-check"></i><b>6.4.2</b> Übungen</a></li>
+<li class="chapter" data-level="6.4.3" data-path="egen.html"><a href="egen.html#profiaufgabe"><i class="fa fa-check"></i><b>6.4.3</b> Profiaufgabe</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="egen.html"><a href="egen.html#anhang"><i class="fa fa-check"></i><b>6.5</b> Anhang</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="egen.html"><a href="egen.html#bys_su"><i class="fa fa-check"></i><b>6.5.1</b> Kombination von <code>summarize</code> mit dem <code>by</code>-Präfix</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="zshg.html"><a href="zshg.html"><i class="fa fa-check"></i><b>7</b> Zusammenhangsmaße</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="zshg.html"><a href="zshg.html#ttest"><i class="fa fa-check"></i><b>7.1</b> <code>ttest</code></a></li>
+<li class="chapter" data-level="7.2" data-path="zshg.html"><a href="zshg.html#mittelwertttest"><i class="fa fa-check"></i><b>7.2</b> Mittelwertvergleiche mit dem t-Test</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="zshg.html"><a href="zshg.html#unverbundener-t-test"><i class="fa fa-check"></i><b>7.2.1</b> Unverbundener t-Test</a></li>
+<li class="chapter" data-level="7.2.2" data-path="zshg.html"><a href="zshg.html#verbundener-t-test"><i class="fa fa-check"></i><b>7.2.2</b> Verbundener t-Test</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="zshg.html"><a href="zshg.html#übersicht-zu-varianten-für-ttest"><i class="fa fa-check"></i><b>7.3</b> Übersicht zu Varianten für <code>ttest</code></a></li>
+<li class="chapter" data-level="7.4" data-path="zshg.html"><a href="zshg.html#cor"><i class="fa fa-check"></i><b>7.4</b> Korrelationskoeffizienten</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="zshg.html"><a href="zshg.html#pearson"><i class="fa fa-check"></i><b>7.4.1</b> Korrelation</a></li>
+<li class="chapter" data-level="7.4.2" data-path="zshg.html"><a href="zshg.html#spearman"><i class="fa fa-check"></i><b>7.4.2</b> Rangkorrelation</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="zshg.html"><a href="zshg.html#tabellenbasierte-zusammenhangsmaße"><i class="fa fa-check"></i><b>7.5</b> Tabellenbasierte Zusammenhangsmaße</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="zshg.html"><a href="zshg.html#tau"><i class="fa fa-check"></i><b>7.5.1</b> Konkordanzmaße</a></li>
+<li class="chapter" data-level="7.5.2" data-path="zshg.html"><a href="zshg.html#chi2"><i class="fa fa-check"></i><b>7.5.2</b> Chi² &amp; Cramér’s V</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="zshg.html"><a href="zshg.html#übungen"><i class="fa fa-check"></i><b>7.6</b> Übungen</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="zshg.html"><a href="zshg.html#tvsmu"><i class="fa fa-check"></i><b>7.6.1</b> Übung</a></li>
+<li class="chapter" data-level="7.6.2" data-path="zshg.html"><a href="zshg.html#tgroup"><i class="fa fa-check"></i><b>7.6.2</b> Übung</a></li>
+<li class="chapter" data-level="7.6.3" data-path="zshg.html"><a href="zshg.html#met_ord"><i class="fa fa-check"></i><b>7.6.3</b> Übung</a></li>
+<li class="chapter" data-level="7.6.4" data-path="zshg.html"><a href="zshg.html#übung"><i class="fa fa-check"></i><b>7.6.4</b> Übung</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="zshg.html"><a href="zshg.html#anhang-2"><i class="fa fa-check"></i><b>7.7</b> Anhang</a>
+<ul>
+<li class="chapter" data-level="7.7.1" data-path="zshg.html"><a href="zshg.html#indiff"><i class="fa fa-check"></i><b>7.7.1</b> Indifferenztabelle</a></li>
+<li class="chapter" data-level="7.7.2" data-path="zshg.html"><a href="zshg.html#konkordanzmaße"><i class="fa fa-check"></i><b>7.7.2</b> Konkordanzmaße</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="regression.html"><a href="regression.html"><i class="fa fa-check"></i><b>8</b> Regressionsmodelle</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="regression.html"><a href="regression.html#reg_intro"><i class="fa fa-check"></i><b>8.1</b> Regressionsmodelle - Grundlagen</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="regression.html"><a href="regression.html#vorhergesagte-werte"><i class="fa fa-check"></i><b>8.1.1</b> vorhergesagte Werte</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="regression.html"><a href="regression.html#kategoriale-unabhängige-variablen"><i class="fa fa-check"></i><b>8.2</b> kategoriale unabhängige Variablen</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="regression.html"><a href="regression.html#dummyvariablen"><i class="fa fa-check"></i><b>8.2.1</b> Dummyvariablen</a></li>
+<li class="chapter" data-level="8.2.2" data-path="regression.html"><a href="regression.html#vergleich-mit-ttest"><i class="fa fa-check"></i><b>8.2.2</b> Vergleich mit <code>ttest</code></a></li>
+<li class="chapter" data-level="8.2.3" data-path="regression.html"><a href="regression.html#mehrere-ausprägungen"><i class="fa fa-check"></i><b>8.2.3</b> Mehrere Ausprägungen</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="regression.html"><a href="regression.html#mehrere-unabhängige-variablen"><i class="fa fa-check"></i><b>8.3</b> mehrere unabhängige Variablen</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="regression.html"><a href="regression.html#interaktionsterme"><i class="fa fa-check"></i><b>8.3.1</b> Interaktionsterme</a></li>
+<li class="chapter" data-level="8.3.2" data-path="regression.html"><a href="regression.html#quadratische-terme"><i class="fa fa-check"></i><b>8.3.2</b> Quadratische Terme</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="regression.html"><a href="regression.html#übungen-9"><i class="fa fa-check"></i><b>8.4</b> Übungen 9</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="regression.html"><a href="regression.html#regue1"><i class="fa fa-check"></i><b>8.4.1</b> Übung 1</a></li>
+<li class="chapter" data-level="8.4.2" data-path="regression.html"><a href="regression.html#regue2"><i class="fa fa-check"></i><b>8.4.2</b> Übung 2</a></li>
+<li class="chapter" data-level="8.4.3" data-path="regression.html"><a href="regression.html#regue3"><i class="fa fa-check"></i><b>8.4.3</b> Übung 3</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="regression.html"><a href="regression.html#anhang-3"><i class="fa fa-check"></i><b>8.5</b> Anhang</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="regression.html"><a href="regression.html#marginsplot-anpassen"><i class="fa fa-check"></i><b>8.5.1</b> <code>marginsplot</code> anpassen</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="lit.html"><a href="lit.html"><i class="fa fa-check"></i><b>9</b> Literatur</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="lit.html"><a href="lit.html#stata-1"><i class="fa fa-check"></i><b>9.1</b> Stata</a></li>
+<li class="chapter" data-level="9.2" data-path="lit.html"><a href="lit.html#statistik-lehrbücher"><i class="fa fa-check"></i><b>9.2</b> Statistik-Lehrbücher</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>10</b> Anhang - fortgeschrittene Themen</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="appendix.html"><a href="appendix.html#gewichtung-in-stata"><i class="fa fa-check"></i><b>10.1</b> Gewichtung in Stata</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="appendix.html"><a href="appendix.html#weight"><i class="fa fa-check"></i><b>10.1.1</b> Übung</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="appendix.html"><a href="appendix.html#xlsimport"><i class="fa fa-check"></i><b>10.2</b> Import und Aufbereitung aus Excel</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="appendix.html"><a href="appendix.html#datenimport-aus-excel-datei"><i class="fa fa-check"></i><b>10.2.1</b> Datenimport aus Excel-Datei</a></li>
+<li class="chapter" data-level="10.2.2" data-path="appendix.html"><a href="appendix.html#variablen-umbenennen-rename"><i class="fa fa-check"></i><b>10.2.2</b> Variablen umbenennen: <code>rename</code></a></li>
+<li class="chapter" data-level="10.2.3" data-path="appendix.html"><a href="appendix.html#variablenbeschreibung-label-variable"><i class="fa fa-check"></i><b>10.2.3</b> Variablenbeschreibung: <code>label variable</code></a></li>
+<li class="chapter" data-level="10.2.4" data-path="appendix.html"><a href="appendix.html#werte-labeln-label-values"><i class="fa fa-check"></i><b>10.2.4</b> Werte labeln <code>label values</code></a></li>
+<li class="chapter" data-level="10.2.5" data-path="appendix.html"><a href="appendix.html#foreach"><i class="fa fa-check"></i><b>10.2.5</b> Fortgeschrittene Programmierung: foreach-Schleife</a></li>
+<li class="chapter" data-level="10.2.6" data-path="appendix.html"><a href="appendix.html#exportieren"><i class="fa fa-check"></i><b>10.2.6</b> exportieren</a></li>
+<li class="chapter" data-level="10.2.7" data-path="appendix.html"><a href="appendix.html#übung-1"><i class="fa fa-check"></i><b>10.2.7</b> Übung</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="appendix.html"><a href="appendix.html#adopath"><i class="fa fa-check"></i><b>10.3</b> <code>adopath</code></a></li>
+<li class="chapter" data-level="10.4" data-path="appendix.html"><a href="appendix.html#log-file"><i class="fa fa-check"></i><b>10.4</b> log file</a></li>
+<li class="chapter" data-level="10.5" data-path="appendix.html"><a href="appendix.html#beobachtungen-markieren-mit-gen-if"><i class="fa fa-check"></i><b>10.5</b> Beobachtungen markieren mit <code>gen</code> &amp; <code>if</code></a></li>
+<li class="chapter" data-level="10.6" data-path="appendix.html"><a href="appendix.html#index-bilden"><i class="fa fa-check"></i><b>10.6</b> Index bilden</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Stata Einführung am BIBB</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="appendix" class="section level1" number="10">
+<h1><span class="header-section-number">10</span> Anhang - fortgeschrittene Themen</h1>
+<div id="gewichtung-in-stata" class="section level2" number="10.1">
+<h2><span class="header-section-number">10.1</span> Gewichtung in Stata</h2>
+<blockquote>
+<p>Bei der Datenanalyse ist man oft mit einer Stichprobe aus einer größeren Population konfrontiert und man möchte aus dieser Stichprobe Rückschlüsse auf die größere Population ziehen. Die meisten statistischen Verfahren für diese sog. „Inferenzstatistik“ beruhen dabei auf der Annahme, dass die Stichprobe eine einfache Zufallsstichprobe ist. Bei einer solchen Stichprobe gelangen alle Elemente der Grundgesamtheit mit der gleichen Wahrscheinlichkeit in die Stichprobe. In der Praxis sind solche Stichproben aber die große Ausnahme. Häufig haben bestimmte Gruppen von Personen höhere Auswahlwahrscheinlichkeiten als andere. <a href="https://doi.org/10.1515/9783110469509">Kohler/Kreuter, S.1</a></p>
+</blockquote>
+<p>Grundsätzlich sind in Stata drei Arten der Gewichtung verfügbar:</p>
+<ul>
+<li><code>pweight</code> <span class="math inline">\(\Rightarrow\)</span> die Beobachtungen aus der Grundgesamtheit haben eine unterschiedliche Wahrscheinlichkeit, in der Stichprobe zu sein</li>
+<li><code>fweight</code> <span class="math inline">\(\Rightarrow\)</span> jede Beobachtung kommt mehrfach vor (Hochrechnungsfaktor)</li>
+<li><code>aweight</code> <span class="math inline">\(\Rightarrow\)</span> jede Beobachtung im Datensatz ist eigentlich ein Gruppenmittelwert, der auf mehreren Beobachtungen basiert</li>
+</ul>
+<p><a href="https://www.parisschoolofeconomics.eu/docs/dupraz-yannick/using-weights-in-stata(1).pdf"><em>Weiterlesen</em></a></p>
+<p>Wir können Gewichtungen in Stata auf zwei Weisen anwenden:</p>
+<p>Zum einen können die Daten mit dem Befehl <code>svyset</code> als Surveydaten definiert werden. Hierbei können Variablen spezifiziert werden, die Informationen über das Survey-Design enthalten, wie die Stratifizierung und die anzuwendende Gewichtungsvariable. Anschließende Analyseverfahren werden mit dem Befehlspräfix <code>svy</code> durchgeführt. In diesem Beispiel:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb1-1"><a href="appendix.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">tabulate</span> S1 <span class="co">// ungewichtet</span></span></code></pre></div>
+<pre><code> Geschlecht |      Freq.     Percent        Cum.
+------------+-----------------------------------
+   mÃ¤nnlich |     10,074       50.34       50.34
+   weiblich |      9,938       49.66      100.00
+------------+-----------------------------------
+      Total |     20,012      100.00</code></pre>
+<p>(Mit <code>format(%10.3f)</code> können wir die Darstellung als <em>scientific notation</em> (<code>1.1e+04</code>) umgehen)</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb3-1"><a href="appendix.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">svyset</span> <span class="dt">_n</span> [<span class="kw">pweight</span>=gew2018]</span>
+<span id="cb3-2"><a href="appendix.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">svy</span>: <span class="kw">tabulate</span> S1 , col <span class="fu">count</span> <span class="kw">format</span>(%10.3f)</span></code></pre></div>
+<pre><code>      pweight: gew2018
+          VCE: linearized
+  Single unit: missing
+     Strata 1: &lt;one&gt;
+         SU 1: &lt;observations&gt;
+        FPC 1: &lt;zero&gt;
+
+(running tabulate on estimation sample)
+
+Number of strata   =         1                  Number of obs     =     20,012
+Number of PSUs     =    20,012                  Population size   = 20,012.017
+                                                Design df         =     20,011
+
+----------------------------------
+Geschlech |
+t         |      count      column
+----------+-----------------------
+ mÃ¤nnlich |    1.1e+04       .5468
+ weiblich |       9070       .4532
+          | 
+    Total |    2.0e+04           1
+----------------------------------
+  Key:  count     =  weighted count
+        column    =  column proportion
+
+(running tabulate on estimation sample)
+
+Number of strata   =         1                  Number of obs     =     20,012
+Number of PSUs     =    20,012                  Population size   = 20,012.017
+                                                Design df         =     20,011
+
+----------------------------------
+Geschlech |
+t         |      count      column
+----------+-----------------------
+ mÃ¤nnlich |  10941.888       0.547
+ weiblich |   9070.129       0.453
+          | 
+    Total |  20012.017       1.000
+----------------------------------
+  Key:  count     =  weighted count
+        column    =  column proportion</code></pre>
+<p>Allerdings steht das <code>svy</code>-Präfix nicht für jeden Befehl zur Verfügung.
+Außerdem können kein weiteren Präfixe neben <code>svy</code> verwendet werden - beispielsweise <a href="egen.html#by"><code>by</code></a>.
+Daher steht auch eine Alternative zur Verfügung, bei der wir die Gewichtung bei jedem Auswertungsschritt einzeln angeben.
+In unserem Beispiel also</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb5-1"><a href="appendix.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">tabulate</span> S1 [<span class="kw">fweight</span>=gew2018]</span></code></pre></div>
+<p><span style="color:red"><code>may not use noninteger frequency weights</code></span><br />
+<span style="color:blue"><code>r(401);</code></span></p>
+<p>Allerdings akzeptiert Stata bei Häufigkeitsgewichten “frequency weights,” keine Gewichtungswerte mit Nachkommastellen.
+Leider führt ein einfaches Auf- oder Abrunden führt aber häufig zu falschen Ergebnissen:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb6-1"><a href="appendix.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">tabulate</span> S1 [<span class="kw">fweight</span>=<span class="fu">round</span>(gew2018)] <span class="co">// runden führt zu Abweichung - Vergleich mit svy: Ergebnis</span></span></code></pre></div>
+<pre><code> Geschlecht |      Freq.     Percent        Cum.
+------------+-----------------------------------
+   mÃ¤nnlich |     10,524       55.44       55.44
+   weiblich |      8,458       44.56      100.00
+------------+-----------------------------------
+      Total |     18,982      100.00</code></pre>
+<p>Eine mögliche Lösung dieser Problematik ist es, zunächst die Gewichtungsvariable mit einer hohen Zahl (bspw.100 000) zu multiplizieren
+und anschließend auf ganze Werte zu runden:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb8-1"><a href="appendix.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">tabulate</span> S1 [<span class="kw">fweight</span>=<span class="fu">round</span>(gew2018*100 000)]</span></code></pre></div>
+<p>Das führt zu korrekten Verteilungen.
+Allerdings ist für die Ergebnisse jedoch zu beachten, dass die zu Grunde liegende Fallzahl anschließend wieder korrigiert werden muss (also in diesem Beispiel durch 100 000 geteilt werden muss).</p>
+<p>Der eigentliche Zweck von <code>fweight</code> ist aber, die Auszählung “hochzugewichten.”
+In der Erwerbstätigenbefragung können wir das mit <code>gew2018_hr17</code>, dem Hochrechnungsfaktor auf dem Mikrozensus 2017 erreichen:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb9-1"><a href="appendix.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">tabulate</span> S1 [<span class="kw">fweight</span> = <span class="fu">round</span>(gew2018_hr17)]</span></code></pre></div>
+<pre><code> Geschlecht |      Freq.     Percent        Cum.
+------------+-----------------------------------
+   mÃ¤nnlich | 20,467,753       54.68       54.68
+   weiblich | 16,966,432       45.32      100.00
+------------+-----------------------------------
+      Total | 37,434,185      100.00</code></pre>
+<p>Die Fallzahl ist also hier dann deutlich größer als die im Datensatz vorhandenen Fälle <span class="math inline">\(\Rightarrow\)</span> jeder Fall im Datensatz steht für eine Vielzahl an Fällen.</p>
+<div id="weight" class="section level3" number="10.1.1">
+<h3><span class="header-section-number">10.1.1</span> Übung</h3>
+<ol class="example" style="list-style-type: decimal">
+<li>Erstellen Sie eine Häufigkeitsauszählung der Ausbildungsabschlüsse (<code>m1202</code>) - zunächst ohne und dann mit Gewichtung. Verwenden Sie sowohl die <code>pweights</code> als auch die <code>fweights</code> an.</li>
+</ol>
+</div>
+</div>
+<div id="xlsimport" class="section level2" number="10.2">
+<h2><span class="header-section-number">10.2</span> Import und Aufbereitung aus Excel</h2>
+<div id="datenimport-aus-excel-datei" class="section level3" number="10.2.1">
+<h3><span class="header-section-number">10.2.1</span> Datenimport aus Excel-Datei</h3>
+<p>Unter <code>file -&gt; import -&gt; excel spreadsheet</code> können wir einen Excel-Import erstellen, den Befehl aus dem Ausgabefenster können wir dann kopieren:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb11-1"><a href="appendix.html#cb11-1" aria-hidden="true" tabindex="-1"></a>import excel <span class="st">&quot;D:\oCloud\Home-Cloud\Lehre\BIBB\StataBIBB1\Stata_Einführung_BIBB\Rohdaten.xlsx&quot;</span>, sheet(<span class="st">&quot;Sheet1&quot;</span>) firstrow <span class="kw">case</span>(<span class="fu">lower</span>) <span class="kw">clear</span></span>
+<span id="cb11-2"><a href="appendix.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">// oder:</span></span>
+<span id="cb11-3"><a href="appendix.html#cb11-3" aria-hidden="true" tabindex="-1"></a>cd <span class="st">&quot;D:\oCloud\Home-Cloud\Lehre\BIBB\StataBIBB1\Stata_Einführung_BIBB</span><span class="ch">\&quot;</span></span>
+<span id="cb11-4"><a href="appendix.html#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="st">import excel &quot;</span>Rohdaten.xlsx<span class="st">&quot;, sheet(&quot;</span>Sheet1<span class="st">&quot;) firstrow case(lower) clear</span></span>
+<span id="cb11-5"><a href="appendix.html#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="st">* Überblick gewinnen</span></span>
+<span id="cb11-6"><a href="appendix.html#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="st">list</span></span>
+<span id="cb11-7"><a href="appendix.html#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="st">browse</span></span></code></pre></div>
+<pre><code>r(601);
+
+end of do-file
+r(601);</code></pre>
+<p>Hier eine kleine (Fantasie-)Doku zum Datensatz:</p>
+<table class="table table-condensed" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Variablenname
+</th>
+<th style="text-align:left;">
+Beschreibung
+</th>
+<th style="text-align:left;">
+Details
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;font-family: monospace;">
+id
+</td>
+<td style="text-align:left;">
+Befragten-Identifikationsnummer
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-family: monospace;">
+x1
+</td>
+<td style="text-align:left;">
+Geschlecht
+</td>
+<td style="text-align:left;">
+1 = Frau, 2 = Mann, -4 keine Angabe
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-family: monospace;">
+x2
+</td>
+<td style="text-align:left;">
+Haustiere?
+</td>
+<td style="text-align:left;">
+0 = nein, 1 = ja, -4 keine Angabe, -9 Datenfehler
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-family: monospace;">
+x3
+</td>
+<td style="text-align:left;">
+Frühaufsteher?
+</td>
+<td style="text-align:left;">
+0 = nein, 1 = ja, -4 keine Angabe, -9 Datenfehler
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-family: monospace;">
+x4
+</td>
+<td style="text-align:left;">
+5er Likert-Skala: Stata macht Spaß
+</td>
+<td style="text-align:left;">
+1 = trifft überhaupt nicht zu
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-family: monospace;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+5 = tifft voll zu
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="variablen-umbenennen-rename" class="section level3" number="10.2.2">
+<h3><span class="header-section-number">10.2.2</span> Variablen umbenennen: <code>rename</code></h3>
+<p>Dann benennen wir die Variablen in sprechendere Namen um <code>rename alt neu</code>:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb13-1"><a href="appendix.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">rename</span> x1 gender</span>
+<span id="cb13-2"><a href="appendix.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="kw">rename</span> <span class="kw">x2</span> pets</span>
+<span id="cb13-3"><a href="appendix.html#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="kw">rename</span> x3 earlybird</span>
+<span id="cb13-4"><a href="appendix.html#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="kw">rename</span> x4 stata</span></code></pre></div>
+<pre><code>r(601);
+
+end of do-file
+r(601);</code></pre>
+</div>
+<div id="variablenbeschreibung-label-variable" class="section level3" number="10.2.3">
+<h3><span class="header-section-number">10.2.3</span> Variablenbeschreibung: <code>label variable</code></h3>
+<div class="sourceCode" id="cb15"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb15-1"><a href="appendix.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="kw">variable</span> gender         <span class="st">&quot;Geschlecht&quot;</span></span>
+<span id="cb15-2"><a href="appendix.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="kw">variable</span> pets           <span class="st">&quot;Haustierbesitz?&quot;</span></span>
+<span id="cb15-3"><a href="appendix.html#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="kw">variable</span> earlybird    <span class="st">&quot;Frühaufsteher&quot;</span></span>
+<span id="cb15-4"><a href="appendix.html#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="kw">variable</span> stata        <span class="st">&quot;Stata macht Spaß&quot;</span></span></code></pre></div>
+<pre><code>r(601);
+
+end of do-file
+r(601);</code></pre>
+</div>
+<div id="werte-labeln-label-values" class="section level3" number="10.2.4">
+<h3><span class="header-section-number">10.2.4</span> Werte labeln <code>label values</code></h3>
+<p>Mit <code>.buchstabe</code> können wir fehlende Werte unterscheidbar halten, so können wir sowohl “keine Angabe” als auch “Datenfehler als Missing überschreiben und trotzdem beide Varianten unterscheidbar halten:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb17-1"><a href="appendix.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> gender</span>
+<span id="cb17-2"><a href="appendix.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> gender = .<span class="kw">k</span> <span class="kw">if</span> gender == -4</span>
+<span id="cb17-3"><a href="appendix.html#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> gender</span>
+<span id="cb17-4"><a href="appendix.html#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> gender, <span class="fu">m</span></span>
+<span id="cb17-5"><a href="appendix.html#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="appendix.html#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="kw">define</span> gend_lab 1 <span class="st">&quot;Frau&quot;</span> 2 <span class="st">&quot;Mann&quot;</span> .<span class="kw">k</span> <span class="st">&quot;keine Angabe&quot;</span></span>
+<span id="cb17-7"><a href="appendix.html#cb17-7" aria-hidden="true" tabindex="-1"></a>lab val gender gend_lab</span>
+<span id="cb17-8"><a href="appendix.html#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> gender</span>
+<span id="cb17-9"><a href="appendix.html#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> gender, <span class="fu">m</span></span></code></pre></div>
+<pre><code>r(601);
+
+end of do-file
+r(601);</code></pre>
+<p>Für die weiteren Variablen können wir ähnlich vorgehen:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb19-1"><a href="appendix.html#cb19-1" aria-hidden="true" tabindex="-1"></a>lab def dummy_lab 0 <span class="st">&quot;Nein&quot;</span> 1 <span class="st">&quot;Ja&quot;</span> .<span class="kw">k</span> <span class="st">&quot;keine Angabe&quot;</span> .<span class="kw">d</span> <span class="st">&quot;Datenfehler&quot;</span></span>
+<span id="cb19-2"><a href="appendix.html#cb19-2" aria-hidden="true" tabindex="-1"></a>lab val earlybird dummy_lab</span>
+<span id="cb19-3"><a href="appendix.html#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="appendix.html#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> earlybird</span>
+<span id="cb19-5"><a href="appendix.html#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="kw">recode</span>  earlybird (-9=.<span class="kw">d</span>) (-4=.<span class="kw">k</span>)</span>
+<span id="cb19-6"><a href="appendix.html#cb19-6" aria-hidden="true" tabindex="-1"></a>    * oder:</span>
+<span id="cb19-7"><a href="appendix.html#cb19-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">replace</span> earlybird = .<span class="kw">k</span> <span class="kw">if</span> earlybird == -4</span>
+<span id="cb19-8"><a href="appendix.html#cb19-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">replace</span> earlybird = .<span class="kw">d</span> <span class="kw">if</span> earlybird == -9</span>
+<span id="cb19-9"><a href="appendix.html#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> earlybird,<span class="fu">m</span></span></code></pre></div>
+<pre><code>r(601);
+
+end of do-file
+r(601);</code></pre>
+</div>
+<div id="foreach" class="section level3" number="10.2.5">
+<h3><span class="header-section-number">10.2.5</span> Fortgeschrittene Programmierung: foreach-Schleife</h3>
+<p><code>help foreach</code> zeigt alle Möglichkeiten für eine <code>foreach</code>-Schleife. Da wir hier Variablen bearbeiten möchten, ist <code>foreach v of varlist</code> die richtige Option.
+Siehe <a href="egen.html#listexpl">hier</a> die Erklärungen zu <code>varlist</code>, <code>numlist</code> usw.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb21-1"><a href="appendix.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">foreach</span> v <span class="kw">of</span> <span class="kw">varlist</span> earlybird pets {</span>
+<span id="cb21-2"><a href="appendix.html#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">replace</span> <span class="ot">`v&#39;</span> = .<span class="kw">k</span> <span class="kw">if</span> <span class="ot">`v&#39;</span> == -4</span>
+<span id="cb21-3"><a href="appendix.html#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">replace</span> <span class="ot">`v&#39;</span> = .<span class="kw">d</span> <span class="kw">if</span> <span class="ot">`v&#39;</span> == -9   </span>
+<span id="cb21-4"><a href="appendix.html#cb21-4" aria-hidden="true" tabindex="-1"></a>    lab val <span class="ot">`v&#39;</span> dummy_lab</span>
+<span id="cb21-5"><a href="appendix.html#cb21-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb21-6"><a href="appendix.html#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="co">// oder</span></span>
+<span id="cb21-7"><a href="appendix.html#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="kw">foreach</span> v <span class="kw">of</span> <span class="kw">varlist</span> earlybird pets {</span>
+<span id="cb21-8"><a href="appendix.html#cb21-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">recode</span>  <span class="ot">`v&#39;</span> (-9=.<span class="kw">d</span>) (-4=.<span class="kw">k</span>)</span>
+<span id="cb21-9"><a href="appendix.html#cb21-9" aria-hidden="true" tabindex="-1"></a>    lab val <span class="ot">`v&#39;</span> dummy_lab</span>
+<span id="cb21-10"><a href="appendix.html#cb21-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>r(601);
+
+end of do-file
+r(601);</code></pre>
+</div>
+<div id="exportieren" class="section level3" number="10.2.6">
+<h3><span class="header-section-number">10.2.6</span> exportieren</h3>
+<div class="sourceCode" id="cb23"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb23-1"><a href="appendix.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">compress</span> <span class="co">// variablen auf minimale speichergröße bringen</span></span>
+<span id="cb23-2"><a href="appendix.html#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="kw">save</span> <span class="st">&quot;Datensatz_ready.dta&quot;</span>, <span class="kw">replace</span></span></code></pre></div>
+<p>Dieser Datensatz kann mit <code>use</code> geladen werden.</p>
+</div>
+<div id="übung-1" class="section level3" number="10.2.7">
+<h3><span class="header-section-number">10.2.7</span> Übung</h3>
+<p>Lesen Sie die <code>Rohdaten2.xlsx</code> ein und hinterlegen Sie folgende Labels und Missing-Codes:</p>
+<table class="table table-condensed" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Variablenname
+</th>
+<th style="text-align:left;">
+Beschreibung
+</th>
+<th style="text-align:left;">
+Details
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;font-family: monospace;">
+id
+</td>
+<td style="text-align:left;">
+Befragten-Identifikationsnummer
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-family: monospace;">
+x1
+</td>
+<td style="text-align:left;">
+Geschlecht
+</td>
+<td style="text-align:left;">
+0 = Frau, 1 = Mann, -4 keine Angabe
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-family: monospace;">
+x2
+</td>
+<td style="text-align:left;">
+Haustiere?
+</td>
+<td style="text-align:left;">
+0 = nein, 1 = ja, -4 keine Angabe, -9 Datenfehler
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-family: monospace;">
+x3
+</td>
+<td style="text-align:left;">
+Frühaufsteher?
+</td>
+<td style="text-align:left;">
+0 = nein, 1 = ja, -4 keine Angabe, -9 Datenfehler
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-family: monospace;">
+x4
+</td>
+<td style="text-align:left;">
+5er Likert-Skala: Stata macht Spaß
+</td>
+<td style="text-align:left;">
+0 = trifft überhaupt nicht zu
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-family: monospace;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+4 = tifft voll zu
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="adopath" class="section level2" number="10.3">
+<h2><span class="header-section-number">10.3</span> <code>adopath</code></h2>
+<p>Mit <code>adopath</code> können wir die Ordner anzeigen, wo die <code>ado</code>s liegen.
+Mit <code>which</code> können wir den Speicherort eines <code>ado</code> ansehen:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb24-1"><a href="appendix.html#cb24-1" aria-hidden="true" tabindex="-1"></a>which mdesc</span></code></pre></div>
+<pre><code>c:\ado\plus\m\mdesc.ado
+*! mdesc Version 2.1 dan_blanchette@unc.edu 25Aug2011 
+*!      Rose Anne Medeiros            |           Dan Blanchette
+*! Department of Sociology, Rice Univ | the carolina population center, unc-ch</code></pre>
+<p>Mit <code>adopath ++ PFAD</code> können wir <code>ado</code> aus zusätzlichen Ordner verwenden:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb26-1"><a href="appendix.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">adopath</span> ++ <span class="st">&quot;D:\oCloud\Home-Cloud\Lehre\BIBB\StataBIBB1\Stata_Einführung_BIBB/u&quot;</span></span></code></pre></div>
+</div>
+<div id="log-file" class="section level2" number="10.4">
+<h2><span class="header-section-number">10.4</span> log file</h2>
+<p>Mit log-Files können wir alles mitprotokollieren, was im Outputfenster passiert. Wir starten ein log-File mit <code>log using dateiname</code>. Ab dann wird alles in dieser Datei mitgeschrieben, was wir uns im Outputfenster anzeigen lassen:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb27-1"><a href="appendix.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span> <span class="kw">using</span> <span class="st">&quot;C:\Pfad\zum\Ordner/log/logfile.txt&quot;</span>, <span class="bn">text</span> <span class="kw">replace</span> <span class="co">// mit replace wird die Datei ggf überschrieben</span></span>
+<span id="cb27-2"><a href="appendix.html#cb27-2" aria-hidden="true" tabindex="-1"></a>* ------------------------------------------------ *</span>
+<span id="cb27-3"><a href="appendix.html#cb27-3" aria-hidden="true" tabindex="-1"></a>* Alter, Bildung, Geschlecht <span class="kw">in</span> der ETB 2018</span>
+<span id="cb27-4"><a href="appendix.html#cb27-4" aria-hidden="true" tabindex="-1"></a>* ------------------------------------------------ *</span>
+<span id="cb27-5"><a href="appendix.html#cb27-5" aria-hidden="true" tabindex="-1"></a>glo <span class="kw">data</span> <span class="st">&quot;D:\Datenspeicher\BIBB_BAuA/&quot;</span></span>
+<span id="cb27-6"><a href="appendix.html#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="st">&quot;${data}/BIBBBAuA_2018_suf1.0.dta&quot;</span>, <span class="kw">clear</span></span>
+<span id="cb27-7"><a href="appendix.html#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="kw">mvdecode</span> zpalter, mv(9999)    <span class="co">// dieses log enthält auch kommentare</span></span>
+<span id="cb27-8"><a href="appendix.html#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="kw">mvdecode</span> m1202,mv(-1)   <span class="co">// noch einen </span></span>
+<span id="cb27-9"><a href="appendix.html#cb27-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-10"><a href="appendix.html#cb27-10" aria-hidden="true" tabindex="-1"></a>* ------------------------ *</span>
+<span id="cb27-11"><a href="appendix.html#cb27-11" aria-hidden="true" tabindex="-1"></a>* Auswertung</span>
+<span id="cb27-12"><a href="appendix.html#cb27-12" aria-hidden="true" tabindex="-1"></a>* ------------------------ *</span>
+<span id="cb27-13"><a href="appendix.html#cb27-13" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> m1202 S1</span>
+<span id="cb27-14"><a href="appendix.html#cb27-14" aria-hidden="true" tabindex="-1"></a>su zpalter </span>
+<span id="cb27-15"><a href="appendix.html#cb27-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-16"><a href="appendix.html#cb27-16" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span> <span class="kw">close</span></span></code></pre></div>
+<p><img src="pics/10_logfile.png" width="100%" height="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="beobachtungen-markieren-mit-gen-if" class="section level2" number="10.5">
+<h2><span class="header-section-number">10.5</span> Beobachtungen markieren mit <code>gen</code> &amp; <code>if</code></h2>
+<p>Die Kombination aus <code>gen</code> und <code>if</code> hilft uns, wenn wir eine Variable nur für einige Zeilen erstellen wollen. Das hilft insbesondere, wenn wir bestimmte Beobachtungen markieren wollen. Beispielsweise Frauen (<code>S1</code> = 1), die einer Nebentätigkeit (<code>nt</code> = 1) nachgehen:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb28-1"><a href="appendix.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> nt_frauen = 1 <span class="kw">if</span> S1 == 1 &amp; nt == 1</span></code></pre></div>
+<pre><code>(19,136 missing values generated)</code></pre>
+<p>Nur wenn beide Bedingungen zutreffen, wird unter <code>nt_frauen</code> eine 1 abgelegt:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb30-1"><a href="appendix.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="ot">list</span> S1 nt nt_frauen <span class="kw">in</span> 19671/19675, <span class="kw">clean</span> <span class="kw">noobs</span> abb(12) </span></code></pre></div>
+<pre><code>          S1         nt   nt_frauen  
+    weiblich   keine Ne           .  
+     mÃ¤nnlic   mindeste           1  
+    weiblich   keine Ne           .  
+     mÃ¤nnlic   mindeste           1  
+    weiblich   keine Ne           .  </code></pre>
+<p>In der alltäglichen Arbeit hilft das manchmal, wenn man spezielle Fälle immer wieder aufrufen möchte und nicht immer die “ausgeschriebenen” <code>if</code>-Bedingungen verwenden möchte.</p>
+</div>
+<div id="index-bilden" class="section level2" number="10.6">
+<h2><span class="header-section-number">10.6</span> Index bilden</h2>
+<p>In Kapitel 5 hatten wir mit <a href="gen.html#recode"><code>recode</code></a> eine Möglichkeit kennen gelernt, wie Codierungen verändert werden können.
+Ein typischer Fall ist das “Umdrehen” von Skalen in einer Item-Batterie, sodass in beiden/allen Variablen höhere Werte auch inhaltlich das gleiche bedeuten.
+In der BIBB/BAuA 2018 könnten wir bspw. einen Index für die Autonomie/Einbindung am Arbeitsplatz erstellen, indem wir die Antworten aus den folgenden beiden Fragen addieren:
++ <code>F700_02</code>: Wie häufig kommt es vor, dass Sie Ihre eigene Arbeit selbst planen und einteilen können?
++ <code>F700_08</code>: Wie oft kommt es vor, dass Sie nicht rechtzeitig über einschneidende Entscheidungen, Veränderungen oder Pläne für die Zukunft informiert werden?</p>
+<p>Hier wäre es also so, dass der niedrigste Wert (1 = Häufig) jeweils etwas anderes bedeutet. Im Fall von <code>F700_08</code>
+Variable betrachten, sehen wir</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb32-1"><a href="appendix.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="kw">recode</span> F700_02 (4=1) (3=2) (2=3) (1=4), into(F700_02_rev)</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb33-1"><a href="appendix.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> <span class="fu">index</span> = (F700_02_rev + F700_10)/2</span></code></pre></div>
+<blockquote>
+<p><span style="color:#FFA500FF"><i>Inhaltlich ist das sicher nicht 100% überzeugend - hier geht’s um die technische Umsetzung</i></span></p>
+</blockquote>
+<hr />
+<p><strong>Tipp</strong></p>
+<p>Man kann in diesem speziellen Fall einer “umgedrehten” Skala können wir auch einfach “höchster Wert + 1 minus Variablenwert rechnen.” Im Fall von <code>F700_02</code> ist der höchste Wert 4, also würden wir 4-<code>F700_02</code> rechnen:</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb34-1"><a href="appendix.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> F700_02_rev2 = 5 - F700_02 </span></code></pre></div>
+<hr />
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="lit.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Stata Tables BIBB.pdf", "Stata Tables BIBB.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
