@@ -48,7 +48,6 @@ svy: tabulate S1 , col count format(%10.3f)
 set linesize 100
 qui use "D:\Datenspeicher\BIBB_BAuA/BIBBBAuA_2018_suf1.0.dta", clear
 svyset _n [pweight=gew2018]
-svy: tabulate S1 , col count
 svy: tabulate S1 , col count format(%10.3f)
 ```
 
