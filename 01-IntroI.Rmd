@@ -3,8 +3,8 @@
 
 ```{r setup1, echo = F, message=F, warning = F}
 if(Sys.getenv("USERNAME") == "Filser" ) .libPaths("D:/R-library4")  # set library
-stataexe <- "C:/Program Files (x86)/Stata13/StataSE-64.exe"
-# stataexe <- "C:/Program Files/Stata16/StataSE-64.exe"
+# stataexe <- "C:/Program Files (x86)/Stata13/StataSE-64.exe"
+stataexe <- "C:/Program Files/Stata16/StataSE-64.exe"
 knitr::opts_chunk$set(engine.path=list(stata=stataexe))
 library(Statamarkdown)
 library(tidyverse)
@@ -116,29 +116,6 @@ Wenn das funktioniert hat, dann sehen wir im Fenster rechts eine Variablenübers
 ```{r datensatz_eingelesen, echo = F,out.width = "90%",fig.height= 4, fig.align="center"}
 knitr::include_graphics("./pics/01_Stata8_Datensatz.PNG")
 ```
-
-## Daten, Codebücher, Fragebogen
-
-
-Die Daten des hier geladenen Datensatzes enthalten die Angaben von 20012 Befragten der BIBB/BAuA-Erwerbstätigenbefragung 2018. Die BIBB/BAuA ist eine repräsentativbefragung von in Deutschland zu Arbeit und Beruf im Wandel und Erwerb und Verwertung beruflicher Qualifikation.
-
-Das heißt, die hier geladenen Daten beruhen auf standardisierten Interviews. Derartige Datensätze werden in der Regel zusammen mit einem Codebuch, Methodenreport und dem Fragenkatalog veröffentlicht. Im Fragebogen der BIBB/BAuA 2018 finden wir den exakten Wortlaut der Fragen:
-
-```{r Fragenb, echo = F,out.width = "90%",fig.height= 3, fig.align="center",dpi = 600}
-knitr::include_graphics("./pics/01_Fragebogen.PNG")
-```
-
-Hier sind auch die Anweisungen an die Interviewenden vermerkt, z.B. dass die Vorgaben zum Schichtmodell zunächst nicht vorgelesen werden sollen. Außerdem werden im Methodenbericht weitere Variablen vorgestellt, die bereits im Datensatz enthalten sind, beispielsweise das Alter der Befragten, der Wohnort und die berufliche Stellung:
-
-```{r 01methoden, echo = F,out.width = "90%",fig.height= 3, fig.align="center",dpi = 600}
-knitr::include_graphics("./pics/01_methodenbericht.PNG")
-```
-
-Die Antworten der Befragten werden dann im Datensatz gesammelt. Dazu werden den Antworten in der Regel Zahlencodes zugewiesen (siehe die ganz linke Spalte im Fragebogen) und so abgelegt. Stata erlaubt dann in einem zweiten Schritt, dass diese Zahlen wieder mit Wertelabeln versehen werden - dazu kommen wir später. In diesem Datensatz entspricht dann jede Zeile einer befragten Person:
-```{r codierung, echo = F,out.width = "100%",fig.height= 4, fig.align="center",dpi = 600}
-knitr::include_graphics("./pics/01_Codierung_label.PNG")
-```
-In Fragebogendokumentation finden wir Kürzel links oben, welche die Variablennamen für den Datensatz angeben.
 
 ## Überblicksbefehle
 
