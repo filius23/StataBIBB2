@@ -133,7 +133,10 @@ replace erw_hh = 3 if F1601 == 1 & F1603 == 2 // zusammenlebend, Partner*in nich
 replace erw_hh = 1 if inlist(F1600,2,3,4) // keine Partnerschaft -> auch auf 1
 *! unverheiratete werden hier nicht als Partnerschaften behandelt
 
-lab define erw_lab 1 "nicht verh./alleine lebend" 2 "verh. & 2 Erwerbspersonen im HH" 3 "verh. & 1 Erwerbsperson"
+lab define erw_lab 1 "nicht verh./alleine lebend" ///
+				   2 "verh. & 2 Erwerbspersonen im HH" ///
+				   3 "verh. & 1 Erwerbsperson"
+				   
 lab values erw_hh erw_lab
 tab erw_hh
 

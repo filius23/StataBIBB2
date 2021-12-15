@@ -15,16 +15,23 @@ tab zpalter
 	// so könnte man es auch machen:
 	gen age_cat2 = .
 	replace age_cat2 = 1 if zpalter < 18
-	replace age_cat2 = 2 if zpalter < 25
+	replace age_cat2 = 2 if inrange(zpalter,19,25)
 		
 egen age_cat = cut(zpalter), at(15 18 35 60 100 )  label
-tab age_cat
 
+
+tab age_cat
+tab age_cat, nol
 // die Labels könnten wir anpassen:
 describe age_cat
-labelbook age_cat
-label def age_cat 0 "15 bis 17" 1 "18 bis 34" 2 "45 bis 59" 3 "60 bis max", replace
+* labelbook age_cat
+label define age_cat 0 "15 bis 17" 1 "18 bis 34" 2 "45 bis 59" 3 "60 bis max", modify
 tab age_cat
+
+// Maximalwert der Variable in numlist übernehmen:
+su zpalter
+return list
+egen age_cat3 = cut(zpalter), at(9 15(5)65 `r(max)')  label
 
 // so ginge es auch:
 	tabstat zpalter, s(mean)
@@ -50,6 +57,9 @@ d ao*
 * help
 * ---------------------- *
 help egen 
+
+ * rownonmiss() 
+
 // numlist
 // varlist vs varname
 // #
@@ -67,11 +77,13 @@ by S1: egen mean_byS1 = mean(zpalter) // Fehler muss erst sortiert werden
 * 	by S1: egen mean_byS1 = mean(zpalter)
 
 * Möglichkeit 2: bysort
-bysort S1: egen mean_byS1 = mean(zpalter)
+bysort S1 m1202: egen mean_byS1 = mean(zpalter)
+
+bysort S1: tab m1202
 
 sort intnr // wieder die ursprüngliche Sortierung herstellen
 
 *check: erste 10 Fälle ansehen 
-list S1 zpalter durchschnittsalter mean_byS1 in 1/10
+list S1 zpalter mean_byS1 in 1/10
 
 

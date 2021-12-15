@@ -13,6 +13,7 @@ svy: tabulate S1 , col count format(%8.2f)
 tabulate S1 [fweight=gew2018_hr17] // Fehlermeldung
 tabulate S1 [fweight=round(gew2018_hr17)] // runden führt evtl. zu Abweichung 
 
+tabulate S1 [fweight=round(gew2018_hr17*100)] // runden führt evtl. zu Abweichung 
 
 
 * -------------------------------- *

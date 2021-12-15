@@ -13,8 +13,9 @@ mvdecode F518_SUF, mv( 99995/  99999)
 *1 Bilden Sie mit Hilfe von `egen` verschiedene Einkommensklassen (bspw. ab 0EUR in 1000EUR-Schritten bis 72000EUR). Nutzen Sie die `numlist`-Funktion mit `(start(intervall)stop)`. 
 * ---------------- *
 
-egen inc_cat = cut()
+* egen inc_cat = cut()
 egen inc_cat = cut(F518_SUF), at(0(1000)5000 72000)  label
+
 
 tab inc_cat
 tab inc_cat, nolabel
@@ -28,7 +29,7 @@ tab inc_cat
 * ---------------- *
 describe F21
 describe F21*
-describe F21?
+describe F21????
 describe F2*4
 describe F2?4
 

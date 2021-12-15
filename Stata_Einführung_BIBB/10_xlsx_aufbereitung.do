@@ -8,10 +8,10 @@
 * 1. Schritt: Datenimport aus Excel-Datei
 
 * file -> import -> excel spreadsheet und dann Befehl kopieren aus Ausgabefenster
-import excel "D:\oCloud\Home-Cloud\Lehre\BIBB\StataBIBB1\Stata_Einführung_BIBB\Rohdaten.xlsx", sheet("Sheet1") firstrow case(lower) clear
+import excel "D:\oCloud\Home-Cloud\Lehre\BIBB\StataBIBB2\Stata_Einführung_BIBB\Rohdaten.xlsx", sheet("Sheet1") firstrow case(lower) clear
 
 // oder:
-cd "D:\oCloud\Home-Cloud\Lehre\BIBB\StataBIBB1\Stata_Einführung_BIBB\"
+cd "D:\oCloud\Home-Cloud\Lehre\BIBB\StataBIBB2\Stata_Einführung_BIBB\"
 import excel "Rohdaten.xlsx", sheet("Sheet1") firstrow case(lower) clear
 
 * Überblick gewinnen
@@ -31,9 +31,10 @@ list
 	 x3 		Frühaufsteher?
 					0 = nein, 1 =  ja, -4  keine Angabe, -9 Datenfehler
 	 
-	 x4			5er Likert-Skala: Stata macht Spaß
-					1 = trifft überhaupt nicht zu
-					5 = tifft 	voll zu
+	 x4	,		indx1,
+				1 = trifft überhaupt nicht zu, 5 = tifft voll zu,
+	 x5	,		5er Likert-Skala, 
+				1 = tifft voll zu,  5 = trifft überhaupt nicht zu
 				
 */
 * -------------------------------- *
@@ -95,6 +96,10 @@ compress // variablen auf minimale speichergröße bringen
 save "Datensatz_ready.dta", replace
 	
 
+	
+	
+	
+	
 * -------------------------------- *
 * probanden mit datenfehler rausfiltern
 
