@@ -321,7 +321,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.2.5" data-path="appendix.html"><a href="appendix.html#foreach"><i class="fa fa-check"></i><b>10.2.5</b> Fortgeschrittene Programmierung: foreach-Schleife</a></li>
 <li class="chapter" data-level="10.2.6" data-path="appendix.html"><a href="appendix.html#index-bilden"><i class="fa fa-check"></i><b>10.2.6</b> Index bilden</a></li>
 <li class="chapter" data-level="10.2.7" data-path="appendix.html"><a href="appendix.html#exportieren"><i class="fa fa-check"></i><b>10.2.7</b> exportieren</a></li>
-<li class="chapter" data-level="10.2.8" data-path="appendix.html"><a href="appendix.html#übung"><i class="fa fa-check"></i><b>10.2.8</b> Übung</a></li>
 </ul></li>
 <li class="chapter" data-level="10.3" data-path="appendix.html"><a href="appendix.html#adopath"><i class="fa fa-check"></i><b>10.3</b> <code>adopath</code></a></li>
 <li class="chapter" data-level="10.4" data-path="appendix.html"><a href="appendix.html#log-file"><i class="fa fa-check"></i><b>10.4</b> log file</a></li>
@@ -448,22 +447,22 @@ In der Erwerbstätigenbefragung können wir das mit <code>gew2018_hr17</code>, d
 <span id="cb11-5"><a href="appendix.html#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="st">* Überblick gewinnen</span></span>
 <span id="cb11-6"><a href="appendix.html#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="st">list</span></span>
 <span id="cb11-7"><a href="appendix.html#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="st">browse</span></span></code></pre></div>
-<pre><code>       id   x1   x2   x3   x4  
-  1.    1    1    0   -9    2  
-  2.    2   -4   -4    1    1  
-  3.    3    2    0   -4    3  
-  4.    4    1   -4   -9    3  
-  5.    5    2   -9    1    2  
-  6.    6   -4    1   -9    1  
-  7.    7    1   -4    1    5  
-  8.    8   -4   -9    0    4  
-  9.    9   -4   -4    1    2  
- 10.   10   -4    0   -4    5  
- 11.   11   -4    1   -4    1  
- 12.   12    2   -4   -9    5  
- 13.   13   -4   -9   -9    5  
- 14.   14    2   -4   -9    1  
- 15.   15   -4   -4   -9    3  </code></pre>
+<pre><code>       id   x1   x2   x3   x4   x5  
+  1.    1    2    1    1    4    3  
+  2.    2    1   -9   -9    2    5  
+  3.    3   -4    1    1    5    .  
+  4.    4   -4   -9   -9    2    1  
+  5.    5   -4   -4    0    2    5  
+  6.    6   -4   -9    1    5    2  
+  7.    7   -4    1   -4    2    3  
+  8.    8    1   -9    0    4    1  
+  9.    9    1   -9   -9    5    3  
+ 10.   10   -4   -4    0    4    3  
+ 11.   11    1   -4    0    3    .  
+ 12.   12   -4    0   -9    3    2  
+ 13.   13    2   -4    1    4    2  
+ 14.   14   -4   -4   -9    4    5  
+ 15.   15    1    0   -9    2    5  </code></pre>
 <p>Hier eine kleine (Fantasie-)Doku zum Datensatz:</p>
 <table class="table table-condensed" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
@@ -574,24 +573,31 @@ indx2 - 5er Likert-Skala:
 <span id="cb13-3"><a href="appendix.html#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="kw">rename</span> x3 earlybird</span>
 <span id="cb13-4"><a href="appendix.html#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="kw">rename</span> x4 indx1</span>
 <span id="cb13-5"><a href="appendix.html#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="kw">rename</span> x5 indx5</span></code></pre></div>
-<pre><code>variable x5 not found
-r(111);
-
-end of do-file
-r(111);</code></pre>
+<pre><code>       id   gender   pets   earlyb~d   indx1   indx5  
+  1.    1        2      1          1       4       3  
+  2.    2        1     -9         -9       2       5  
+  3.    3       -4      1          1       5       .  
+  4.    4       -4     -9         -9       2       1  
+  5.    5       -4     -4          0       2       5  
+  6.    6       -4     -9          1       5       2  
+  7.    7       -4      1         -4       2       3  
+  8.    8        1     -9          0       4       1  
+  9.    9        1     -9         -9       5       3  
+ 10.   10       -4     -4          0       4       3  
+ 11.   11        1     -4          0       3       .  
+ 12.   12       -4      0         -9       3       2  
+ 13.   13        2     -4          1       4       2  
+ 14.   14       -4     -4         -9       4       5  
+ 15.   15        1      0         -9       2       5  </code></pre>
 </div>
 <div id="variablenbeschreibung-label-variable" class="section level3" number="10.2.3">
 <h3><span class="header-section-number">10.2.3</span> Variablenbeschreibung: <code>label variable</code></h3>
 <div class="sourceCode" id="cb15"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb15-1"><a href="appendix.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="kw">variable</span> gender         <span class="st">&quot;Geschlecht&quot;</span></span>
 <span id="cb15-2"><a href="appendix.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="kw">variable</span> pets           <span class="st">&quot;Haustierbesitz?&quot;</span></span>
 <span id="cb15-3"><a href="appendix.html#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="kw">variable</span> earlybird    <span class="st">&quot;Frühaufsteher&quot;</span></span>
-<span id="cb15-4"><a href="appendix.html#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="kw">rename</span> x4 indx1           <span class="st">&quot;index1&quot;</span></span>
-<span id="cb15-5"><a href="appendix.html#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="kw">rename</span> x5 indx5           <span class="st">&quot;index2&quot;</span></span></code></pre></div>
-<pre><code>variable x5 not found
-r(111);
-
-end of do-file
-r(111);</code></pre>
+<span id="cb15-4"><a href="appendix.html#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="kw">variable</span> indx1           <span class="st">&quot;index1&quot;</span></span>
+<span id="cb15-5"><a href="appendix.html#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="kw">variable</span> indx5           <span class="st">&quot;index2&quot;</span></span></code></pre></div>
+<pre><code></code></pre>
 </div>
 <div id="werte-labeln-label-values" class="section level3" number="10.2.4">
 <h3><span class="header-section-number">10.2.4</span> Werte labeln <code>label values</code></h3>
@@ -605,10 +611,26 @@ r(111);</code></pre>
 <span id="cb17-7"><a href="appendix.html#cb17-7" aria-hidden="true" tabindex="-1"></a>lab val gender gend_lab</span>
 <span id="cb17-8"><a href="appendix.html#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> gender</span>
 <span id="cb17-9"><a href="appendix.html#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> gender, <span class="fu">m</span></span></code></pre></div>
-<pre><code>r(111);
+<pre><code>(8 real changes made, 8 to missing)
 
-end of do-file
-r(111);</code></pre>
+
+
+
+ Geschlecht |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          1 |          5       71.43       71.43
+          2 |          2       28.57      100.00
+------------+-----------------------------------
+      Total |          7      100.00
+
+
+  Geschlecht |      Freq.     Percent        Cum.
+-------------+-----------------------------------
+        Frau |          5       33.33       33.33
+        Mann |          2       13.33       46.67
+keine Angabe |          8       53.33      100.00
+-------------+-----------------------------------
+       Total |         15      100.00</code></pre>
 <p>Für die weiteren Variablen können wir ähnlich vorgehen:</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb19-1"><a href="appendix.html#cb19-1" aria-hidden="true" tabindex="-1"></a>lab def dummy_lab 0 <span class="st">&quot;Nein&quot;</span> 1 <span class="st">&quot;Ja&quot;</span> .<span class="kw">k</span> <span class="st">&quot;keine Angabe&quot;</span> .<span class="kw">d</span> <span class="st">&quot;Datenfehler&quot;</span></span>
 <span id="cb19-2"><a href="appendix.html#cb19-2" aria-hidden="true" tabindex="-1"></a>lab val earlybird dummy_lab</span>
@@ -619,10 +641,18 @@ r(111);</code></pre>
 <span id="cb19-7"><a href="appendix.html#cb19-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">replace</span> earlybird = .<span class="kw">k</span> <span class="kw">if</span> earlybird == -4</span>
 <span id="cb19-8"><a href="appendix.html#cb19-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">replace</span> earlybird = .<span class="kw">d</span> <span class="kw">if</span> earlybird == -9</span>
 <span id="cb19-9"><a href="appendix.html#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> earlybird,<span class="fu">m</span></span></code></pre></div>
-<pre><code>r(111);
+<pre><code>(earlybird: 7 changes made)
 
-end of do-file
-r(111);</code></pre>
+
+Frühaufstehe |
+           r |      Freq.     Percent        Cum.
+-------------+-----------------------------------
+        Nein |          4       26.67       26.67
+          Ja |          4       26.67       53.33
+ Datenfehler |          6       40.00       93.33
+keine Angabe |          1        6.67      100.00
+-------------+-----------------------------------
+       Total |         15      100.00</code></pre>
 </div>
 <div id="foreach" class="section level3" number="10.2.5">
 <h3><span class="header-section-number">10.2.5</span> Fortgeschrittene Programmierung: foreach-Schleife</h3>
@@ -638,35 +668,12 @@ Siehe <a href="egen.html#listexpl">hier</a> die Erklärungen zu <code>varlist</c
 <span id="cb21-8"><a href="appendix.html#cb21-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">recode</span>  <span class="ot">`v&#39;</span> (-9=.<span class="kw">d</span>) (-4=.<span class="kw">k</span>)</span>
 <span id="cb21-9"><a href="appendix.html#cb21-9" aria-hidden="true" tabindex="-1"></a>    lab val <span class="ot">`v&#39;</span> dummy_lab</span>
 <span id="cb21-10"><a href="appendix.html#cb21-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<pre><code>r(111);
-
-end of do-file
-r(111);</code></pre>
+<pre><code>(earlybird: 7 changes made)
+(pets: 10 changes made)</code></pre>
 </div>
 <div id="index-bilden" class="section level3" number="10.2.6">
 <h3><span class="header-section-number">10.2.6</span> Index bilden</h3>
-<p>Hier wäre es also so, dass der niedrigste Wert (1 = Häufig) jeweils etwas anderes bedeutet. Im Fall von <code>F700_08</code>
-Variable betrachten, sehen wir</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb23-1"><a href="appendix.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">recode</span> F700_02 (4=1) (3=2) (2=3) (1=4), into(F700_02_rev)</span></code></pre></div>
-<div class="sourceCode" id="cb24"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb24-1"><a href="appendix.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> <span class="fu">index</span> = (F700_02_rev + F700_10)/2</span></code></pre></div>
-<blockquote>
-<p><span style="color:#FFA500FF"><i>Inhaltlich ist das sicher nicht 100% überzeugend - hier geht’s um die technische Umsetzung</i></span></p>
-</blockquote>
-<hr />
-<p><strong>Tipp</strong></p>
-<p>Man kann in diesem speziellen Fall einer “umgedrehten” Skala können wir auch einfach “höchster Wert + 1 minus Variablenwert rechnen.” Im Fall von <code>F700_02</code> ist der höchste Wert 4, also würden wir 4-<code>F700_02</code> rechnen:</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb25-1"><a href="appendix.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> F700_02_rev2 = 5 - F700_02 </span></code></pre></div>
-<hr />
-</div>
-<div id="exportieren" class="section level3" number="10.2.7">
-<h3><span class="header-section-number">10.2.7</span> exportieren</h3>
-<div class="sourceCode" id="cb26"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb26-1"><a href="appendix.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">compress</span> <span class="co">// variablen auf minimale speichergröße bringen</span></span>
-<span id="cb26-2"><a href="appendix.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="kw">save</span> <span class="st">&quot;Datensatz_ready.dta&quot;</span>, <span class="kw">replace</span></span></code></pre></div>
-<p>Dieser Datensatz kann mit <code>use</code> geladen werden.</p>
-</div>
-<div id="übung" class="section level3" number="10.2.8">
-<h3><span class="header-section-number">10.2.8</span> Übung</h3>
-<p>Lesen Sie die <code>Rohdaten2.xlsx</code> ein und hinterlegen Sie folgende Labels und Missing-Codes:</p>
+<p>Um jetzt einen Index aus <code>indx1</code> und <code>indx2</code> zu bilden, müssen wir zuerst eine der beiden “umdrehen.” Zur Erinnerung:</p>
 <table class="table table-condensed" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -682,49 +689,6 @@ Details
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;font-family: monospace;">
-id
-</td>
-<td style="text-align:left;">
-Befragten-Identifikationsnummer
-</td>
-<td style="text-align:left;">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;font-family: monospace;">
-x1
-</td>
-<td style="text-align:left;">
-Geschlecht
-</td>
-<td style="text-align:left;">
-0 = Frau, 1 = Mann, -4 keine Angabe
-</td>
-</tr>
-<tr>
-<td style="text-align:left;font-family: monospace;">
-x2
-</td>
-<td style="text-align:left;">
-Haustiere?
-</td>
-<td style="text-align:left;">
-0 = nein, 1 = ja, -4 keine Angabe, -9 Datenfehler
-</td>
-</tr>
-<tr>
-<td style="text-align:left;font-family: monospace;">
-x3
-</td>
-<td style="text-align:left;">
-Frühaufsteher?
-</td>
-<td style="text-align:left;">
-0 = nein, 1 = ja, -4 keine Angabe, -9 Datenfehler
-</td>
-</tr>
 <tr>
 <td style="text-align:left;font-family: monospace;">
 x4
@@ -767,48 +731,154 @@ indx2 - 5er Likert-Skala:
 </tr>
 </tbody>
 </table>
+<p>Hier drehen wir also <code>indx1</code> um:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb23-1"><a href="appendix.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> indx1_rev = 6 - indx1  <span class="co">// (max+1) - indexwert</span></span>
+<span id="cb23-2"><a href="appendix.html#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="ot">list</span> indx*, abbreviate(10) </span></code></pre></div>
+<pre><code>     | indx1   indx2   indx1_rev |
+     |---------------------------|
+  1. |     4       3           2 |
+  2. |     2       5           4 |
+  3. |     5       .           1 |
+  4. |     2       1           4 |
+  5. |     2       5           4 |
+     |---------------------------|
+  6. |     5       2           1 |
+  7. |     2       3           4 |
+  8. |     4       1           2 |
+  9. |     5       3           1 |
+ 10. |     4       3           2 |
+     |---------------------------|
+ 11. |     3       .           3 |
+ 12. |     3       2           3 |
+ 13. |     4       2           2 |
+ 14. |     4       5           2 |
+ 15. |     2       5           4 |
+     +---------------------------+</code></pre>
+<p>Damit können wir jetzt zum eigentlichen Index kommen.
+Die einfachste Möglichkeit ist einfach mit <code>gen</code></p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb25-1"><a href="appendix.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> <span class="fu">index</span> = (indx1_rev + indx2)/2 <span class="co">// !missings</span></span>
+<span id="cb25-2"><a href="appendix.html#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="ot">list</span> ind*, abbreviate(15) </span></code></pre></div>
+<pre><code>(2 missing values generated)
+
+     +-----------------------------------+
+     | indx1   indx2   indx1_rev   index |
+     |-----------------------------------|
+  1. |     4       3           2     2.5 |
+  2. |     2       5           4     4.5 |
+  3. |     5       .           1       . |
+  4. |     2       1           4     2.5 |
+  5. |     2       5           4     4.5 |
+     |-----------------------------------|
+  6. |     5       2           1     1.5 |
+  7. |     2       3           4     3.5 |
+  8. |     4       1           2     1.5 |
+  9. |     5       3           1       2 |
+ 10. |     4       3           2     2.5 |
+     |-----------------------------------|
+ 11. |     3       .           3       . |
+ 12. |     3       2           3     2.5 |
+ 13. |     4       2           2       2 |
+ 14. |     4       5           2     3.5 |
+ 15. |     2       5           4     4.5 |
+     +-----------------------------------+</code></pre>
+<p>Hier werden also in allen Zeilen, in denen (mind.) ein Wert Missing, also <code>.</code>, ist im Summenindex auch ein Missing ausgegeben.</p>
+<p>Wollen wir das nicht, können wir <code>rowmean()</code> aus <code>egen</code> verwenden:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb27-1"><a href="appendix.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">egen</span> indexb = <span class="fu">rowmean</span>(indx1_rev indx2)  </span>
+<span id="cb27-2"><a href="appendix.html#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="ot">list</span> ind*, abbreviate(15) </span></code></pre></div>
+<pre><code>     | indx1   indx2   indx1_rev   index   indexb |
+     |--------------------------------------------|
+  1. |     4       3           2     2.5      2.5 |
+  2. |     2       5           4     4.5      4.5 |
+  3. |     5       .           1       .        1 |
+  4. |     2       1           4     2.5      2.5 |
+  5. |     2       5           4     4.5      4.5 |
+     |--------------------------------------------|
+  6. |     5       2           1     1.5      1.5 |
+  7. |     2       3           4     3.5      3.5 |
+  8. |     4       1           2     1.5      1.5 |
+  9. |     5       3           1       2        2 |
+ 10. |     4       3           2     2.5      2.5 |
+     |--------------------------------------------|
+ 11. |     3       .           3       .        3 |
+ 12. |     3       2           3     2.5      2.5 |
+ 13. |     4       2           2       2        2 |
+ 14. |     4       5           2     3.5      3.5 |
+ 15. |     2       5           4     4.5      4.5 |
+     +--------------------------------------------+</code></pre>
+<p>Häufig ist aber wahrscheinlich eine Zwischenlösung das Ziel, d.h. wir wollen vllt <code>rowmean()</code> nur anwenden, wenn eine Mindestanzahl an gültigen Werten vorliegt oder eine Höchstzahl an fehlenden Werten.
+Die Zahl der Missings in bestimmten Variablen können wir mit <code>rowmiss()</code> berechnen, die Zahl der gültigen Werte mit <code>rownonmiss()</code>. Anschließend können wir mit <code>if</code> eine entsprechende Einschränkung setzen:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb29-1"><a href="appendix.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">egen</span> nonmiss = <span class="fu">rownonmiss</span>(indx1_rev indx2)  </span>
+<span id="cb29-2"><a href="appendix.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="kw">egen</span> miss    =  <span class="fu">rowmiss</span>(indx1_rev indx2)</span>
+<span id="cb29-3"><a href="appendix.html#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="kw">egen</span> indexc = <span class="fu">rowmean</span>(indx1_rev indx2)  <span class="kw">if</span> miss == 2</span>
+<span id="cb29-4"><a href="appendix.html#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="ot">list</span> ind* *miss, abbreviate(15) </span></code></pre></div>
+<pre><code>     | indx1   indx2   indx1_rev   index   indexb   indexc   nonmiss   miss |
+     |----------------------------------------------------------------------|
+  1. |     4       3           2     2.5      2.5      2.5         2      0 |
+  2. |     2       5           4     4.5      4.5      4.5         2      0 |
+  3. |     5       .           1       .        1        1         1      1 |
+  4. |     2       1           4     2.5      2.5      2.5         2      0 |
+  5. |     2       5           4     4.5      4.5      4.5         2      0 |
+     |----------------------------------------------------------------------|
+  6. |     5       2           1     1.5      1.5      1.5         2      0 |
+  7. |     2       3           4     3.5      3.5      3.5         2      0 |
+  8. |     4       1           2     1.5      1.5      1.5         2      0 |
+  9. |     5       3           1       2        2        2         2      0 |
+ 10. |     4       3           2     2.5      2.5      2.5         2      0 |
+     |----------------------------------------------------------------------|
+ 11. |     3       .           3       .        3        3         1      1 |
+ 12. |     3       2           3     2.5      2.5      2.5         2      0 |
+ 13. |     4       2           2       2        2        2         2      0 |
+ 14. |     4       5           2     3.5      3.5      3.5         2      0 |
+ 15. |     2       5           4     4.5      4.5      4.5         2      0 |
+     +----------------------------------------------------------------------+</code></pre>
+</div>
+<div id="exportieren" class="section level3" number="10.2.7">
+<h3><span class="header-section-number">10.2.7</span> exportieren</h3>
+<div class="sourceCode" id="cb31"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb31-1"><a href="appendix.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="kw">compress</span> <span class="co">// variablen auf minimale speichergröße bringen</span></span>
+<span id="cb31-2"><a href="appendix.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="kw">save</span> <span class="st">&quot;Datensatz_ready.dta&quot;</span>, <span class="kw">replace</span></span></code></pre></div>
+<p>Dieser Datensatz kann mit <code>use</code> geladen werden.</p>
 </div>
 </div>
 <div id="adopath" class="section level2" number="10.3">
 <h2><span class="header-section-number">10.3</span> <code>adopath</code></h2>
 <p>Mit <code>adopath</code> können wir die Ordner anzeigen, wo die <code>ado</code>s liegen.
 Mit <code>which</code> können wir den Speicherort eines <code>ado</code> ansehen:</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb27-1"><a href="appendix.html#cb27-1" aria-hidden="true" tabindex="-1"></a>which mdesc</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb32-1"><a href="appendix.html#cb32-1" aria-hidden="true" tabindex="-1"></a>which mdesc</span></code></pre></div>
 <pre><code>c:\ado\plus\m\mdesc.ado
 *! mdesc Version 2.1 dan_blanchette@unc.edu 25Aug2011 
 *!      Rose Anne Medeiros            |           Dan Blanchette
 *! Department of Sociology, Rice Univ | the carolina population center, unc-ch</code></pre>
 <p>Mit <code>adopath ++ PFAD</code> können wir <code>ado</code> aus zusätzlichen Ordner verwenden:</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb29-1"><a href="appendix.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">adopath</span> ++ <span class="st">&quot;D:\oCloud\Home-Cloud\Lehre\BIBB\StataBIBB1\Stata_Einführung_BIBB/u&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb34-1"><a href="appendix.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="kw">adopath</span> ++ <span class="st">&quot;D:\oCloud\Home-Cloud\Lehre\BIBB\StataBIBB1\Stata_Einführung_BIBB/u&quot;</span></span></code></pre></div>
 </div>
 <div id="log-file" class="section level2" number="10.4">
 <h2><span class="header-section-number">10.4</span> log file</h2>
 <p>Mit log-Files können wir alles mitprotokollieren, was im Outputfenster passiert. Wir starten ein log-File mit <code>log using dateiname</code>. Ab dann wird alles in dieser Datei mitgeschrieben, was wir uns im Outputfenster anzeigen lassen:</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb30-1"><a href="appendix.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span> <span class="kw">using</span> <span class="st">&quot;C:\Pfad\zum\Ordner/log/logfile.txt&quot;</span>, <span class="bn">text</span> <span class="kw">replace</span> <span class="co">// mit replace wird die Datei ggf überschrieben</span></span>
-<span id="cb30-2"><a href="appendix.html#cb30-2" aria-hidden="true" tabindex="-1"></a>* ------------------------------------------------ *</span>
-<span id="cb30-3"><a href="appendix.html#cb30-3" aria-hidden="true" tabindex="-1"></a>* Alter, Bildung, Geschlecht <span class="kw">in</span> der ETB 2018</span>
-<span id="cb30-4"><a href="appendix.html#cb30-4" aria-hidden="true" tabindex="-1"></a>* ------------------------------------------------ *</span>
-<span id="cb30-5"><a href="appendix.html#cb30-5" aria-hidden="true" tabindex="-1"></a>glo <span class="kw">data</span> <span class="st">&quot;D:\Datenspeicher\BIBB_BAuA/&quot;</span></span>
-<span id="cb30-6"><a href="appendix.html#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="st">&quot;${data}/BIBBBAuA_2018_suf1.0.dta&quot;</span>, <span class="kw">clear</span></span>
-<span id="cb30-7"><a href="appendix.html#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="kw">mvdecode</span> zpalter, mv(9999)    <span class="co">// dieses log enthält auch kommentare</span></span>
-<span id="cb30-8"><a href="appendix.html#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="kw">mvdecode</span> m1202,mv(-1)   <span class="co">// noch einen </span></span>
-<span id="cb30-9"><a href="appendix.html#cb30-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-10"><a href="appendix.html#cb30-10" aria-hidden="true" tabindex="-1"></a>* ------------------------ *</span>
-<span id="cb30-11"><a href="appendix.html#cb30-11" aria-hidden="true" tabindex="-1"></a>* Auswertung</span>
-<span id="cb30-12"><a href="appendix.html#cb30-12" aria-hidden="true" tabindex="-1"></a>* ------------------------ *</span>
-<span id="cb30-13"><a href="appendix.html#cb30-13" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> m1202 S1</span>
-<span id="cb30-14"><a href="appendix.html#cb30-14" aria-hidden="true" tabindex="-1"></a>su zpalter </span>
-<span id="cb30-15"><a href="appendix.html#cb30-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-16"><a href="appendix.html#cb30-16" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span> <span class="kw">close</span></span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb35-1"><a href="appendix.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span> <span class="kw">using</span> <span class="st">&quot;C:\Pfad\zum\Ordner/log/logfile.txt&quot;</span>, <span class="bn">text</span> <span class="kw">replace</span> <span class="co">// mit replace wird die Datei ggf überschrieben</span></span>
+<span id="cb35-2"><a href="appendix.html#cb35-2" aria-hidden="true" tabindex="-1"></a>* ------------------------------------------------ *</span>
+<span id="cb35-3"><a href="appendix.html#cb35-3" aria-hidden="true" tabindex="-1"></a>* Alter, Bildung, Geschlecht <span class="kw">in</span> der ETB 2018</span>
+<span id="cb35-4"><a href="appendix.html#cb35-4" aria-hidden="true" tabindex="-1"></a>* ------------------------------------------------ *</span>
+<span id="cb35-5"><a href="appendix.html#cb35-5" aria-hidden="true" tabindex="-1"></a>glo <span class="kw">data</span> <span class="st">&quot;D:\Datenspeicher\BIBB_BAuA/&quot;</span></span>
+<span id="cb35-6"><a href="appendix.html#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="st">&quot;${data}/BIBBBAuA_2018_suf1.0.dta&quot;</span>, <span class="kw">clear</span></span>
+<span id="cb35-7"><a href="appendix.html#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="kw">mvdecode</span> zpalter, mv(9999)    <span class="co">// dieses log enthält auch kommentare</span></span>
+<span id="cb35-8"><a href="appendix.html#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="kw">mvdecode</span> m1202,mv(-1)   <span class="co">// noch einen </span></span>
+<span id="cb35-9"><a href="appendix.html#cb35-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-10"><a href="appendix.html#cb35-10" aria-hidden="true" tabindex="-1"></a>* ------------------------ *</span>
+<span id="cb35-11"><a href="appendix.html#cb35-11" aria-hidden="true" tabindex="-1"></a>* Auswertung</span>
+<span id="cb35-12"><a href="appendix.html#cb35-12" aria-hidden="true" tabindex="-1"></a>* ------------------------ *</span>
+<span id="cb35-13"><a href="appendix.html#cb35-13" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> m1202 S1</span>
+<span id="cb35-14"><a href="appendix.html#cb35-14" aria-hidden="true" tabindex="-1"></a>su zpalter </span>
+<span id="cb35-15"><a href="appendix.html#cb35-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-16"><a href="appendix.html#cb35-16" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span> <span class="kw">close</span></span></code></pre></div>
 <p><img src="pics/10_logfile.png" width="100%" height="100%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="beobachtungen-markieren-mit-gen-if" class="section level2" number="10.5">
 <h2><span class="header-section-number">10.5</span> Beobachtungen markieren mit <code>gen</code> &amp; <code>if</code></h2>
 <p>Die Kombination aus <code>gen</code> und <code>if</code> hilft uns, wenn wir eine Variable nur für einige Zeilen erstellen wollen. Das hilft insbesondere, wenn wir bestimmte Beobachtungen markieren wollen. Beispielsweise Frauen (<code>S1</code> = 1), die einer Nebentätigkeit (<code>nt</code> = 1) nachgehen:</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb31-1"><a href="appendix.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> nt_frauen = 1 <span class="kw">if</span> S1 == 1 &amp; nt == 1</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb36-1"><a href="appendix.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> nt_frauen = 1 <span class="kw">if</span> S1 == 1 &amp; nt == 1</span></code></pre></div>
 <pre><code>(19,136 missing values generated)</code></pre>
 <p>Nur wenn beide Bedingungen zutreffen, wird unter <code>nt_frauen</code> eine 1 abgelegt:</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb33-1"><a href="appendix.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="ot">list</span> S1 nt nt_frauen <span class="kw">in</span> 19671/19675, <span class="kw">clean</span> <span class="kw">noobs</span> abb(12) </span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb38-1"><a href="appendix.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="ot">list</span> S1 nt nt_frauen <span class="kw">in</span> 19671/19675, <span class="kw">clean</span> <span class="kw">noobs</span> abb(12) </span></code></pre></div>
 <pre><code>          S1         nt   nt_frauen  
     weiblich   keine Ne           .  
      mÃ¤nnlic   mindeste           1  
@@ -823,26 +893,26 @@ Mit <code>which</code> können wir den Speicherort eines <code>ado</code> ansehe
 Beide dienen zur (vorläufigen) Speicherung von Text- oder Zahleninformationen.
 Definiert werden sie durch <code>global</code><em>inhalt</em> oder <code>local</code><em>inhalt</em> - oft mit <code>glo</code> und <code>loc</code> als Abkürzungen.
 <code>global</code>s können dann mit <code>$globalname</code>/<code>${globalname}</code> aufgerufen werden, <code>local</code>s mit `<code>localname'</code> - ganz einfach bspw. mit <code>dis[play]</code>:</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb35-1"><a href="appendix.html#cb35-1" aria-hidden="true" tabindex="-1"></a>glo x 1</span>
-<span id="cb35-2"><a href="appendix.html#cb35-2" aria-hidden="true" tabindex="-1"></a>dis <span class="ot">${x}</span></span>
-<span id="cb35-3"><a href="appendix.html#cb35-3" aria-hidden="true" tabindex="-1"></a>1</span></code></pre></div>
-<div class="sourceCode" id="cb36"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb36-1"><a href="appendix.html#cb36-1" aria-hidden="true" tabindex="-1"></a>loc <span class="fu">y</span> 2</span>
-<span id="cb36-2"><a href="appendix.html#cb36-2" aria-hidden="true" tabindex="-1"></a>dis <span class="ot">`y&#39;</span></span>
-<span id="cb36-3"><a href="appendix.html#cb36-3" aria-hidden="true" tabindex="-1"></a>2</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb40-1"><a href="appendix.html#cb40-1" aria-hidden="true" tabindex="-1"></a>glo x 1</span>
+<span id="cb40-2"><a href="appendix.html#cb40-2" aria-hidden="true" tabindex="-1"></a>dis <span class="ot">${x}</span></span>
+<span id="cb40-3"><a href="appendix.html#cb40-3" aria-hidden="true" tabindex="-1"></a>1</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb41-1"><a href="appendix.html#cb41-1" aria-hidden="true" tabindex="-1"></a>loc <span class="fu">y</span> 2</span>
+<span id="cb41-2"><a href="appendix.html#cb41-2" aria-hidden="true" tabindex="-1"></a>dis <span class="ot">`y&#39;</span></span>
+<span id="cb41-3"><a href="appendix.html#cb41-3" aria-hidden="true" tabindex="-1"></a>2</span></code></pre></div>
 <p>Der Unterschied besteht vor allem darin, dass <em>local</em> macros ‘lokal’ für ein spezifisches Programm verfügbar sind, <em>globale</em> macros hingegen für alle Programme (innerhalb einer Stata-Session) verfügbar sind.</p>
 <p>Ein macro kann auch Text enthalten und wir können diesen bspw. für Dateipfade macros verwenden:</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb37-1"><a href="appendix.html#cb37-1" aria-hidden="true" tabindex="-1"></a>glo pfad <span class="st">&quot;D:\Projekt\daten\BIBB_BAuA&quot;</span> <span class="co">// wo liegt der Datensatz?</span></span>
-<span id="cb37-2"><a href="appendix.html#cb37-2" aria-hidden="true" tabindex="-1"></a>dis <span class="st">&quot;${pfad}/BIBBBAuA_2018_suf1.0.dta&quot;</span></span>
-<span id="cb37-3"><a href="appendix.html#cb37-3" aria-hidden="true" tabindex="-1"></a>D:\Projekt\daten\BIBB_BAuA/BIBBBAuA_2018_suf1.0.dta</span></code></pre></div>
-<div class="sourceCode" id="cb38"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb38-1"><a href="appendix.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="st">&quot;${pfad}/BIBBBAuA_2018_suf1.0.dta&quot;</span>, <span class="kw">clear</span> <span class="co">// laden des Datensatzes</span></span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb42-1"><a href="appendix.html#cb42-1" aria-hidden="true" tabindex="-1"></a>glo pfad <span class="st">&quot;D:\Projekt\daten\BIBB_BAuA&quot;</span> <span class="co">// wo liegt der Datensatz?</span></span>
+<span id="cb42-2"><a href="appendix.html#cb42-2" aria-hidden="true" tabindex="-1"></a>dis <span class="st">&quot;${pfad}/BIBBBAuA_2018_suf1.0.dta&quot;</span></span>
+<span id="cb42-3"><a href="appendix.html#cb42-3" aria-hidden="true" tabindex="-1"></a>D:\Projekt\daten\BIBB_BAuA/BIBBBAuA_2018_suf1.0.dta</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb43-1"><a href="appendix.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="st">&quot;${pfad}/BIBBBAuA_2018_suf1.0.dta&quot;</span>, <span class="kw">clear</span> <span class="co">// laden des Datensatzes</span></span></code></pre></div>
 <p>Wir können das auch nutzen, um DoFiles in Kooperationsprojekten zu bauen, wenn verschiedenen Personen die DoFiles verwenden:
 <img src="pics/01_pfade.png" width="80%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb39-1"><a href="appendix.html#cb39-1" aria-hidden="true" tabindex="-1"></a>glo pfad <span class="st">&quot;C:\Projekte\Micha&quot;</span> <span class="co">// wo liegt der Datensatz bei Alex?</span></span>
-<span id="cb39-2"><a href="appendix.html#cb39-2" aria-hidden="true" tabindex="-1"></a>glo pfad <span class="st">&quot;D:\Arbeit\Alex&quot;</span>    <span class="co">// wo liegt der Datensatz bei Micha?</span></span>
-<span id="cb39-3"><a href="appendix.html#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-4"><a href="appendix.html#cb39-4" aria-hidden="true" tabindex="-1"></a>glo prog <span class="st">&quot;${pfad}/prog&quot;</span>  </span>
-<span id="cb39-5"><a href="appendix.html#cb39-5" aria-hidden="true" tabindex="-1"></a>glo <span class="kw">data</span> <span class="st">&quot;${pfad}/data&quot;</span></span>
-<span id="cb39-6"><a href="appendix.html#cb39-6" aria-hidden="true" tabindex="-1"></a>glo <span class="fu">log</span>  <span class="st">&quot;${pfad}/log&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb44-1"><a href="appendix.html#cb44-1" aria-hidden="true" tabindex="-1"></a>glo pfad <span class="st">&quot;C:\Projekte\Micha&quot;</span> <span class="co">// wo liegt der Datensatz bei Alex?</span></span>
+<span id="cb44-2"><a href="appendix.html#cb44-2" aria-hidden="true" tabindex="-1"></a>glo pfad <span class="st">&quot;D:\Arbeit\Alex&quot;</span>    <span class="co">// wo liegt der Datensatz bei Micha?</span></span>
+<span id="cb44-3"><a href="appendix.html#cb44-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-4"><a href="appendix.html#cb44-4" aria-hidden="true" tabindex="-1"></a>glo prog <span class="st">&quot;${pfad}/prog&quot;</span>  </span>
+<span id="cb44-5"><a href="appendix.html#cb44-5" aria-hidden="true" tabindex="-1"></a>glo <span class="kw">data</span> <span class="st">&quot;${pfad}/data&quot;</span></span>
+<span id="cb44-6"><a href="appendix.html#cb44-6" aria-hidden="true" tabindex="-1"></a>glo <span class="fu">log</span>  <span class="st">&quot;${pfad}/log&quot;</span></span></code></pre></div>
 <p>Micha würde dann immer den Pfad von Alex überspringen/auskommentieren und umgekehrt.</p>
 
 </div>

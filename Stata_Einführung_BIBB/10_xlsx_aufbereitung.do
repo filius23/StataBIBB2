@@ -43,7 +43,8 @@ list
 rename x1 gender
 rename x2 pets
 rename x3 earlybird
-rename x4 stata
+rename x4 indx1
+rename x5 indx2
 
 * check:
 list
@@ -54,10 +55,11 @@ list
 label variable gender		"Geschlecht"
 label variable pets			"Haustierbesitz?"
 label variable earlybird	"Sind Sie ein*e Frühaufsteher*in?"
-label variable stata     	"Stata macht Spaß"
+label variable indx1     	"index1"
+label variable indx2     	"index2"
 
 list 
-d
+describe
 
 
 * -------------------------------- *
@@ -71,6 +73,7 @@ label define gend_lab 1 "Frau" 2 "Mann" .k "keine Angabe"
 lab val gender gend_lab
 tab gender
 tab gender, m
+tab gender, missing 
 
 /*
 	 pets 			Haustiere? 
@@ -80,26 +83,47 @@ tab gender, m
 */					
 
 lab def dummy_lab 0 "Nein" 1 "Ja" .k "keine Angabe" .d "Datenfehler"
+
+
 lab val earlybird dummy_lab
+lab val pets dummy_lab
 
 tab earlybird
+tab pets
+
 recode  earlybird (-9=.d) (-4=.k)
 	* oder:
 	replace earlybird = .k if earlybird == -4
 	replace earlybird = .d if earlybird == -9
 tab earlybird,m
 	
+* -------------------------------- *
+* Index bilden
+/*
+	 x4	,		indx1,
+				1 = trifft überhaupt nicht zu, 5 = tifft voll zu,
+	 x5	,		5er Likert-Skala, 
+				1 = tifft voll zu,  5 = trifft überhaupt nicht zu
+			*/
+list
+gen indx1_rev = 6 - indx1
+list
+gen index = (indx1_rev + indx2)/2 // !missings
 
+list
+egen indexb = rowmean(indx1_rev indx2)	
+list	
+
+egen nonmiss = rownonmiss(indx1_rev indx2)	
+egen miss    =  rowmiss(indx1_rev indx2)
+egen indexb = rowmean(indx1_rev indx2)	if miss == 2
 * -------------------------------- *
 * exportieren
+
 compress // variablen auf minimale speichergröße bringen
 save "Datensatz_ready.dta", replace
 	
 
-	
-	
-	
-	
 * -------------------------------- *
 * probanden mit datenfehler rausfiltern
 
@@ -125,6 +149,7 @@ foreach v of varlist earlybird pets {
 	recode  `v' (-9=.d) (-4=.k)
 	lab val `v' dummy_lab
 }
+
 
 
 

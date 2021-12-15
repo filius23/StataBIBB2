@@ -189,11 +189,11 @@ list, clean
 label variable gender		  "Geschlecht"
 label variable pets			  "Haustierbesitz?"
 label variable earlybird	"Frühaufsteher"
-rename x4 indx1           "index1"
-rename x5 indx5           "index2"
+label variable indx1           "index1"
+label variable indx5           "index2"
 ```
 ```{stata xl3T, echo = F}
-qui import excel "./Stata_Einführung_BIBB//Rohdaten.xlsx", sheet("Sheet1") firstrow case(lower) clear
+qui import excel "Rohdaten.xlsx", sheet("Sheet1") firstrow case(lower) clear
 rename x1 gender
 rename x2 pets
 rename x3 earlybird
@@ -229,12 +229,12 @@ rename x1 gender
 rename x2 pets
 rename x3 earlybird
 rename x4 indx1
-rename x5 indx5
+rename x5 indx2
 label variable gender		  "Geschlecht"
 label variable pets			  "Haustierbesitz?"
 label variable earlybird	"Frühaufsteher"
 label variable indx1           "index1"
-label variable indx5           "index2"
+label variable indx2           "index2"
   }
 replace gender = .k if gender == -4
 label define gend_lab 1 "Frau" 2 "Mann" .k "keine Angabe"
@@ -262,12 +262,12 @@ rename x1 gender
 rename x2 pets
 rename x3 earlybird
 rename x4 indx1
-rename x5 indx5
+rename x5 indx2
 label variable gender		  "Geschlecht"
 label variable pets			  "Haustierbesitz?"
 label variable earlybird	"Frühaufsteher"
 label variable indx1           "index1"
-label variable indx5           "index2"
+label variable indx2           "index2"
   }
 lab def dummy_lab 0 "Nein" 1 "Ja" .k "keine Angabe" .d "Datenfehler"
 lab val earlybird dummy_lab
@@ -301,12 +301,12 @@ rename x1 gender
 rename x2 pets
 rename x3 earlybird
 rename x4 indx1
-rename x5 indx5
+rename x5 indx2
 label variable gender		  "Geschlecht"
 label variable pets			  "Haustierbesitz?"
 label variable earlybird	"Frühaufsteher"
 label variable indx1           "index1"
-label variable indx5           "index2"
+label variable indx2           "index2"
 
 }
 foreach v of varlist earlybird pets {
@@ -318,61 +318,11 @@ foreach v of varlist earlybird pets {
 
 ### Index bilden
 
-Hier wäre es also so, dass der niedrigste Wert (1 = Häufig) jeweils etwas anderes bedeutet. Im Fall von `F700_08`
-Variable betrachten, sehen wir
-```{stata recode10, eval = F}
-recode F700_02 (4=1) (3=2) (2=3) (1=4), into(F700_02_rev)
-```
+Um jetzt einen Index aus `indx1` und `indx2` zu bilden, müssen wir zuerst eine der beiden "umdrehen". Zur Erinnerung:
 
-
-```{stata recode10a, eval = F}
-gen index = (F700_02_rev + F700_10)/2
-```
-
-> <span style="color:#FFA500FF"><i>Inhaltlich ist das sicher nicht 100% überzeugend - hier geht's um die technische Umsetzung</i></span>
-
-***
-
-**Tipp**
-
-Man kann in diesem speziellen Fall einer "umgedrehten" Skala können wir auch einfach "höchster Wert + 1 minus Variablenwert rechnen". Im Fall von `F700_02` ist der höchste Wert 4, also würden wir 4-`F700_02` rechnen:
-```{stata revert, eval =F}
-gen F700_02_rev2 = 5 - F700_02 
-```
-
-***
-
-### exportieren
-```{stata xlexp, eval = F}
-compress // variablen auf minimale speichergröße bringen
-save "Datensatz_ready.dta", replace
-```
-Dieser Datensatz kann mit `use` geladen werden.
-
-
-### Übung
-
-```{r gendata2, include=F,eval = F}
-set.seed(26188)
-set.seed(26131)
-data.frame(id = 1:15,
-           x1 = sample(c(1:2,-4), size = 15,replace = T),
-           x2 = sample(c(1,0,-4,-9),     15,replace = T),
-           x3 = sample(c(1,0,-4,-9),     15,replace = T),
-           x4 = sample(c(1:5,NA),        15,replace = T),
-           x5 = sample(c(1:5,NA),        15,replace = T)) %>% 
-  xlsx::write.xlsx("./Stata_Einführung_BIBB/Rohdaten2.xlsx",row.names = F)
-```
-
-Lesen Sie die `Rohdaten2.xlsx` ein und hinterlegen Sie folgende Labels und Missing-Codes:
-
-```{r xlsdoke2,echo=F}
+```{r xlsdoke1,echo=F}
 tribble(
     ~"Variablenname", ~"Beschreibung", ~"Details",
-	 "id" ,		"Befragten-Identifikationsnummer", "",
-	 "x1" ,		"Geschlecht", "0 = Frau, 1 = Mann, -4 keine Angabe",
-	 "x2" ,		"Haustiere?", "0 = nein, 1 =  ja, -4  keine Angabe, -9 Datenfehler",
-	 "x3" ,		"Frühaufsteher?", "0 = nein, 1 =  ja, -4  keine Angabe, -9 Datenfehler",
 	 "x4"	,		"indx1 - 5er Likert-Skala:", "1 = trifft überhaupt nicht zu",
 	 ""	,		"", "5 = tifft voll zu",
 	 "x5"	,		"indx2 - 5er Likert-Skala:", "1 = tifft voll zu",
@@ -381,8 +331,105 @@ tribble(
   kable() %>% 
   kable_styling(bootstrap_options = "condensed", full_width = F,font_size = 12) %>% 
   column_spec(1,monospace = TRUE) 
-
 ```
+
+
+Hier drehen wir also `indx1` um:
+```{stata recode011, eval = F}
+gen indx1_rev = 6 - indx1  // (max+1) - indexwert
+list indx*, abbreviate(10) 
+```
+
+
+```{stata xl6T, echo = F}
+quietly{
+qui import excel "Rohdaten.xlsx", sheet("Sheet1") firstrow case(lower) clear
+  rename x1 gender
+  rename x2 pets
+  rename x3 earlybird
+  rename x4 indx1
+  rename x5 indx2
+  }
+gen indx1_rev = 6 - indx1  // (max+1) - indexwert
+list indx*, abbreviate(15) 
+```
+
+Damit können wir jetzt zum eigentlichen Index kommen.
+Die einfachste Möglichkeit ist einfach mit `gen`
+```{stata recode012, eval = F}
+gen index = (indx1_rev + indx2)/2 // !missings
+list ind*, abbreviate(15) 
+```
+
+```{stata recode012T, echo = F}
+quietly{
+qui import excel "Rohdaten.xlsx", sheet("Sheet1") firstrow case(lower) clear
+  rename x1 gender
+  rename x2 pets
+  rename x3 earlybird
+  rename x4 indx1
+  rename x5 indx2
+  gen indx1_rev = 6 - indx1  // (max+1) - indexwert
+}
+gen index = (indx1_rev + indx2)/2 // !missings
+list ind*, abbreviate(15) 
+```
+
+Hier werden also in allen Zeilen, in denen (mind.) ein Wert Missing, also `.`, ist im Summenindex auch ein Missing ausgegeben.
+
+Wollen wir das nicht, können wir `rowmean()` aus `egen` verwenden:
+```{stata recode013, eval = F}
+egen indexb = rowmean(indx1_rev indx2)	
+list ind*, abbreviate(15) 
+```
+```{stata recode013T, echo = F}
+quietly{
+qui import excel "Rohdaten.xlsx", sheet("Sheet1") firstrow case(lower) clear
+  rename x1 gender
+  rename x2 pets
+  rename x3 earlybird
+  rename x4 indx1
+  rename x5 indx2
+  gen indx1_rev = 6 - indx1  // (max+1) - indexwert
+  gen index = (indx1_rev + indx2)/2 // !missings
+}
+egen indexb = rowmean(indx1_rev indx2)	
+list ind*, abbreviate(15) 
+```
+
+Häufig ist aber wahrscheinlich eine Zwischenlösung das Ziel, d.h. wir wollen vllt `rowmean()` nur anwenden, wenn eine Mindestanzahl an gültigen Werten vorliegt oder eine Höchstzahl an fehlenden Werten.
+Die Zahl der Missings in bestimmten Variablen können wir mit `rowmiss()` berechnen, die Zahl der gültigen Werte mit `rownonmiss()`. Anschließend können wir mit `if ` eine entsprechende Einschränkung setzen:
+
+```{stata recode014, eval = F}
+egen nonmiss = rownonmiss(indx1_rev indx2)	
+egen miss    =  rowmiss(indx1_rev indx2)
+egen indexc = rowmean(indx1_rev indx2)	if miss == 2
+list ind* *miss, abbreviate(15) 
+```
+
+```{stata recode014T, echo = F}
+quietly{
+qui import excel "Rohdaten.xlsx", sheet("Sheet1") firstrow case(lower) clear
+  rename x1 gender
+  rename x2 pets
+  rename x3 earlybird
+  rename x4 indx1
+  rename x5 indx2
+  gen indx1_rev = 6 - indx1  // (max+1) - indexwert
+  gen index = (indx1_rev + indx2)/2 // !missings
+  egen indexb = rowmean(indx1_rev indx2)	
+  egen nonmiss = rownonmiss(indx1_rev indx2)	
+egen miss    =  rowmiss(indx1_rev indx2)
+egen indexc = rowmean(indx1_rev indx2)	if miss < 2
+}
+list ind* *miss, abbreviate(15) 
+```
+### exportieren
+```{stata xlexp, eval = F}
+compress // variablen auf minimale speichergröße bringen
+save "Datensatz_ready.dta", replace
+```
+Dieser Datensatz kann mit `use` geladen werden.
 
 ## `adopath`
 
