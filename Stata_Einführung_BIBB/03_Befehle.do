@@ -18,7 +18,7 @@ summarize zpalter, detail
 tabstat zpalter, s(mean median var cv)
 
 * percentile
-centile age, centile(35)
+centile zpalter, centile(35)
 
 * getrennt nach M/F:
 tabstat zpalter, s(mean median var cv) by(S1)

@@ -11,7 +11,10 @@ use D:/Datenspeicher/BIBB_BAuA/BIBBBAuA_2018_suf1.0.dta, clear
     * Denken Sie daran, die fehlenden Werte für `F518_SUF` mit als Missing zu überschreiben! (bspw. `mvdecode`, sehen Sie mit `labelbook F518` Codebuch nach, welche Werte als fehlende Angaben zu betrachten sind)
 d F518_SUF
 labelbook F518
-mvdecode F518_SUF, mv( 99998/99999)
+* mvdecode F518_SUF, mv( 99998/99999)
+replace F518_SUF = .a if  F518_SUF == 99998
+replace F518_SUF = .b if  F518_SUF == 99999
+tab F518_SUF if missing(F518_SUF), missing
 mdesc F518_SUF
 	
 	* Betrachten Sie die Einkommensangaben mit `summarize`
@@ -29,10 +32,12 @@ su F518_SUF, d
 
 * Verwenden Sie jetzt `tabstat`, um folgende Kennzahlen für `F518_SUF` zu berechnen:
     * Das arithm. Mittel, den Median, das 25%- und 75%-Quartil sowie die Varianz und den Variationskoeffizienten - was sagen Ihnen die Werte jeweils?
+tabstat 	F518_SUF, s(mean p25 p50 p75 var cv)
 tabstat 	F518_SUF, stat(mean p25 p50 p75 var cv)
 
     * Berechnen Sie nun alle Werte getrennt für Männer und Frauen (Variable `S1`).
-tabstat 	F518_SUF, stat(mean p25 p50 p75 var cv) by(S1)
+tabstat F518_SUF, ///
+	stat(mean p25 p50 p75 var cv) by(S1)
   
   
   

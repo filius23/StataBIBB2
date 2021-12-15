@@ -369,7 +369,7 @@ tx <- chisq.test(tab1)
 ```
 
 ```{stata chitabF, eval =F}
-tab F204 S1, chi 
+tab F204 S1, chi V
 ```
 ```{stata chitabT, echo =F}
 quietly{

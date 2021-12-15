@@ -12,6 +12,10 @@ mvdecode zpalter, mv(9999)
 * neue Variable mit Alter in Monaten erstellen (ist natürlich ungenau - nur ein Beispiel)
 gen alter_mon = zpalter * 12
 
+// if-Operatur in gen:
+gen alter_mis = missing(zpalter)
+list zpalter alter_mis if inlist(intnr,1717266,1717325,1717333,1717334)
+
 // nochmal gen führt zu Fehler:
 gen alter_mon = zpalter * 12
 
@@ -19,6 +23,10 @@ gen alter_mon = zpalter * 12
 drop alter_mon
 gen alter_mon = zpalter * 12
 
+// cap -> keine Fehlermeldung wenn Variable schon fehlt
+cap drop alter_mon
+cap drop alter_mon
+gen alter_mon = zpalter * 12
 
 * Überprüfen ---------------------
 // check 1: in browse nachsehen
@@ -39,20 +47,21 @@ mdesc zpalter alter_mon //
 * -------------------------------- *
 d Bula F233
 labelbook BULA F233
-tab Bula
-tab F233
+tab Bula // Wohnort
+tab F233 // betriebsort
 mvdecode Bula F233, mv(97/99)
+
 gen ao_wo = Bula ==  F233
 
 bro Bula F233 ao_wo
-list Bula F233 ao_wo in 157/160, clean noobs
+list intnr Bula F233 ao_wo in 157/160, clean noobs
 
 tab ao_wo if missing(F233), m // !!! bei missings werden auch Vergleiche durchgeführt
 
 drop ao_wo
 gen ao_wo =  Bula ==  F233 if !missing(F233)
 tab ao_wo,m 
-
+list intnr Bula F233 ao_wo in 157/160, clean noobs
 
 	// check 1: in browse nachsehen
 	bro intnr nuts2 F233_nuts2 pendler
@@ -61,20 +70,37 @@ tab ao_wo,m
 
 * -------------------------------- *
 * Labeln
+tab ao_wo,m 
 
-label define aowo_lab 0 "ungleich" 1 "gleich"
-label values ao_wo aowo_lab
+
+label define aowo_lab 0 "ungleich" 1 "gleich" // value label definieren
+label values ao_wo aowo_lab // value label anwe
+
 tab ao_wo, m
 tab ao_wo, nol // ohne labels
+
+// missing labeln -> .Buchstabe
+replace ao_wo = .a if ao_wo == . // missing zu .a
+tab ao_wo, m
+
+label define aowo_lab 0 "ungleich" 1 "gleich" .a "missing", replace
+tab ao_wo, m
+tab ao_wo, nol m
 
 * label verändern:
 label define aowo_lab 0 "Ungleich" 1 "Gleich", replace
 tab ao_wo 
 
+
+
 * -------------------------------- *
 * bestehende Variablen verändern
 tab gkpol
 tab gkpol, nol
+
+* 1-3 -> 1
+* 4-5 -> 2
+* 6-7 -> 3
 
 recode gkpol (1=1) (2=1) (3=1) (4=2) (5=2) (6=3) (7=3), into(gkpol2)
 tab gkpol gkpol2
@@ -87,8 +113,8 @@ tab gkpol gkpol2
 d gkpol
 drop gkpol2
 recode gkpol (1 2 3=1 "Klein") (4 5=2 "Mittel") (6 7=3 "Groß"), into(gkpol2)
-recode gkpol (1/3=1 "Klein") (4 5=2 "Mittel") (6 7=3 "Groß"), into(gkpol2)
-
+recode gkpol (1/3=1 "Klein") (4 5=2 "Mittel") (6/7=3 "Groß"), into(gkpol2)
+tab gkpol gkpol2
 /*
 	min 	  		Minimalwert
 	max 	  		Maximalwert (missings werden hier ausnahmsweise nicht mit eingeschlossen)

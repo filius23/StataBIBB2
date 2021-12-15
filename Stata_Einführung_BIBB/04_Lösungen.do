@@ -13,15 +13,18 @@ use "BIBBBAuA_2018_suf1.0.dta", clear
 
 list intnr zpalter S1 gkpol if intnr == 2388097
 browse intnr zpalter S1 gkpol if intnr == 2388097
+br intnr zpalter S1 gkpol if intnr == 2388097
 
 *2 ----------
 	* Ersetzen Sie die Werte 9999 in `zpalter` mit `.`: `mvdecode zpalter, mv(9999)`
 mvdecode zpalter, mv(9999)
-	
+replace  zpalter = . if  zpalter == 9999 // entspricht mvdecode
+
 *3 ----------
 	* Lassen Sie sich die Wohngröße (`gkpol`) für alle Befragte mit fehlender Altersangabe ausgeben.
 tab gkpol if missing(zpalter)
- 
+tab gkpol if zpalter == .
+
 *4 ----------
 	* Lassen Sie sich eine Häufigkeitsauszählung der Wohnortgröße für folgende Gruppen ausgeben:
 	* Befragte, die jünger als 30 Jahre alt sind (das Alter ist in `zpalter` abgelegt)

@@ -193,39 +193,6 @@ baua <- readstata13::read.dta13("D:/Datenspeicher/BIBB_BAuA/BIBBBAuA_2018_suf1.0
 
 baua <- baua %>% group_by(S1) %>% mutate(mean_inc = mean(F518_SUF,na.rm = T), n1 = 1:n() ) %>% ungroup(.)
 baua$sex1  <- factor(baua$S1)
-
-
-mark_color <- "grey25"
-color1x =  "#00519E" # uol farbe
-colorhex <- "#FCFCFC" #"#FCF9F0FF"7
-
-baua %>% 
-  ggplot(.,aes(x = sex1, y = F518_SUF, color = sex1)) +
-  geom_point(size = .5) +
-  scale_x_discrete(breaks = c("1","2"), labels = c("Männer", "Frauen")) +
-  scale_color_manual(values = scico::scico(3,palette = "davos")[1:2],guide = F) +
-  labs(color = "", 
-       y = "Einkommen (€)",
-       x = "") +
-  theme_minimal(base_family = "Nunito",base_size = 10) +
-  theme(
-    text = element_text(family = "Nunito"),
-    plot.background = element_rect(fill = colorhex, linetype = 1, colour = NA),
-    rect = element_rect(fill = colorhex, linetype = 1, colour = NA),
-    axis.text =  element_text(color = mark_color,face = "plain", size = rel(1.05), angle = 0), 
-    axis.title = element_text(color = mark_color,face = "plain", size = rel(1), angle = 0), 
-    axis.title.y = element_text(color = mark_color,face = "plain", angle = 90,vjust = .5), 
-    axis.ticks = element_blank(),
-    axis.line = element_line(size = .1), 
-    legend.text = element_text(family = "Nunito"),
-    legend.title = element_text(family = "Nunito"),
-    panel.grid = element_line(colour = "grey81", linetype = 1, size = .15), 
-    panel.grid.minor.y = element_blank(), 
-    panel.grid.minor.x = element_blank(), 
-    plot.subtitle = element_text(hjust=.5,family = "Nunito"),
-    plot.caption = element_text(hjust=1, size = rel(1.2), color = mark_color),
-    plot.margin = unit(c(1, 1, 1, 1), "lines"))
-
 ```
 
 In einem Regressionsmodell müssen wir Stata mit dem Präfix `i.` mitteilen, dass es sich bei der Variable um eine kategoriale Variable handelt:

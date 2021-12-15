@@ -10,7 +10,7 @@ use "BIBBBAuA_2018_suf1.0.dta", clear
 d nuts2 F233_nuts2
 labelbook nuts2 
 mvdecode nuts2 F233_nuts2, mv(99996/99999)
-
+mdesc nuts2 F233_nuts2
 gen pendler =  nuts2 == F233_nuts2 if !missing(F233_nuts2)
 tab pendler, m
 
@@ -34,6 +34,11 @@ tab S1
 tab F1108
 labelbook F1108
 recode F1108 (1/2=1 "(sehr) gut") (3/4=2 "bestanden") (7/9=3 "fehlend"), into(F1108_neu)
+tab F1108 F1108_neu
+
+d F1108_neu
+label define F1108_neu 1 "richtig gut" ,replace // überschreibt alles
+label define F1108_neu 2 "bestanden" ,modify // fügt hinzu
 tab F1108 F1108_neu
 
 * 5-3: Besondere Arbeitszeiten ------------------

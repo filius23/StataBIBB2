@@ -11,7 +11,8 @@ fastgini F518_SUF if S1 == 2
 
 list S1 S3 S2_j zpalter if zpalter == 81
 list S1 S3 S2_j zpalter if S2_j < 1936
-
+ * >
+ 
 * auszählungen für eine spezielle Gruppe --------
 tabulate S1 if zpalter == 81
 
@@ -25,6 +26,7 @@ tabulate S1 if zpalter == 81 | F518_SUF < 1000 // 81 Jahre alt oder unter 1000EU
 * inrange
 tabulate S1 if zpalter >= 20 & zpalter <= 30
 tabulate S1 if inrange(zpalter,20,30)
+
 * inlist
 tabulate S1 if zpalter == 15 | zpalter == 79 | zpalter == 80 | zpalter == 82
 tabulate S1 if inlist(zpalter,15,79,80,82)
@@ -40,7 +42,6 @@ describe S1
 
 tabulate S1, nol
 tab S1 if S1 == 2
-
 
 * if und missings  -------------------------
 list S1 S3 zpalter if zpalter > 81
