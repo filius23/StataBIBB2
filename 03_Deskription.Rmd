@@ -49,14 +49,14 @@ summarize zpalter, detail
 
 Hier wird eine ganze Menge auf einmal angezeigt - die Kennzahlen sind dabei in drei Spalten organisiert: 
 
-+ Aus der ersten Spalte erfahren wir die Quantile (`Percentiles`). Ein Quantil einer Verteilung trennt die Daten so in zwei Teile, dass `x`\% der Daten darunter und 100-`x`\% darüber liegen. Hier können wir zB ablesen, dass 25% der Befragten 38 Jahre oder jünger sind. 95% der Befragten sind <= 63 Jahre alt. Dementsprechend sind 5% der Befragten 63 Jahre oder älter. Die 50%-Grenze für das Alter (*der Median*) liegt bei 49 Jahren.[Mehr zu Perzentilen](#perc)
++ Aus der ersten Spalte erfahren wir die Quantile (`Percentiles`). Ein Quantil einer Verteilung trennt die Daten so in zwei Teile, dass `x`\% der Daten darunter und 100-`x`\% darüber liegen. Hier können wir zB ablesen, dass 25% der Befragten 38 Jahre oder jünger sind. 95% der Befragten sind <= 63 Jahre alt. Dementsprechend sind 5% der Befragten 63 Jahre oder älter. Die 50%-Grenze für das Alter (*der Median*) liegt bei 49 Jahren.
 
 + die zweite Spalte gibt uns jeweils die 4 kleinsten und größten Werte für das Alter aus: die 4 kleinsten Alterswerte sind jeweils 15,16,16,16 die größten Werte sind 81,82,83 und 87.
 
 + in der dritten Spalte bekommen wir eine Reihe weiterer Informationen:
-  + die Zahl der Beobachtungen (`Obs`) und das arithmetische Mittel (`Mean`) [mehr zum arithm. Mittel](#mean)
-  + die Streuung anhand der Standardabweichung (`Std. Dev.`) und Varianz (`Variance`) [mehr dazu](#variance)
-  + sowie die Schiefe (`Skewness`) und Wölbung (`Kurtosis`) [mehr dazu](#sk_kur)
+  + die Zahl der Beobachtungen (`Obs`) und das arithmetische Mittel (`Mean`) 
+  + die Streuung anhand der Standardabweichung (`Std. Dev.`) und Varianz (`Variance`)
+  + sowie die Schiefe (`Skewness`) und Wölbung (`Kurtosis`) 
 
 
 ### `tabstat`

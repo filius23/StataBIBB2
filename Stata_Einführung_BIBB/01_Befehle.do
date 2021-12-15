@@ -30,3 +30,34 @@ list  intnr Bula gkpol Stib zpalter  in 1/10, nol // auch hier ohne labels anzei
 // Variablen & Bezeichnungen suchen
 lookfor "Englisch"
 lookfor "englisch" // Groß/Kleinschreibung wird ignoriert
+
+
+* -----------------------
+* log files 
+
+pwd
+log using "01_log.txt" , replace text 
+use "D:\Datenspeicher\BIBB_BAuA\BIBBBAuA_2018_suf1.0.dta"
+log close 
+
+* anderer Pfad:
+global log "D:\oCloud\Home-Cloud\Lehre\BIBB\StataBIBB2\Stata_Einführung_BIBB"
+
+display "${log}"
+log using "${log}/01_log.txt" , replace text 
+
+
+log using "D:\oCloud\Home-Cloud\Lehre\BIBB\StataBIBB2\Stata_Einführung_BIBB/01_log.txt" , replace text 
+
+use "D:\Datenspeicher\BIBB_BAuA\BIBBBAuA_2018_suf1.0.dta"
+.
+.
+.
+.
+.
+
+log close 
+
+
+* SPSS import
+import spss using "D:\Datenspeicher\BIBB_BAuA\BIBBBAuA_2018_suf1.0.sav", clear

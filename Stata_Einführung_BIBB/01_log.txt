@@ -1,0 +1,20 @@
+-------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  D:\oCloud\Home-Cloud\Lehre\BIBB\StataBIBB2\Stata_Einführung_BIBB/01_log.
+> txt
+  log type:  text
+ opened on:  15 Dec 2021, 09:14:22
+
+. 
+end of do-file
+
+. do "C:\Users\Filser\AppData\Local\Temp\STD5418_000000.tmp"
+
+. 
+. log close 
+      name:  <unnamed>
+       log:  D:\oCloud\Home-Cloud\Lehre\BIBB\StataBIBB2\Stata_Einführung_BIBB/01_log.
+> txt
+  log type:  text
+ closed on:  15 Dec 2021, 09:15:16
+-------------------------------------------------------------------------------------
