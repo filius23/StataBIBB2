@@ -251,5 +251,14 @@ mvdecode F518_SUF, mv( 99998/99999)
     + Das arithm. Mittel, den Median, das 25%- und 75%-Quartil sowie die Varianz und den Variationskoeffizienten - was sagen Ihnen die Werte jeweils?
     + Berechnen Sie nun alle Werte getrennt für Männer und Frauen (Variable `S1`).
   
-(@) Berechnen Sie den Gini-Koeffizenten für `F518_SUF`! (Denken Sie daran, vor der ersten Verwendung `fastgini` zu installieren - siehe [hier](#gini))
+(@) Berechnen Sie den Gini-Koeffizenten für `F518_SUF`! Denken Sie daran, vor der ersten Verwendung `fastgini` zu installieren - siehe [hier](#gini) und Anhang
+
+## Anhang: Einstellung für `ssc install`
+
+
+HTTP proxy host: `kessenich.ivbb.bund.de`
+Port:  `80`
+```{r sccinst, echo = F,out.width = "90%",fig.height= 4.5, fig.align="center"}
+knitr::include_graphics("./pics/02_install.png")
+```
 
