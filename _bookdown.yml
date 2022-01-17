@@ -1,4 +1,4 @@
-book_filename: "Stata Tables BIBB"
+book_filename: "Stata BIBB"
 delete_merged_file: true
 output_dir: "docs"
 language:

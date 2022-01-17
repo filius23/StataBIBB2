@@ -24,7 +24,7 @@
 <meta name="author" content="Andreas Filser" />
 
 
-<meta name="date" content="2021-12-15" />
+<meta name="date" content="2022-01-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -319,14 +319,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.2.3" data-path="appendix.html"><a href="appendix.html#variablenbeschreibung-label-variable"><i class="fa fa-check"></i><b>10.2.3</b> Variablenbeschreibung: <code>label variable</code></a></li>
 <li class="chapter" data-level="10.2.4" data-path="appendix.html"><a href="appendix.html#werte-labeln-label-values"><i class="fa fa-check"></i><b>10.2.4</b> Werte labeln <code>label values</code></a></li>
 <li class="chapter" data-level="10.2.5" data-path="appendix.html"><a href="appendix.html#foreach"><i class="fa fa-check"></i><b>10.2.5</b> Fortgeschrittene Programmierung: foreach-Schleife</a></li>
-<li class="chapter" data-level="10.2.6" data-path="appendix.html"><a href="appendix.html#exportieren"><i class="fa fa-check"></i><b>10.2.6</b> exportieren</a></li>
-<li class="chapter" data-level="10.2.7" data-path="appendix.html"><a href="appendix.html#übung"><i class="fa fa-check"></i><b>10.2.7</b> Übung</a></li>
+<li class="chapter" data-level="10.2.6" data-path="appendix.html"><a href="appendix.html#index-bilden"><i class="fa fa-check"></i><b>10.2.6</b> Index bilden</a></li>
+<li class="chapter" data-level="10.2.7" data-path="appendix.html"><a href="appendix.html#exportieren"><i class="fa fa-check"></i><b>10.2.7</b> exportieren</a></li>
 </ul></li>
 <li class="chapter" data-level="10.3" data-path="appendix.html"><a href="appendix.html#adopath"><i class="fa fa-check"></i><b>10.3</b> <code>adopath</code></a></li>
 <li class="chapter" data-level="10.4" data-path="appendix.html"><a href="appendix.html#log-file"><i class="fa fa-check"></i><b>10.4</b> log file</a></li>
 <li class="chapter" data-level="10.5" data-path="appendix.html"><a href="appendix.html#beobachtungen-markieren-mit-gen-if"><i class="fa fa-check"></i><b>10.5</b> Beobachtungen markieren mit <code>gen</code> &amp; <code>if</code></a></li>
-<li class="chapter" data-level="10.6" data-path="appendix.html"><a href="appendix.html#index-bilden"><i class="fa fa-check"></i><b>10.6</b> Index bilden</a></li>
-<li class="chapter" data-level="10.7" data-path="appendix.html"><a href="appendix.html#macros"><i class="fa fa-check"></i><b>10.7</b> macros</a></li>
+<li class="chapter" data-level="10.6" data-path="appendix.html"><a href="appendix.html#macros"><i class="fa fa-check"></i><b>10.6</b> macros</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -357,14 +356,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">3.1.1</span> Lage- und Konzentrationsmaße</h3>
 <p>Meist werden metrische Variablen mit Hilfe von Lage- und Konzentrationsmaßen beschrieben.
 Klassische Lagemaße zur Beschreibung von metrischen Variablen sind bspw. Minimum und Maximum, das arithm. Mittel sowie der Median und Quantile. Auch hier haben wir bereits den wichtigsten Befehl kennen gelernt: <code>summarize</code> gibt uns einen ersten Überblick zur Verteilung einer metrischen Variable:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb1-1"><a href="desc1.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">summarize</span> zpalter</span></code></pre></div>
-<pre><code>    Variable |        Obs        Mean    Std. Dev.       Min        Max
+<div class="sourceCode" id="cb71"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb71-1"><a href="desc1.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="kw">summarize</span> zpalter</span></code></pre></div>
+<pre><code> | is not a valid command name
+r(199);
+
+    Variable |        Obs        Mean    Std. Dev.       Min        Max
 -------------+---------------------------------------------------------
      zpalter |     19,836    47.19228    11.33762         15         87</code></pre>
 <p>Wir erfahren also, dass die Befragten im Mittel 47.19228 Jahre alt sind, die jüngsten Befragten 15 Jahre alt und ältesten Befragten sind 87 Jahre alt.</p>
 <p>Mit der Option <code>,detail</code> bekommen wir eine deutlich umfangreichere Auskunft:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb3-1"><a href="desc1.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">summarize</span> zpalter, <span class="kw">detail</span></span></code></pre></div>
-<pre><code>                    Alter der Zielperson
+<div class="sourceCode" id="cb73"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb73-1"><a href="desc1.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="kw">summarize</span> zpalter, <span class="kw">detail</span></span></code></pre></div>
+<pre><code> | is not a valid command name
+r(199);
+
+                    Alter der Zielperson
 -------------------------------------------------------------
       Percentiles      Smallest
  1%           21             15
@@ -537,14 +542,20 @@ Entspricht p25 p50 p75
 </tbody>
 </table>
 <p>Hier ein Bespielbefehl für die Berechnung des arith. Mittels, des Medians, der Varianz und des Varianzkoeffizienten mit <code>tabstat</code>:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb5-1"><a href="desc1.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">tabstat</span> zpalter, <span class="fu">s</span>(<span class="kw">mean</span> <span class="kw">median</span> <span class="kw">var</span> cv)</span></code></pre></div>
-<pre><code>    variable |      mean       p50  variance        cv
+<div class="sourceCode" id="cb75"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb75-1"><a href="desc1.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="kw">tabstat</span> zpalter, <span class="fu">s</span>(<span class="kw">mean</span> <span class="kw">median</span> <span class="kw">var</span> cv)</span></code></pre></div>
+<pre><code> | is not a valid command name
+r(199);
+
+    variable |      mean       p50  variance        cv
 -------------+----------------------------------------
      zpalter |  47.19228        49  128.5417  .2402432
 ------------------------------------------------------</code></pre>
 <p>Allerdings lassen sich mit <code>tabstat</code> nicht beliebige Quantil-Grenzen (nur für 5,10,25,50,75,90,95,99) berechnen, dafür können wir <code>centile</code> nutzen:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb7-1"><a href="desc1.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">centile</span> age, <span class="kw">centile</span>(35)</span></code></pre></div>
-<pre><code>                                                       -- Binom. Interp. --
+<div class="sourceCode" id="cb77"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb77-1"><a href="desc1.html#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="kw">centile</span> age, <span class="kw">centile</span>(35)</span></code></pre></div>
+<pre><code> | is not a valid command name
+r(199);
+
+                                                       -- Binom. Interp. --
     Variable |       Obs  Percentile    Centile        [95% Conf. Interval]
 -------------+-------------------------------------------------------------
      zpalter |    19,836         35          44              43          44</code></pre>
@@ -553,8 +564,16 @@ Entspricht p25 p50 p75
 <div id="by_vgl" class="section level3" number="3.1.3">
 <h3><span class="header-section-number">3.1.3</span> Kennzahlen vergleichen mit <code>tabstat</code></h3>
 <p>Interessant sind diese Kennzahlen auch wieder erst im Vergleich zwischen Gruppen. Hierfür steht uns die <code>by()</code>-Option von <code>tabstat</code> zur Verfügung. Bspw. können wir die Altersangaben von Männern und Frauen vergleichen, indem wir in <code>tabstat</code> die Option <code>by(S1)</code> verwenden:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb9-1"><a href="desc1.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">tabstat</span> zpalter, <span class="fu">s</span>(<span class="kw">mean</span> <span class="kw">median</span> <span class="kw">var</span> cv) <span class="kw">by</span>(S1)</span></code></pre></div>
-<pre><code>Summary for variables: zpalter
+<div class="sourceCode" id="cb79"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb79-1"><a href="desc1.html#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="kw">tabstat</span> zpalter, <span class="fu">s</span>(<span class="kw">mean</span> <span class="kw">median</span> <span class="kw">var</span> cv) <span class="kw">by</span>(S1)</span></code></pre></div>
+<pre><code> | is not a valid command name
+r(199);
+
+
+
+
+
+
+Summary for variables: zpalter
      by categories of: S1 (Geschlecht)
 
       S1 |      mean       p50  variance        cv
@@ -570,28 +589,61 @@ weiblich |  47.90402        50  114.8336  .2236982
 <div id="gini" class="section level3" number="3.1.4">
 <h3><span class="header-section-number">3.1.4</span> Gini-Koeffizient</h3>
 <p>Zur Beschreibung der (Ungleich-)Verteilung von metrischen Variablen, insbesondere bei Einkommens- und Vermögensdaten wird häufig der Gini-Koeffizient verwendet. Der Gini-Koeffizient beruht auf der Fläche zwischen der Lorenzkurve und der Gleichverteilung. Auf der x-Achse werden die kumulierten Perzentile der Befragten abgetragen, auf der y-Achse die Perzentile des HH-Einkommens:</p>
-<p><img src="Stata-Tables-BIBB_files/figure-html/gini_plot1-1.png" width="75%" height="75%" style="display: block; margin: auto;" /></p>
-<p><img src="Stata-Tables-BIBB_files/figure-html/gini_plot-1.png" width="75%" height="75%" style="display: block; margin: auto;" />
+<p><img src="Stata-BIBB_files/figure-html/gini_plot1-1.png" width="75%" height="75%" style="display: block; margin: auto;" /></p>
+<p><img src="Stata-BIBB_files/figure-html/gini_plot-1.png" width="75%" height="75%" style="display: block; margin: auto;" />
 Den Gini-Koeffizienten können wir mit <code>fastgini</code> berechnen, allerdings müssen wir diesen Befehl erst (einmalig) installieren:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb11-1"><a href="desc1.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">ssc</span> install fastgini</span>
-<span id="cb11-2"><a href="desc1.html#cb11-2" aria-hidden="true" tabindex="-1"></a>fastgini F518_SUF</span></code></pre></div>
-<pre><code>Gini coefficient = 0.3543509</code></pre>
+<div class="sourceCode" id="cb81"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb81-1"><a href="desc1.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="kw">ssc</span> install fastgini</span>
+<span id="cb81-2"><a href="desc1.html#cb81-2" aria-hidden="true" tabindex="-1"></a>fastgini F518_SUF</span></code></pre></div>
+<pre><code> | is not a valid command name
+r(199);
+
+
+
+
+
+command fastgini is unrecognized
+r(199);
+
+end of do-file
+r(199);</code></pre>
 <p>Leider funktioniert <code>by(S1)</code> bei <code>fastgini</code> nicht, wir müssen hier auf die Variante mit <a href="#if_vgl"><code>if</code></a> zurückgreifen:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb13-1"><a href="desc1.html#cb13-1" aria-hidden="true" tabindex="-1"></a>fastgini F518_SUF <span class="kw">if</span> S1 == 1</span></code></pre></div>
-<pre><code>Gini coefficient = 0.3361488</code></pre>
-<div class="sourceCode" id="cb15"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb15-1"><a href="desc1.html#cb15-1" aria-hidden="true" tabindex="-1"></a>fastgini F518_SUF <span class="kw">if</span> S1 == 2</span></code></pre></div>
-<pre><code>Gini coefficient = 0.3403522</code></pre>
+<div class="sourceCode" id="cb83"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb83-1"><a href="desc1.html#cb83-1" aria-hidden="true" tabindex="-1"></a>fastgini F518_SUF <span class="kw">if</span> S1 == 1</span></code></pre></div>
+<pre><code> | is not a valid command name
+r(199);
+
+
+
+
+
+command fastgini is unrecognized
+r(199);
+
+end of do-file
+r(199);</code></pre>
+<div class="sourceCode" id="cb85"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb85-1"><a href="desc1.html#cb85-1" aria-hidden="true" tabindex="-1"></a>fastgini F518_SUF <span class="kw">if</span> S1 == 2</span></code></pre></div>
+<pre><code> | is not a valid command name
+r(199);
+
+
+
+
+
+command fastgini is unrecognized
+r(199);
+
+end of do-file
+r(199);</code></pre>
 <p><span class="math inline">\(\Rightarrow\)</span> <em>Wo sind die Einkommen also ungleicher verteilt?</em><a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
 <p>Anmerkung: hier wurden die Missings in <code>F518_SUF</code> mit <code>mvdecode F518_SUF, mv(99998/ 99999)</code> ausgeschlossen.</p>
 </div>
 </div>
 <div id="met" class="section level2" number="3.2">
 <h2><span class="header-section-number">3.2</span> Übungen</h2>
-<ol class="example" style="list-style-type: decimal">
+<ol start="12" class="example" style="list-style-type: decimal">
 <li>Laden Sie den BIBB/BAuA Erwerbstätigenbefragung 2018 (<code>BIBBBAuA_2018_suf1.dta</code>). Analysieren Sie die Einkommensangaben (<code>F518_SUF</code>). Denken Sie daran, die fehlenden Werte für <code>F518_SUF</code> mit als Missing zu überschreiben!</li>
 </ol>
-<div class="sourceCode" id="cb17"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb17-1"><a href="desc1.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">mvdecode</span> F518_SUF, mv( 99998/99999)</span></code></pre></div>
-<ol start="2" class="example" style="list-style-type: decimal">
+<div class="sourceCode" id="cb87"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb87-1"><a href="desc1.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="kw">mvdecode</span> F518_SUF, mv( 99998/99999)</span></code></pre></div>
+<ol start="13" class="example" style="list-style-type: decimal">
 <li>Betrachten Sie die Einkommensangaben mit <code>summarize</code>
 <ul>
 <li>Für wie viele Beobachtungen haben Sie eine gültige Angabe (nicht-Missing)?</li>
@@ -669,7 +721,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["Stata Tables BIBB.pdf", "Stata Tables BIBB.epub"],
+"download": ["Stata BIBB.pdf", "Stata BIBB.epub"],
 "search": {
 "engine": "fuse",
 "options": null

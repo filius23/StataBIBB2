@@ -24,7 +24,7 @@
 <meta name="author" content="Andreas Filser" />
 
 
-<meta name="date" content="2021-12-15" />
+<meta name="date" content="2022-01-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -319,14 +319,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.2.3" data-path="appendix.html"><a href="appendix.html#variablenbeschreibung-label-variable"><i class="fa fa-check"></i><b>10.2.3</b> Variablenbeschreibung: <code>label variable</code></a></li>
 <li class="chapter" data-level="10.2.4" data-path="appendix.html"><a href="appendix.html#werte-labeln-label-values"><i class="fa fa-check"></i><b>10.2.4</b> Werte labeln <code>label values</code></a></li>
 <li class="chapter" data-level="10.2.5" data-path="appendix.html"><a href="appendix.html#foreach"><i class="fa fa-check"></i><b>10.2.5</b> Fortgeschrittene Programmierung: foreach-Schleife</a></li>
-<li class="chapter" data-level="10.2.6" data-path="appendix.html"><a href="appendix.html#exportieren"><i class="fa fa-check"></i><b>10.2.6</b> exportieren</a></li>
-<li class="chapter" data-level="10.2.7" data-path="appendix.html"><a href="appendix.html#übung"><i class="fa fa-check"></i><b>10.2.7</b> Übung</a></li>
+<li class="chapter" data-level="10.2.6" data-path="appendix.html"><a href="appendix.html#index-bilden"><i class="fa fa-check"></i><b>10.2.6</b> Index bilden</a></li>
+<li class="chapter" data-level="10.2.7" data-path="appendix.html"><a href="appendix.html#exportieren"><i class="fa fa-check"></i><b>10.2.7</b> exportieren</a></li>
 </ul></li>
 <li class="chapter" data-level="10.3" data-path="appendix.html"><a href="appendix.html#adopath"><i class="fa fa-check"></i><b>10.3</b> <code>adopath</code></a></li>
 <li class="chapter" data-level="10.4" data-path="appendix.html"><a href="appendix.html#log-file"><i class="fa fa-check"></i><b>10.4</b> log file</a></li>
 <li class="chapter" data-level="10.5" data-path="appendix.html"><a href="appendix.html#beobachtungen-markieren-mit-gen-if"><i class="fa fa-check"></i><b>10.5</b> Beobachtungen markieren mit <code>gen</code> &amp; <code>if</code></a></li>
-<li class="chapter" data-level="10.6" data-path="appendix.html"><a href="appendix.html#index-bilden"><i class="fa fa-check"></i><b>10.6</b> Index bilden</a></li>
-<li class="chapter" data-level="10.7" data-path="appendix.html"><a href="appendix.html#macros"><i class="fa fa-check"></i><b>10.7</b> macros</a></li>
+<li class="chapter" data-level="10.6" data-path="appendix.html"><a href="appendix.html#macros"><i class="fa fa-check"></i><b>10.6</b> macros</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -354,9 +353,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">6.1</span> <code>egen</code></h2>
 <p>Mit <code>egen</code>, den “Extensions to generate,” stehen eine ganze Menge an Funktionen zur Verfügung.
 Sehr hilfreich ist bspw. die Option <code>cut</code> zur Einteilung in Gruppen:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb1-1"><a href="egen.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">egen</span> age_cat = <span class="fu">cut</span>(zpalter), <span class="fu">at</span>(15 18 35 60 100 ) <span class="kw">label</span></span>
-<span id="cb1-2"><a href="egen.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> age_cat</span></code></pre></div>
-<pre><code>(176 missing values generated)
+<div class="sourceCode" id="cb148"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb148-1"><a href="egen.html#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="kw">egen</span> age_cat = <span class="fu">cut</span>(zpalter), <span class="fu">at</span>(15 18 35 60 100 ) <span class="kw">label</span></span>
+<span id="cb148-2"><a href="egen.html#cb148-2" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> age_cat</span></code></pre></div>
+<pre><code> | is not a valid command name
+r(199);
+
+
+
+
+(176 missing values generated)
 
     age_cat |      Freq.     Percent        Cum.
 ------------+-----------------------------------
@@ -367,10 +372,10 @@ Sehr hilfreich ist bspw. die Option <code>cut</code> zur Einteilung in Gruppen:<
 ------------+-----------------------------------
       Total |     19,836      100.00</code></pre>
 <p>Außerdem könnten wir bspw. eine Variable <code>durchschnittsalter</code> mit dem Mittelwert für <code>zpalter</code> erstellen:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb3-1"><a href="egen.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">egen</span> durchschnittsalter = <span class="kw">mean</span>(zpalter)</span></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb150-1"><a href="egen.html#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="kw">egen</span> durchschnittsalter = <span class="kw">mean</span>(zpalter)</span></code></pre></div>
 <p>Oder wir könnten den Vergleich des Wohn- und Arbeitsbundeslandes aus <a href="gen.html#dummyvar">Kapitel 5</a> mit <code>diff()</code> durchführen:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb4-1"><a href="egen.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> ao_wo =  Bula ==  F233 <span class="kw">if</span> !<span class="fu">missing</span>(F233)</span>
-<span id="cb4-2"><a href="egen.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">egen</span> ao_wo2 = <span class="fu">diff</span>( Bula F233_Bula) <span class="kw">if</span> !<span class="fu">missing</span>(F233) </span></code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb151-1"><a href="egen.html#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> ao_wo =  Bula ==  F233 <span class="kw">if</span> !<span class="fu">missing</span>(F233)</span>
+<span id="cb151-2"><a href="egen.html#cb151-2" aria-hidden="true" tabindex="-1"></a><span class="kw">egen</span> ao_wo2 = <span class="fu">diff</span>( Bula F233_Bula) <span class="kw">if</span> !<span class="fu">missing</span>(F233) </span></code></pre></div>
 <p>Das führt zum gleichen Ergebnis, allerdings könnten wir in <code>diff()</code> noch weitere Variablen für einen Abgleich einfügen (bspw. weitere Arbeitsorte).</p>
 <p>Eine Liste aller Optionen für <code>egen</code> findet sich unter <code>help egen</code>:</p>
 <p><img src="pics/06_egen_help.png" width="80%" style="display: block; margin: auto;" /></p>
@@ -461,16 +466,25 @@ myvar1, myvar2, …, myvar6 (je nachdem, welche Variablen vorhanden sind - in de
 <p>Mit dem Präfix <code>by</code> können Berechnungen getrennt für verschiedene Gruppen durchgeführt werden.
 Das ist insbesondere in Kombination mit <code>egen</code> ein sehr vielseitiges Werkzeug.
 So können wir beispielsweise das Durchschnittsalter in unserem Datensatz getrennt für Frauen und Männer berechnen:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb5-1"><a href="egen.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">by</span> S1: <span class="kw">egen</span> mean_byS1 = <span class="kw">mean</span>(zpalter)</span></code></pre></div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb152-1"><a href="egen.html#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="kw">by</span> S1: <span class="kw">egen</span> mean_byS1 = <span class="kw">mean</span>(zpalter)</span></code></pre></div>
 <p><span style="color:red"><code>not sorted</code></span><br />
 <span style="color:blue"><code>r(5);</code></span></p>
 <p>Allerdings setzt das immer voraus, dass der Datensatz nach den in <code>by</code> angegebenen Variablen sortiert ist - sonst bekommen wir eine Fehlermeldung.
 Sortieren können wir entweder mit <code>sort varname</code>:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb6-1"><a href="egen.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">sort</span> S1</span>
-<span id="cb6-2"><a href="egen.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">by</span> S1: <span class="kw">egen</span> mean_byS1 = <span class="kw">mean</span>(zpalter)</span></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb153-1"><a href="egen.html#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="kw">sort</span> S1</span>
+<span id="cb153-2"><a href="egen.html#cb153-2" aria-hidden="true" tabindex="-1"></a><span class="kw">by</span> S1: <span class="kw">egen</span> mean_byS1 = <span class="kw">mean</span>(zpalter)</span></code></pre></div>
 <p>…oder alles in einem Befehl:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb7-1"><a href="egen.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">bysort</span> S1: <span class="kw">egen</span> mean_byS1 = <span class="kw">mean</span>(zpalter)</span></code></pre></div>
-<pre><code>  |       S1   zpalter   mean_byS1 |
+<div class="sourceCode" id="cb154"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb154-1"><a href="egen.html#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="kw">bysort</span> S1: <span class="kw">egen</span> mean_byS1 = <span class="kw">mean</span>(zpalter)</span></code></pre></div>
+<pre><code> | is not a valid command name
+r(199);
+
+
+
+
+
+
+  +--------------------------------+
+  |       S1   zpalter   mean_byS1 |
   |--------------------------------|
   |  mÃ¤nnlic        41    46.49079 |
   | weiblich        51    47.90402 |
@@ -482,8 +496,18 @@ Sortieren können wir entweder mit <code>sort varname</code>:</p>
 <p>Anmerkung für die Ausgabe der Fälle wurde nach <code>by S1,sort: egen mean_byS1 = mean(zpalter)</code> mit <code>sort intnr</code> wieder die ursprüngliche Reihenfolge hergestellt.</p>
 </blockquote>
 <p>Wir könnten aber auch die geschlechts- und schulbildungsspezifischen Durchschnittseinkommen berechnen, indem wir beide Variablen im <code>by</code>-Befehl angeben:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb9-1"><a href="egen.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">bysort</span> S1 S3: <span class="kw">egen</span> mean_byS1S3 = <span class="kw">mean</span>(zpalter)</span></code></pre></div>
-<pre><code>  |       S1         S3   zpalter   mean_byS1   mean_byS1S3 |
+<div class="sourceCode" id="cb156"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb156-1"><a href="egen.html#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="kw">bysort</span> S1 S3: <span class="kw">egen</span> mean_byS1S3 = <span class="kw">mean</span>(zpalter)</span></code></pre></div>
+<pre><code> | is not a valid command name
+r(199);
+
+
+
+
+
+
+
+  +---------------------------------------------------------+
+  |       S1         S3   zpalter   mean_byS1   mean_byS1S3 |
   |---------------------------------------------------------|
   |  mÃ¤nnlic   Abitur /        41    46.49079      46.49431 |
   | weiblich   Realschu        51    47.90402      48.09049 |
@@ -497,32 +521,32 @@ Sortieren können wir entweder mit <code>sort varname</code>:</p>
 </div>
 <div id="egenue" class="section level2" number="6.4">
 <h2><span class="header-section-number">6.4</span> Übungen</h2>
-<ol class="example" style="list-style-type: decimal">
+<ol start="27" class="example" style="list-style-type: decimal">
 <li>Laden Sie den BIBB/BAuA Erwerbstätigenbefragung 2018 (<code>BIBBBAuA_2018_suf1.dta</code>).</li>
 </ol>
 <div id="egenue1" class="section level3" number="6.4.1">
 <h3><span class="header-section-number">6.4.1</span> Übungen</h3>
-<ol start="2" class="example" style="list-style-type: decimal">
+<ol start="28" class="example" style="list-style-type: decimal">
 <li><p>Bilden Sie mit Hilfe von <code>egen</code> verschiedene Einkommensklassen (bspw. ab 0EUR in 500EUR-Schritten bis 72000EUR). Nutzen Sie die <code>numlist</code>-Funktion mit <code>(start(intervall)stop)</code>. Verändern Sie Labels.</p></li>
 <li><p>Welche Variablen bekommen Sie mit <code>describe</code> angezeigt, wenn Sie entweder <code>describe F21</code>, <code>describe F21*</code>, <code>describe F21?</code>, <code>describe F2*4</code> oder <code>describe F2?4</code> verwenden?</p></li>
 </ol>
 </div>
 <div id="byue" class="section level3" number="6.4.2">
 <h3><span class="header-section-number">6.4.2</span> Übungen</h3>
-<ol start="4" class="example" style="list-style-type: decimal">
+<ol start="30" class="example" style="list-style-type: decimal">
 <li>Berechnen Sie das Durchschnittseinkommen (basierend auf <code>F518_SUF</code>) getrennt für Männer und Frauen und legen Sie es in einer neuen Variable <code>m_inc_byS1</code> ab.</li>
 </ol>
 <ul>
 <li>mit <code>mvdecode F518_SUF, mv(99998/99999)</code> können Sie die Missings ausschließen</li>
 <li>Denken Sie daran, dass Sie die Daten sortieren müssen.</li>
 </ul>
-<ol start="5" class="example" style="list-style-type: decimal">
+<ol start="31" class="example" style="list-style-type: decimal">
 <li>Wie würden Sie jetzt für jede*n Befragten berechnen, um wieviel ihr*sein Einkommen vom geschlechtsspezifischen Durchschnittswert unterscheidet?</li>
 </ol>
 </div>
 <div id="profiaufgabe" class="section level3" number="6.4.3">
 <h3><span class="header-section-number">6.4.3</span> Profiaufgabe</h3>
-<ol start="6" class="example" style="list-style-type: decimal">
+<ol start="32" class="example" style="list-style-type: decimal">
 <li>Öffnen Sie die Hilfe für <code>egen</code> und lassen Sie ein Beispiel Schritt für Schritt durchlaufen - beobachten Sie was passiert, indem Sie mit <code>browse</code> den Datensatz betrachten.</li>
 </ol>
 </div>
@@ -532,8 +556,17 @@ Sortieren können wir entweder mit <code>sort varname</code>:</p>
 <div id="bys_su" class="section level3" number="6.5.1">
 <h3><span class="header-section-number">6.5.1</span> Kombination von <code>summarize</code> mit dem <code>by</code>-Präfix</h3>
 <p>Mit <code>bysort</code> können wir auch Gruppenvergleiche erstellen. Bspw. können wir die Altersangaben für Männer (<code>S1</code>=1) und Frauen (<code>S1</code>=2) vergleichen, indem wir das Befehls-Präfix <code>bys varX:</code> verwenden. Stata sortiert also den Datensatz entsprechend der angegebenen Variable und die folgende Berechnung wird getrennt nach den Werten für <code>varX</code> ausgeführt. Wenn wir also <code>summarize</code> für beide Ausprägungen von <code>S1</code> berechnen möchten, gehen wir wir folgt vor:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb11-1"><a href="egen.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">bysort</span> S1: <span class="kw">summarize</span> zpalter </span></code></pre></div>
-<pre><code>-&gt; S1 = mÃ¤nnlic
+<div class="sourceCode" id="cb158"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb158-1"><a href="egen.html#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="kw">bysort</span> S1: <span class="kw">summarize</span> zpalter </span></code></pre></div>
+<pre><code> | is not a valid command name
+r(199);
+
+
+
+
+
+
+--------------------------------------------------------------------------------
+-&gt; S1 = mÃ¤nnlic
 
     Variable |        Obs        Mean    Std. Dev.       Min        Max
 -------------+---------------------------------------------------------
@@ -597,7 +630,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["Stata Tables BIBB.pdf", "Stata Tables BIBB.epub"],
+"download": ["Stata BIBB.pdf", "Stata BIBB.epub"],
 "search": {
 "engine": "fuse",
 "options": null
@@ -609,6 +642,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
