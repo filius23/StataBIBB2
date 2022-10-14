@@ -64,9 +64,9 @@ tab ao_wo,m
 list intnr Bula F233 ao_wo in 157/160, clean noobs
 
 	// check 1: in browse nachsehen
-	bro intnr nuts2 F233_nuts2 pendler
+	bro intnr nuts2 F233_nuts2 ao_wo
 	//check 1b: missings 
-	bro intnr nuts2 F233_nuts2 pendler if missing(F233_nuts2)
+	bro intnr nuts2 F233_nuts2 ao_wo if missing(F233)
 
 * -------------------------------- *
 * Labeln
@@ -91,7 +91,9 @@ tab ao_wo, nol m
 label define aowo_lab 0 "Ungleich" 1 "Gleich", replace
 tab ao_wo 
 
-
+* label verändern:
+label define aowo_lab 0 "ungleich" 1 "Gleich", modify
+tab ao_wo 
 
 * -------------------------------- *
 * bestehende Variablen verändern
